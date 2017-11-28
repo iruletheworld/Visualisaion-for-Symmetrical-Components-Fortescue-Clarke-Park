@@ -1,3 +1,52 @@
+import gsyTransforms as trf
+import numpy as np
+import matplotlib.pyplot as plt
+
+from numpy import sqrt, sin, cos
+    
+dbl_base_freq = 50
+
+dbl_base_period = 1 / dbl_base_freq
+    
+time_end = 0.04
+
+n = 1
+
+# time vector
+time = np.linspace( 0, time_end, (10 ** 5) )
+
+# angular freq
+omega = 2 * np.pi * dbl_base_freq
+
+mag_a = 1
+mag_b = 1
+mag_c = 1
+
+# base phases of the 3-phase inputs, note, base phases only
+phase_a = omega * time
+phase_b = omega * time - (2 / 3 * np.pi)
+phase_c = omega * time + (2 / 3 * np.pi)
+
+# 3-phase inputs
+input_a = mag_a * cos(n * phase_a)
+input_b = mag_b * cos(n * phase_b)
+input_c = mag_c * cos(n * phase_c)
+
+# amplitude invariant Clarke transform
+alpha, beta, zero = trf.cal_clarke(input_a, input_b, input_c)
+
+d_ddsrf_pos, q_ddsrf_pos, d_ddsrf_neg, q_ddsrf_neg, zero = trf.cal_park_ddsrf(phase_a, alpha, beta, zero)
+
+plt.subplot(3, 1, 1)
+plt.plot(time, input_a, time, input_b, time, input_c)
+
+plt.subplot(3, 1, 2)
+plt.plot(time, alpha, time, beta, time, zero)
+
+plt.subplot(3, 1, 3)
+plt.plot(time, d_ddsrf_pos, time, q_ddsrf_pos, time, d_ddsrf_neg, time, q_ddsrf_neg)
+
+plt.show()
 
 # =============================================================================
 # def draw_clarke(dbl_har_order, dbl_base_freq=50, dbl_cycle=4, 

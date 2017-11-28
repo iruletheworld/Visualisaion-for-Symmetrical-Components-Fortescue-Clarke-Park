@@ -1,0 +1,316 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1. Library for transforms : gsyTransforms &mdash; Dynamic Visualisation for Symmetrical Components 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Dynamic Visualisation for Symmetrical Components 0.1.0 documentation" href="index.html"/>
+        <link rel="prev" title="Dynamic Visualisation for Symmetrical Components’s documentation!" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Dynamic Visualisation for Symmetrical Components
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Library for transforms : gsyTransforms</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Dynamic Visualisation for Symmetrical Components</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>1. Library for transforms : gsyTransforms</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/gsyTransforms.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-gsyTransforms">
+<span id="library-for-transforms-gsytransforms"></span><h1>1. Library for transforms : gsyTransforms<a class="headerlink" href="#module-gsyTransforms" title="Permalink to this headline">¶</a></h1>
+<p>Calculations for the following transforms: 
+Fortescue (3-phase symmetrical components), Clarke (DSOGI &amp; DDSRF), Park</p>
+<p>Author : Dr. GAO, Siyu</p>
+<p>Version : 0.1.0</p>
+<p>Last Modified : 2017-11-28</p>
+<dl class="function">
+<dt id="gsyTransforms.cal_clarke">
+<code class="descclassname">gsyTransforms.</code><code class="descname">cal_clarke</code><span class="sig-paren">(</span><em>a</em>, <em>b</em>, <em>c</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyTransforms.cal_clarke" title="Permalink to this definition">¶</a></dt>
+<dd><p id="cal-clarke">Calculates the amplitude invariant Clarke Transform.</p>
+<p>Accepts complex forms of three-phase inputs. Returns the <em>:math:`alpha`</em> component,
+<span class="math">\(\beta\)</span> component and the <span class="math">\(Zero\)</span> component.</p>
+<div class="math">
+\[\begin{split}\left[\begin{matrix} \alpha \\ \beta \\ Zero \end{matrix}\right] 
+= \frac{2}{3} 
+\left[\begin{matrix} 
+1 &amp; -\frac{1}{2} &amp; -\frac{1}{2} 
+\\ 0 &amp; \frac{\sqrt{3}}{2} &amp; -\frac{\sqrt{3}}{2} 
+\\ \frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2} 
+\end{matrix}\right] 
+\left[\begin{matrix} 
+a \\ b \\ c 
+\end{matrix}\right] \end{split}\]</div>
+<p class="rubric">Examples</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsyTransforms.cal_clarke_symm">
+<code class="descclassname">gsyTransforms.</code><code class="descname">cal_clarke_symm</code><span class="sig-paren">(</span><em>a</em>, <em>b</em>, <em>c</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyTransforms.cal_clarke_symm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="gsyTransforms.cal_park">
+<code class="descclassname">gsyTransforms.</code><code class="descname">cal_park</code><span class="sig-paren">(</span><em>theta</em>, <em>alpha</em>, <em>beta</em>, <em>zero</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyTransforms.cal_park" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="gsyTransforms.cal_symm">
+<code class="descclassname">gsyTransforms.</code><code class="descname">cal_symm</code><span class="sig-paren">(</span><em>a</em>, <em>b</em>, <em>c</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyTransforms.cal_symm" title="Permalink to this definition">¶</a></dt>
+<dd><p id="cal-symm">Calculates the 3-phase symmetrical components (Fortescue).</p>
+<p>Accepts complex forms of three-phase inputs. Returns the positive sequence,
+the negative sequence and the zero sequence.</p>
+<div class="math">
+\[A = e^{j \frac{2}{3} \pi} = \angle 120^{\circ}\]</div>
+<p>Commonly, the lowercase of <span class="math">\(A\)</span>, <span class="math">\(\alpha\)</span>, is used to avoid confusion with <span class="math">\(a\)</span> (/eɪ/).</p>
+<div class="math">
+\[ \begin{align}\begin{aligned}\begin{split}\left[\begin{matrix} 
+a_{+} \\ b_{+} \\ c_{+}
+\end{matrix}\right] 
+= \frac{1}{3} 
+\left[\begin{matrix} 
+1 &amp; A &amp; A^2 
+\\ A^2 &amp; 1 &amp; A
+\\ A &amp; A^2 &amp; 1 
+\end{matrix}\right] 
+\left[\begin{matrix} 
+a \\ b \\ c 
+\end{matrix}\right]\end{split}\\\begin{split}\left[\begin{matrix} 
+a_{-} \\ b_{-} \\ c_{-}
+\end{matrix}\right] 
+= \frac{1}{3} 
+\left[\begin{matrix} 
+1 &amp; A^2 &amp; A
+\\ A &amp; 1 &amp; A^2
+\\ A^2 &amp; A &amp; 1 
+\end{matrix}\right] 
+\left[\begin{matrix} 
+a \\ b \\ c 
+\end{matrix}\right]\end{split}\end{aligned}\end{align} \]</div>
+<div class="math">
+\[\begin{split}\left[\begin{matrix} 
+a_{Zero} \\ b_{Zero} \\ c_{Zero}
+\end{matrix}\right] 
+= \frac{1}{3} 
+\left[\begin{matrix} 
+1 &amp; 1 &amp; 1
+\\ 1 &amp; 1 &amp; 1
+\\ 1 &amp; 1 &amp; 1 
+\end{matrix}\right] 
+\left[\begin{matrix} 
+a \\ b \\ c 
+\end{matrix}\right]\end{split}\]</div>
+<p class="rubric">Examples</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Dynamic Visualisation for Symmetrical Components’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, GAO, Siyu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
