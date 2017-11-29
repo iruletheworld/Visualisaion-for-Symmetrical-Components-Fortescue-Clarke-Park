@@ -7,7 +7,7 @@ Author : Dr. GAO, Siyu
 
 Version : 0.1.0
 
-Last Modified : 2017-11-28
+Last Modified : 2017-11-29
 """
 
 import numpy as np
@@ -114,7 +114,6 @@ def cal_symm(a, b, c):
     zero = 1/3 * (a + b + c)
     
     return a_pos, b_pos, c_pos, a_neg, b_neg, c_neg, zero
-
 # =============================================================================
 # </Function: calculate the symmetrical components (Fortescue)>
 # =============================================================================
@@ -187,14 +186,17 @@ def cal_clarke_dsogi(a, b, c):
     alpha, beta, zero = cal_clarke(a, b, c)
     
     # positive alpha and beta
-    alpha_pos = 1/2 * ( alpha - beta * QUAD )
+    alpha_pos_dsogi = 1/2 * ( alpha - beta * QUAD )
     
-    beta_pos = 1/2 * ( alpha * QUAD + beta )
+    beta_pos_dsogi = 1/2 * ( alpha * QUAD + beta )
     
     # negative alpha and beta
-    alpha_neg = 1/2 * ( alpha + beta * QUAD )
+    alpha_neg_dsogi = 1/2 * ( alpha + beta * QUAD )
     
-    beta_neg = 1/2 ( -1 * alpha * QUAD + beta )
+    beta_neg_dsogi = 1/2 * ( -1 * alpha * QUAD + beta )
+
+    # zero sequence
+    zero = 1/3 * ( a + b + c )
 
     return alpha_pos_dsogi, beta_pos_dsogi, alpha_neg_dsogi, beta_neg_dsogi, zero
 # =============================================================================
@@ -239,7 +241,6 @@ def cal_park(theta, alpha, beta, zero=0):
 # =============================================================================
 # <Function: calculate the Park Transform (DDSRF)>
 # =============================================================================
-
 def cal_park_ddsrf(theta, alpha, beta, zero=0):
 
     # Park transform (DDSRF)
@@ -270,7 +271,6 @@ def cal_park_ddsrf(theta, alpha, beta, zero=0):
     zero = zero
 
     return d_ddsrf_pos, q_ddsrf_pos, d_ddsrf_neg, q_ddsrf_neg, zero
-
 # =============================================================================
 # </Function: calculate the Park Transform (DDSRF)>
 # =============================================================================
