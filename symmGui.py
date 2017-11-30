@@ -30,7 +30,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addWidget(self.lbl_equations)
         self.lbl_units = QtWidgets.QLabel(self.centralwidget)
         font = QtGui.QFont()
-        font.setFamily("Helvetica")
+        font.setFamily("Arial")
         font.setPointSize(9)
         font.setBold(True)
         font.setWeight(75)
@@ -313,13 +313,13 @@ class Ui_MainWindow(object):
                     
                     list_vars[item] = 0
                     
-#            t = np.linspace(0, 2 * np.pi, 1e4)
-#            
-#            y = np.sin(t)
-#            
-#            plt.plot(t, y)
-#            
-#            plt.show()
+            t = np.linspace(0, 2 * np.pi, 1e4)
+
+            y = np.sin(t)
+
+            plt.plot(t, y)
+
+            plt.show()
 
 import equations
 

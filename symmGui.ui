@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>493</width>
-    <height>404</height>
+    <width>536</width>
+    <height>421</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -35,6 +35,16 @@
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
      <widget class="QLabel" name="lbl_equations">
+      <property name="font">
+       <font>
+        <family>Arial Unicode MS</family>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="locale">
+       <locale language="English" country="UnitedStates"/>
+      </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Equations:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/equations_/equations_all_inputs_150.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
@@ -53,7 +63,7 @@
      <widget class="QLabel" name="lbl_units">
       <property name="font">
        <font>
-        <family>Helvetica</family>
+        <family>Arial Unicode MS</family>
         <pointsize>9</pointsize>
         <weight>75</weight>
         <bold>true</bold>
@@ -344,6 +354,13 @@
       </item>
       <item row="4" column="5">
        <widget class="QPushButton" name="btn_update">
+        <property name="font">
+         <font>
+          <family>Arial Unicode MS</family>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
          <string>Update</string>
         </property>
@@ -352,18 +369,14 @@
      </layout>
     </item>
    </layout>
-   <zorder>lbl_equations</zorder>
-   <zorder>layoutWidget</zorder>
-   <zorder>lbl_units</zorder>
-   <zorder>btn_update</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>493</width>
-     <height>26</height>
+     <width>536</width>
+     <height>31</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu1">
