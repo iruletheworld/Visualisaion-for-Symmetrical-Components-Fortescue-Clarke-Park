@@ -1,3 +1,26 @@
+# import csv
+
+# import numpy as np
+
+# time = np.arange(0, 1, 0.1)
+
+# data = np.arange(21, 20, -0.1)
+
+# output = open(r'E:\[TEMP]\test.csv', 'w', newline='')
+
+# fieldnames = ['time', 'data']
+# writer = csv.DictWriter(output, fieldnames=fieldnames)
+
+# writer.writeheader()
+
+# for item in range(len(time)):
+
+#     writer.writerow({'time': time[item], 'data': data[item]})
+
+# output.close()
+
+
+
 import gsyTransforms as trf
 import numpy as np
 import matplotlib.pyplot as plt

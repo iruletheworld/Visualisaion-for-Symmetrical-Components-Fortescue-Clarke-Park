@@ -6,16 +6,12 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-import matplotlib.pyplot as plt
-import numpy as np
-
-from asteval import Interpreter
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(493, 404)
+        MainWindow.resize(536, 421)
         MainWindow.setMinimumSize(QtCore.QSize(493, 404))
         MainWindow.setMaximumSize(QtCore.QSize(1000, 1000))
         MainWindow.setBaseSize(QtCore.QSize(493, 404))
@@ -24,13 +20,19 @@ class Ui_MainWindow(object):
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.lbl_equations = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Arial Unicode MS")
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbl_equations.setFont(font)
+        self.lbl_equations.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
         self.lbl_equations.setTextFormat(QtCore.Qt.AutoText)
         self.lbl_equations.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.lbl_equations.setObjectName("lbl_equations")
         self.verticalLayout_2.addWidget(self.lbl_equations)
         self.lbl_units = QtWidgets.QLabel(self.centralwidget)
         font = QtGui.QFont()
-        font.setFamily("Arial")
+        font.setFamily("Arial Unicode MS")
         font.setPointSize(9)
         font.setBold(True)
         font.setWeight(75)
@@ -196,15 +198,17 @@ class Ui_MainWindow(object):
         self.lbl_phaseAOmega.setObjectName("lbl_phaseAOmega")
         self.gridLayout.addWidget(self.lbl_phaseAOmega, 0, 2, 1, 1)
         self.btn_update = QtWidgets.QPushButton(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Arial Unicode MS")
+        font.setBold(True)
+        font.setWeight(75)
+        self.btn_update.setFont(font)
         self.btn_update.setObjectName("btn_update")
         self.gridLayout.addWidget(self.btn_update, 4, 5, 1, 1)
         self.verticalLayout_2.addLayout(self.gridLayout)
-        self.lbl_equations.raise_()
-        self.lbl_units.raise_()
-        self.btn_update.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 493, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 536, 31))
         self.menubar.setObjectName("menubar")
         self.menu1 = QtWidgets.QMenu(self.menubar)
         self.menu1.setObjectName("menu1")
@@ -244,8 +248,6 @@ class Ui_MainWindow(object):
         MainWindow.setTabOrder(self.ledt_phaseCPhi, self.ledt_pllOmega)
         MainWindow.setTabOrder(self.ledt_pllOmega, self.ledt_pllPhi)
 
-        self.btn_update.clicked.connect(self.update)
-
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -282,44 +284,6 @@ class Ui_MainWindow(object):
         self.help_Documentation.setText(_translate("MainWindow", "Documentation"))
         self.help_About.setText(_translate("MainWindow", "About"))
         self.file_saveSetting.setText(_translate("MainWindow", "Save Setting"))
-        
-    def update(self):
-            
-            print('Updating!')
-            
-            aeval = Interpreter()
-            
-            mag_a   = aeval(self.ledt_phaseAMag.text())
-            omage_a = aeval(self.ledt_phaseAOmega.text())
-            phi_a   = aeval(self.ledt_phaseAPhi.text())
-            
-            mag_b   = aeval(self.ledt_phaseBMag.text())
-            omage_b = aeval(self.ledt_phaseBOmega.text())
-            phi_b   = aeval(self.ledt_phaseBPhi.text())
-            
-            mag_c   = aeval(self.ledt_phaseCMag.text())
-            omage_c = aeval(self.ledt_phaseCOmega.text())
-            phi_c   = aeval(self.ledt_phaseCPhi.text())
-            
-            pll_omega = aeval(self.ledt_pllOmega.text())
-            pll_phi = aeval(self.ledt_pllPhi.text())
-            
-            list_vars = [mag_a, omage_a, phi_a, mag_b, omage_b, phi_b, mag_c, 
-                         omage_c, phi_c, pll_omega, pll_phi]
-            
-            for item in range(len(list_vars)):
-                
-                if list_vars[item] == None:
-                    
-                    list_vars[item] = 0
-                    
-            t = np.linspace(0, 2 * np.pi, 1e4)
-
-            y = np.sin(t)
-
-            plt.plot(t, y)
-
-            plt.show()
 
 import equations
 
