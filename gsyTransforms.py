@@ -7,7 +7,7 @@ Author : Dr. GAO, Siyu
 
 Version : 0.1.0
 
-Last Modified : 2017-11-29
+Last Modified : 2017-11-30
 """
 
 import numpy as np
@@ -274,3 +274,13 @@ def cal_park_ddsrf(theta, alpha, beta, zero=0):
 # =============================================================================
 # </Function: calculate the Park Transform (DDSRF)>
 # =============================================================================
+    
+def to_complex(mag, x):
+    
+    real = mag * cos(x)
+    
+    imag = mag * sin(x)
+    
+    return (real + 1j * imag)
+    
+    

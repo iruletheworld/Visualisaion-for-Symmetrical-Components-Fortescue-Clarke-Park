@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="equations_">
+    <file>equations_all_inputs_150.png</file>
+    <file>equations_all_inputs.png</file>
+  </qresource>
+</RCC>

@@ -17,12 +17,12 @@ time_end = 0.04
 n = 1
 
 phi_a = 0
-phi_b = -2/3 * np.pi - 1/12 * np.pi
-phi_c = 2/3 * np.pi + 1/4 * np.pi
+phi_b = -2/3 * np.pi
+phi_c = 2/3 * np.pi
 
-mag_a = 1
-mag_b = 1
-mag_c = 1
+mag_a = 1.2
+mag_b = 0.62
+mag_c = 0.27
 
 
 # time vector
@@ -39,9 +39,13 @@ phase_b = omega * time + phi_b
 phase_c = omega * time + phi_c
 
 # 3-phase inputs
-input_a = mag_a * (cos(n * phase_a) + 1j * sin(n * phase_a))
-input_b = mag_b * (cos(n * phase_b) + 1j * sin(n * phase_b))
-input_c = mag_c * (cos(n * phase_c) + 1j * sin(n * phase_c))
+input_a = trf.to_complex(mag_a, (n * phase_a))
+input_b = trf.to_complex(mag_b, (n * phase_b))
+input_c = trf.to_complex(mag_c, (n * phase_c))
+
+#input_a = mag_a * (cos(n * phase_a) + 1j * sin(n * phase_a))
+#input_b = mag_b * (cos(n * phase_b) + 1j * sin(n * phase_b))
+#input_c = mag_c * (cos(n * phase_c) + 1j * sin(n * phase_c))
 
 # Fortescue
 a_pos, b_pos, c_pos, a_neg, b_neg, c_neg, zero = trf.cal_symm(input_a, input_b, input_c)
@@ -155,7 +159,7 @@ ax12_legend = plt.legend(handles=[ax12_zero], loc='upper right')
 plt.ylim([ylim_min, ylim_max])
 
 plt.tight_layout()
-plt.show()
+# plt.show()
 
 fig_polar = plt.figure(figsize=(CONST_WITH/CONST_DPI, CONST_HEIGHT/CONST_DPI), dpi=CONST_DPI)
 
