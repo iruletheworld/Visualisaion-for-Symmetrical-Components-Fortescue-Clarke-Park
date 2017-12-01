@@ -210,10 +210,10 @@ class Ui_MainWindow(object):
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 536, 26))
         self.menubar.setObjectName("menubar")
-        self.menu1 = QtWidgets.QMenu(self.menubar)
-        self.menu1.setObjectName("menu1")
-        self.menuHelp = QtWidgets.QMenu(self.menubar)
-        self.menuHelp.setObjectName("menuHelp")
+        self.menu_file = QtWidgets.QMenu(self.menubar)
+        self.menu_file.setObjectName("menu_file")
+        self.menu_help = QtWidgets.QMenu(self.menubar)
+        self.menu_help.setObjectName("menu_help")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -226,17 +226,20 @@ class Ui_MainWindow(object):
         self.help_About.setObjectName("help_About")
         self.file_saveSetting = QtWidgets.QAction(MainWindow)
         self.file_saveSetting.setObjectName("file_saveSetting")
-        self.menu1.addSeparator()
-        self.menu1.addAction(self.file_saveData)
-        self.menu1.addAction(self.file_saveSetting)
-        self.menuHelp.addAction(self.help_Documentation)
-        self.menuHelp.addSeparator()
-        self.menuHelp.addAction(self.help_About)
-        self.menubar.addAction(self.menu1.menuAction())
-        self.menubar.addAction(self.menuHelp.menuAction())
+        self.file_Exit = QtWidgets.QAction(MainWindow)
+        self.file_Exit.setObjectName("file_Exit")
+        self.menu_file.addSeparator()
+        self.menu_file.addAction(self.file_saveData)
+        self.menu_file.addAction(self.file_saveSetting)
+        self.menu_file.addAction(self.file_Exit)
+        self.menu_help.addAction(self.help_Documentation)
+        self.menu_help.addSeparator()
+        self.menu_help.addAction(self.help_About)
+        self.menubar.addAction(self.menu_file.menuAction())
+        self.menubar.addAction(self.menu_help.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.file_saveData.triggered.connect(self.test)
+        self.file_Exit.triggered.connect(MainWindow.close)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.ledt_phaseAMag, self.ledt_phaseAOmega)
         MainWindow.setTabOrder(self.ledt_phaseAOmega, self.ledt_phaseAPhi)
@@ -279,19 +282,15 @@ class Ui_MainWindow(object):
         self.ledt_phaseBMag.setToolTip(_translate("MainWindow", "The magnitude of Phase-B input"))
         self.lbl_phaseAOmega.setText(_translate("MainWindow", "<html><head/><body><p>ω<span style=\" vertical-align:sub;\">a</span><span style=\" font-style:normal;\"> :</span></p></body></html>"))
         self.btn_update.setText(_translate("MainWindow", "Update"))
-        self.menu1.setTitle(_translate("MainWindow", "File"))
-        self.menuHelp.setTitle(_translate("MainWindow", "Help"))
+        self.menu_file.setTitle(_translate("MainWindow", "File"))
+        self.menu_help.setTitle(_translate("MainWindow", "Help"))
         self.file_saveData.setText(_translate("MainWindow", "Save Data"))
         self.help_Documentation.setText(_translate("MainWindow", "Documentation"))
         self.help_About.setText(_translate("MainWindow", "About"))
         self.file_saveSetting.setText(_translate("MainWindow", "Save Setting"))
+        self.file_Exit.setText(_translate("MainWindow", "Exit"))
 
-    def test(self):
-
-        print('You clicked!')
-
-
-import equations
+import equations_rc
 
 if __name__ == "__main__":
     import sys
