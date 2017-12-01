@@ -290,7 +290,7 @@ class Ui_MainWindow(object):
         self.file_saveSetting.setText(_translate("MainWindow", "Save Setting"))
         self.file_Exit.setText(_translate("MainWindow", "Exit"))
 
-import equations_rc
+import equations
 
 if __name__ == "__main__":
     import sys
