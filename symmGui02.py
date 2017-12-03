@@ -240,6 +240,9 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.file_Exit.triggered.connect(MainWindow.close)
+
+        self.file_saveData.triggered.connect(self.file_save_data)
+
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.ledt_phaseAMag, self.ledt_phaseAOmega)
         MainWindow.setTabOrder(self.ledt_phaseAOmega, self.ledt_phaseAPhi)
@@ -289,6 +292,13 @@ class Ui_MainWindow(object):
         self.help_About.setText(_translate("MainWindow", "About"))
         self.file_saveSetting.setText(_translate("MainWindow", "Save Setting"))
         self.file_Exit.setText(_translate("MainWindow", "Exit"))
+
+    def file_save_data(self):
+
+        filename, _filter = QtWidgets.QFileDialog.getSaveFileName(None, "Save some Data File", '.', "(*.*)")
+
+        print(filename)
+        print(_filter)
 
 import equations
 
