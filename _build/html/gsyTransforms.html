@@ -36,6 +36,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Dynamic Visualisation for Symmetrical Components 0.1.0 documentation" href="index.html"/>
+        <link rel="next" title="2. Library for custom IOs : gsyIO" href="gsyIO.html"/>
         <link rel="prev" title="Dynamic Visualisation for Symmetrical Components’s documentation!" href="index.html"/> 
 
   
@@ -91,6 +92,7 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">1. Library for transforms : gsyTransforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsyIO.html">2. Library for custom IOs : gsyIO</a></li>
 </ul>
 
             
@@ -156,16 +158,16 @@
             
   <div class="section" id="module-gsyTransforms">
 <span id="library-for-transforms-gsytransforms"></span><h1>1. Library for transforms : gsyTransforms<a class="headerlink" href="#module-gsyTransforms" title="Permalink to this headline">¶</a></h1>
-<p>Calculations for the following transforms: 
-Fortescue (3-phase symmetrical components), Clarke (DSOGI &amp; DDSRF), Park</p>
+<p>Calculations for the following transforms:
+Fortescue (3-phase symmetrical components), Clarke (DSOGI), Park (normal &amp; DDSRF)</p>
 <p>Author : Dr. GAO, Siyu</p>
 <p>Version : 0.1.0</p>
-<p>Last Modified : 2017-11-28</p>
+<p>Last Modified : 2017-11-30</p>
 <dl class="function">
 <dt id="gsyTransforms.cal_clarke">
 <code class="descclassname">gsyTransforms.</code><code class="descname">cal_clarke</code><span class="sig-paren">(</span><em>a</em>, <em>b</em>, <em>c</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyTransforms.cal_clarke" title="Permalink to this definition">¶</a></dt>
 <dd><p id="cal-clarke">Calculates the amplitude invariant Clarke Transform.</p>
-<p>Accepts complex forms of three-phase inputs. Returns the <em>:math:`alpha`</em> component,
+<p>Accepts complex forms of three-phase inputs. Returns the <span class="math">\(\alpha\)</span> component,
 <span class="math">\(\beta\)</span> component and the <span class="math">\(Zero\)</span> component.</p>
 <div class="math">
 \[\begin{split}\left[\begin{matrix} \alpha \\ \beta \\ Zero \end{matrix}\right] 
@@ -182,13 +184,18 @@ a \\ b \\ c
 </dd></dl>
 
 <dl class="function">
-<dt id="gsyTransforms.cal_clarke_symm">
-<code class="descclassname">gsyTransforms.</code><code class="descname">cal_clarke_symm</code><span class="sig-paren">(</span><em>a</em>, <em>b</em>, <em>c</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyTransforms.cal_clarke_symm" title="Permalink to this definition">¶</a></dt>
+<dt id="gsyTransforms.cal_clarke_dsogi">
+<code class="descclassname">gsyTransforms.</code><code class="descname">cal_clarke_dsogi</code><span class="sig-paren">(</span><em>a</em>, <em>b</em>, <em>c</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyTransforms.cal_clarke_dsogi" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="gsyTransforms.cal_park">
-<code class="descclassname">gsyTransforms.</code><code class="descname">cal_park</code><span class="sig-paren">(</span><em>theta</em>, <em>alpha</em>, <em>beta</em>, <em>zero</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyTransforms.cal_park" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">gsyTransforms.</code><code class="descname">cal_park</code><span class="sig-paren">(</span><em>theta</em>, <em>alpha</em>, <em>beta</em>, <em>zero=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyTransforms.cal_park" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="gsyTransforms.cal_park_ddsrf">
+<code class="descclassname">gsyTransforms.</code><code class="descname">cal_park_ddsrf</code><span class="sig-paren">(</span><em>theta</em>, <em>alpha</em>, <em>beta</em>, <em>zero=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyTransforms.cal_park_ddsrf" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -240,6 +247,11 @@ a \\ b \\ c
 <p class="rubric">Examples</p>
 </dd></dl>
 
+<dl class="function">
+<dt id="gsyTransforms.to_complex">
+<code class="descclassname">gsyTransforms.</code><code class="descname">to_complex</code><span class="sig-paren">(</span><em>mag</em>, <em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyTransforms.to_complex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 
 
@@ -251,6 +263,8 @@ a \\ b \\ c
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gsyIO.html" class="btn btn-neutral float-right" title="2. Library for custom IOs : gsyIO" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="Dynamic Visualisation for Symmetrical Components’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

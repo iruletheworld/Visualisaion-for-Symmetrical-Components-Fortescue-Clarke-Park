@@ -6,7 +6,14 @@
 #
 # WARNING! All changes made in this file will be lost!
 
+
+import numpy as np
+
+import gsyIO
+
 from PyQt5 import QtCore, QtGui, QtWidgets
+from asteval import Interpreter
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -239,9 +246,10 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menu_help.menuAction())
 
         self.retranslateUi(MainWindow)
+
         self.file_Exit.triggered.connect(MainWindow.close)
 
-        self.file_saveData.triggered.connect(self.file_save_data)
+#        self.file_saveData.triggered.connect(self.file_save_data)
 
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.ledt_phaseAMag, self.ledt_phaseAOmega)
@@ -254,6 +262,25 @@ class Ui_MainWindow(object):
         MainWindow.setTabOrder(self.ledt_phaseCOmega, self.ledt_phaseCPhi)
         MainWindow.setTabOrder(self.ledt_phaseCPhi, self.ledt_pllOmega)
         MainWindow.setTabOrder(self.ledt_pllOmega, self.ledt_pllPhi)
+        
+        self.phaseAMag      = None
+        self.phaseAOmega    = None
+        self.phaseAPhi      = None
+        
+        self.phaseBMag      = None
+        self.phaseBOmega    = None
+        self.phaseBPhi      = None
+        
+        self.phaseCMag      = None
+        self.phaseCOmega    = None
+        self.phaseCPhi      = None
+        
+        self.pllOmega       = None
+        self.pllPhi         = None
+        
+        self.time           = None
+        
+        self.btn_update.clicked.connect(self.update)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -293,12 +320,40 @@ class Ui_MainWindow(object):
         self.file_saveSetting.setText(_translate("MainWindow", "Save Setting"))
         self.file_Exit.setText(_translate("MainWindow", "Exit"))
 
-    def file_save_data(self):
+    def update(self):
+        
+        print('Updated!')
+        
+        list_data = []
+        
+        aeval = Interpreter()
+        
+#        if len(self.ledt_phaseAMag.text()) == 0:
+#            
+#            self.phaseAMag = 0
+#            
+#            print('Mag_a = ' + str(self.mag_a))
+#            
+#        else:
+            
+        self.phaseAMag = aeval(self.ledt_phaseAMag.text())
+        
+        print('Mag_a = ' + str(self.phaseAMag))
+        
+        list_data.append(self.phaseAMag)
+        
+        list_data[0] = 1
+        
+        print('Mag_a = ' + str(self.phaseAMag))
 
-        filename, _filter = QtWidgets.QFileDialog.getSaveFileName(None, "Save some Data File", '.', "(*.*)")
+#    def file_save_data(self):
+#        
+#        gsyIO.save_csv_gui([self.time], [self.data])
 
-        print(filename)
-        print(_filter)
+#        filename, _filter = QtWidgets.QFileDialog.getSaveFileName(None, "Save some Data File", '.', "(*.*)")
+#
+#        print(filename)
+#        print(_filter)
 
 import equations
 

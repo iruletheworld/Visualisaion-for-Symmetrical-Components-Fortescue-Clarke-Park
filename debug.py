@@ -1,8 +1,122 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
+from tkinter import filedialog
+from tkinter import *
+ 
+root = Tk()
+root.filename =  filedialog.asksaveasfilename(initialdir = "/",title = "Select file",defaultextension='.jpg',filetypes = (("jpeg files","*.jpg"),('csv', '*.csv'),("all files","*.*")))
+print (root.filename)
+root.destroy()
 
-filename, _filter = QtWidgets.QFileDialog.getSaveFileName(None, "Save some Data File", '.', "(csv.*)")
 
-print(filename)
+# =============================================================================
+# import tkinter as tk
+# import tkinter.messagebox as msgbox
+# import os
+# import glob
+# import csv
+# 
+# from tkinter import filedialog
+# 
+# 
+# locRoot = tk.Tk()
+# 
+# locRoot.withdraw()
+# 
+# str_file_path = filedialog.asksaveasfilename(initialdir=os.getcwd(),
+#                                               title="Save as txt",
+#                                               filetypes = [("Text files","*.txt"), 
+#                                                            ('CSV', '*.csv'),
+#                                                            ("all files","*.*")])
+#     
+# print(str_file_path)
+# 
+# locRoot.destroy()
+# =============================================================================
+
+#print(str_file_path)
+
+
+# =============================================================================
+# import sys
+# from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QFileDialog
+# from PyQt5.QtGui import QIcon
+#  
+# class file_save_qt5(QWidget):
+#  
+#     def __init__(self):
+#         super().__init__()
+#         self.title = 'PyQt5 file dialogs - pythonspot.com'
+#         self.left = 10
+#         self.top = 10
+#         self.width = 640
+#         self.height = 480
+#         self.initUI()
+#  
+#     def initUI(self):
+#         self.setWindowTitle(self.title)
+#         self.setGeometry(self.left, self.top, self.width, self.height)
+#  
+# #        self.openFileNameDialog()
+# #        self.openFileNamesDialog()
+#         self.saveFileDialog()
+#  
+# #        self.show()
+# =============================================================================
+ 
+# =============================================================================
+#     def openFileNameDialog(self):    
+#         options = QFileDialog.Options()
+#         options |= QFileDialog.DontUseNativeDialog
+#         fileName, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)", options=options)
+#         if fileName:
+#             print(fileName)
+#  
+#     def openFileNamesDialog(self):    
+#         options = QFileDialog.Options()
+#         options |= QFileDialog.DontUseNativeDialog
+#         files, _ = QFileDialog.getOpenFileNames(self,"QFileDialog.getOpenFileNames()", "","All Files (*);;Python Files (*.py)", options=options)
+#         if files:
+#             print(files)
+# =============================================================================
+ 
+# =============================================================================
+#     def saveFileDialog(self):    
+#         options = QFileDialog.Options()
+#         options |= QFileDialog.DontUseNativeDialog
+#         fileName, _ = QFileDialog.getSaveFileName(self,"QFileDialog.getSaveFileName()","","All Files (*);;Text Files (*.txt)", options=options)
+#         if fileName:
+#             print(fileName)
+# =============================================================================
+ 
+# =============================================================================
+# def run():
+#     app = QApplication(sys.argv)
+#     ex = file_save_qt5()
+#     sys.exit(app.exec_())
+#      
+# run()
+# =============================================================================
+    
+# =============================================================================
+# 
+# if __name__ == '__main__':
+#     app = QApplication(sys.argv)
+#     ex = file_save_qt5()
+#     sys.exit(app.exec_())
+# 
+# =============================================================================
+
+
+
+
+# =============================================================================
+# from PyQt5 import QtCore, QtGui, QtWidgets
+# 
+# filename, _filter = QtWidgets.QFileDialog.getSaveFileName(None, "Save some Data File", '.', "(*.csv)")
+# 
+
+
+# print(filename)
+# =============================================================================
 
 # import csv
 

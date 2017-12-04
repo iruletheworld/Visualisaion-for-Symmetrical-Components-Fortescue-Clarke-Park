@@ -11,6 +11,7 @@ Dynamic Visualisation for Symmetrical Components's documentation!
    :numbered:
 
    gsyTransforms
+   gsyIO
 
 
 
