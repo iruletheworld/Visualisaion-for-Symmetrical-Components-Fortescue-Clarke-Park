@@ -443,8 +443,9 @@ class Ui_MainWindow(object):
             return samples
 
         else:
-
-            samples = max_freq * 6
+            
+            # samples = max_freq * 6 * (self.timeEnd / (1 / max_freq))
+            samples = (max_freq ** 2) * 6 * self.timeEnd
 
             return samples
 
