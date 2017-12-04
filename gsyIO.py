@@ -33,8 +33,44 @@ import tkinter.messagebox as msgbox
 import os
 import glob
 import csv
+import time
 
 from tkinter import filedialog
+from time import gmtime, strftime, sleep
+
+# =============================================================================
+# <Function: get system time and date>
+# =============================================================================
+def date_time_now():
+    """
+    .. _date_time_now :
+    
+    Return the system date and time as a string.
+
+    Return format: 'yyyy-mm-dd, HH:MM:SS:'
+
+    Parameters
+    ----------
+        None
+
+    Returns
+    -------
+    locStr_time_date : str
+        Formatted system date time string in 'yyyy-mm-dd, HH:MM:SS:'. 
+        The last colon is intended for printing to the console (or making logs).
+
+    Examples
+    --------
+    >>> date_time_now()
+    '2017-11-20, 15:14:42:'
+    """
+
+    locStr_time_date = strftime('%Y-%m-%d, %H:%M:%S:', gmtime())
+
+    return locStr_time_date
+# =============================================================================
+# </Function: get system time and date>
+# =============================================================================
 
 # =============================================================================
 # <Function: save the text as a txt file>

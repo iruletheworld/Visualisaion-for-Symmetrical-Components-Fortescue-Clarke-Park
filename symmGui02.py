@@ -8,11 +8,14 @@
 
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 import gsyIO
+import gsyTransforms as trf
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from asteval import Interpreter
+from numbers import Number
 
 
 class Ui_MainWindow(object):
@@ -278,9 +281,26 @@ class Ui_MainWindow(object):
         self.pllOmega       = None
         self.pllPhi         = None
         
-        self.time           = None
+        self.timeEnd        = None
+
+        self.time_samples   = None
+
+        self.phaseAdata = None
+        self.phaseAdata_real = None
+        self.phaseAdata_imag = None
+
+        self.phaseBdata = None
+        self.phaseBdata_real = None
+        self.phaseBdata_imag = None
+
+        self.phaseCdata = None
+        self.phaseCdata_real = None
+        self.phaseCdata_imag = None
+
+        # self.
         
         self.btn_update.clicked.connect(self.update)
+        self.file_saveData.triggered.connect(self.save_data)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -322,38 +342,147 @@ class Ui_MainWindow(object):
 
     def update(self):
         
-        print('Updated!')
+        plt.close('all')
+
+        print(gsyIO.date_time_now() + 'Updating')
+
+        list_temp = []
         
-        list_data = []
+        self.phaseAMag      = self.to_numeric(self.ledt_phaseAMag.text())
+        self.phaseAOmega    = self.to_numeric(self.ledt_phaseAOmega.text())
+        self.phaseAPhi      = self.to_numeric(self.ledt_phaseAPhi.text())
         
+        list_temp.append(['Phase-A Mag = ', self.phaseAMag])
+        list_temp.append(['Phase-A Omega = ', self.phaseAOmega])
+        list_temp.append(['Phase-A Phi = ', self.phaseAPhi])
+
+        self.phaseBMag      = self.to_numeric(self.ledt_phaseBMag.text())
+        self.phaseBOmega    = self.to_numeric(self.ledt_phaseBOmega.text())
+        self.phaseBPhi      = self.to_numeric(self.ledt_phaseBPhi.text())
+
+        list_temp.append(['Phase-B Mag = ', self.phaseBMag])
+        list_temp.append(['Phase-B Omega = ', self.phaseBOmega])
+        list_temp.append(['Phase-B Phi = ', self.phaseBPhi])
+
+        self.phaseCMag      = self.to_numeric(self.ledt_phaseCMag.text())
+        self.phaseCOmega    = self.to_numeric(self.ledt_phaseCOmega.text())
+        self.phaseCPhi      = self.to_numeric(self.ledt_phaseCPhi.text())
+
+        list_temp.append(['Phase-C Mag = ', self.phaseCMag])
+        list_temp.append(['Phase-C Omega = ', self.phaseCOmega])
+        list_temp.append(['Phase-C Phi = ', self.phaseCPhi])
+
+        self.pllOmega       = self.to_numeric(self.ledt_pllOmega.text())
+        self.pllPhi         = self.to_numeric(self.ledt_pllPhi.text())
+
+        list_temp.append(['PLL Omega = ', self.pllOmega])
+        list_temp.append(['PLL Phi = ', self.pllPhi])
+        
+        self.timeEnd        = self.to_numeric(self.ledt_time.text())
+
+        list_temp.append(['Time = ', self.timeEnd])
+
+        for item in list_temp:
+
+            print(gsyIO.date_time_now() + str(item[0]) +str(item[1]))
+
+        self.phaseAdata, self.time_samples  = self.make_data(self.phaseAMag, self.phaseAOmega, self.phaseAPhi)
+        self.phaseAdata_real = self.phaseAdata.real
+        self.phaseAdata_imag = self.phaseAdata.imag
+
+        self.phaseBdata, _ = self.make_data(self.phaseBMag, self.phaseBOmega, self.phaseBPhi)
+        self.phaseBdata_real = self.phaseBdata.real
+        self.phaseBdata_imag = self.phaseBdata.imag
+
+        self.phaseCdata, _ = self.make_data(self.phaseCMag, self.phaseCOmega, self.phaseCPhi)
+        self.phaseCdata_real = self.phaseCdata.real
+        self.phaseCdata_imag = self.phaseCdata.imag
+
+        plt.plot(self.time_samples, self.phaseAdata, self.time_samples, self.phaseBdata, self.time_samples, self.phaseCdata)
+
+        plt.show()
+
+        print(self.phaseAdata.real)
+        
+    def to_numeric(self, str_input):
+
         aeval = Interpreter()
-        
-#        if len(self.ledt_phaseAMag.text()) == 0:
-#            
-#            self.phaseAMag = 0
-#            
-#            print('Mag_a = ' + str(self.mag_a))
-#            
-#        else:
-            
-        self.phaseAMag = aeval(self.ledt_phaseAMag.text())
-        
-        print('Mag_a = ' + str(self.phaseAMag))
-        
-        list_data.append(self.phaseAMag)
-        
-        list_data[0] = 1
-        
-        print('Mag_a = ' + str(self.phaseAMag))
 
-#    def file_save_data(self):
-#        
-#        gsyIO.save_csv_gui([self.time], [self.data])
+        if len(str_input) == 0:
 
-#        filename, _filter = QtWidgets.QFileDialog.getSaveFileName(None, "Save some Data File", '.', "(*.*)")
-#
-#        print(filename)
-#        print(_filter)
+            return 0
+
+        else:
+
+            temp = aeval(str_input)
+
+            if ( isinstance(temp, Number) == True ) and ( type(temp) != bool ):
+
+                return temp
+
+            else:
+                
+                return 0
+
+    def cal_samples(self):
+
+        max_omega = max(abs(self.phaseAOmega), 
+                        abs(self.phaseBOmega),
+                        abs(self.phaseCOmega))
+
+        max_freq = max_omega / (2 * np.pi)
+        
+        if self.timeEnd == 0:
+
+            raise ValueError('Time is zero. No data.')
+
+        elif max_freq == 0:
+
+            samples = 1e6
+
+            return samples
+
+        else:
+
+            samples = max_freq * 6
+
+            return samples
+
+    def make_data(self, mag, omega, phi):
+
+        samples = self.cal_samples()
+
+        array_time = np.linspace(0, self.timeEnd, samples)
+
+        x = omega * array_time + phi
+
+        return trf.to_complex(mag, x), array_time
+
+    def save_data(self):
+
+        header = ['time', 
+                  'Phase-A Omega', 'Phase-A Phi', 'Phase-A Real', 'Phase-A Imag',
+                  'Phase-B Omega', 'Phase-B Phi', 'Phase-B Real', 'Phase-B Imag',
+                  'Phase-C Omega', 'Phase-C Phi', 'Phase-C Real', 'Phase-C Imag']
+
+        phase_a_omaga   = [self.phaseAOmega] * len(self.time_samples)
+        phase_a_phi     = [self.phaseAPhi] * len(self.time_samples)
+
+        phase_b_omaga   = [self.phaseBOmega] * len(self.time_samples)
+        phase_b_phi     = [self.phaseBPhi] * len(self.time_samples)
+
+        phase_c_omaga   = [self.phaseCOmega] * len(self.time_samples)
+        phase_c_phi     = [self.phaseCPhi] * len(self.time_samples)
+
+        data_sets = [self.time_samples, 
+                     phase_a_omaga, phase_a_phi, self.phaseAdata_real, self.phaseAdata_imag,
+                     phase_b_omaga, phase_b_phi, self.phaseBdata_real, self.phaseBdata_imag,
+                     phase_c_omaga, phase_c_phi, self.phaseCdata_real, self.phaseCdata_imag]
+
+        gsyIO.save_csv_gui(header, data_sets)
+
+
+
 
 import equations
 

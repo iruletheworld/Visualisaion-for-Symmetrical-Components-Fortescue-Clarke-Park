@@ -275,11 +275,11 @@ def cal_park_ddsrf(theta, alpha, beta, zero=0):
 # </Function: calculate the Park Transform (DDSRF)>
 # =============================================================================
     
-def to_complex(mag, x):
+def to_complex(r, x):
     
-    real = mag * cos(x)
+    real = r * cos(x)
     
-    imag = mag * sin(x)
+    imag = r * sin(x)
     
     return (real + 1j * imag)
     
