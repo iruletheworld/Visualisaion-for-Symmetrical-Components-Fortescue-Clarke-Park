@@ -16,7 +16,7 @@ import tkinter.messagebox as msgbox
 import gsyIO
 import gsyTransforms as trf
 
-import plt_time_dom
+import gsySymmPlt
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from asteval import Interpreter
@@ -510,7 +510,7 @@ class Ui_MainWindow(object):
 
         plt.close('all')
 
-        plt_time_dom.pltTimeDom(self.time_samples, 
+        gsySymmPlt.pltTimeDom(self.time_samples,
 
                                 self.xlim_min, self.xlim_max,
                                 self.ylim_min, self.ylim_max, 
