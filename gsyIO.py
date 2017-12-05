@@ -407,6 +407,11 @@ def save_csv(list_header, list_data, str_file_path):
     # as the number of data sets
     if len(list_header) != len(list_data):
         
+        print('Error: Header mismatch.' 
+              + '\n' + ' Length of header : ' + str(len(list_header)) 
+              + '\n' + ' Length of data set : ' + str(len(list_data))
+              + '\n' + 'Source : "save_csv"')
+
         raise ValueError(str_err_msg_header_mismatch)
         
     else:
@@ -419,6 +424,9 @@ def save_csv(list_header, list_data, str_file_path):
     bool_data_len = all( len(x) == len(list_data[0]) for x in list_data )
     
     if bool_data_len == False:
+
+        print('Error: Data length mismatch.'               
+              + '\n' + 'Source : "save_csv"')
         
         raise ValueError(str_err_msg_data_len_mismatch)
         
@@ -449,6 +457,8 @@ def save_csv(list_header, list_data, str_file_path):
         return True
         
     except:
+
+        print('Error : OSError.' + '\n' + 'Source "save_csv"')
             
         raise OSError('Error when trying to open/write CSV file ' + str_file_path)
 # =============================================================================
@@ -473,8 +483,6 @@ def save_csv_gui(list_header, list_data):
             
         locRoot.destroy()
         
-#        print(str_file_path)
-        
         # if user cancelled, exit
         if len(str_file_path) == 0:
             
@@ -491,10 +499,14 @@ def save_csv_gui(list_header, list_data):
         else:
             
             str_file_path = str_file_path + '.csv'
+
+        print(str_file_path)
             
         bool_success = save_csv(list_header, list_data, str_file_path)
     
         if bool_success == True:
+
+            # print('Cmd call successful.')
             
             # prompt finish message
             locRoot = tk.Tk()
@@ -509,6 +521,8 @@ def save_csv_gui(list_header, list_data):
             return True
         
         else:
+
+            # print('Cmd call fail.')
             
             # prompt fail message
             locRoot = tk.Tk()
@@ -524,6 +538,8 @@ def save_csv_gui(list_header, list_data):
         
     except:
         
+        print('Exception: Source : "save_csv_gui"')
+
         # prompt fail message
         locRoot = tk.Tk()
         

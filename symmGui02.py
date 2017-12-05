@@ -9,9 +9,14 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+import tkinter as tk
+import tkinter.messagebox as msgbox
+
 
 import gsyIO
 import gsyTransforms as trf
+
+import plt_time_dom
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from asteval import Interpreter
@@ -252,8 +257,6 @@ class Ui_MainWindow(object):
 
         self.file_Exit.triggered.connect(MainWindow.close)
 
-#        self.file_saveData.triggered.connect(self.file_save_data)
-
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.ledt_phaseAMag, self.ledt_phaseAOmega)
         MainWindow.setTabOrder(self.ledt_phaseAOmega, self.ledt_phaseAPhi)
@@ -266,40 +269,75 @@ class Ui_MainWindow(object):
         MainWindow.setTabOrder(self.ledt_phaseCPhi, self.ledt_pllOmega)
         MainWindow.setTabOrder(self.ledt_pllOmega, self.ledt_pllPhi)
         
-        self.phaseAMag      = None
-        self.phaseAOmega    = None
-        self.phaseAPhi      = None
+        # attributes
+        # user inputs
+        self.phaseAMag          = None
+        self.phaseAOmega        = None
+        self.phaseAPhi          = None
         
-        self.phaseBMag      = None
-        self.phaseBOmega    = None
-        self.phaseBPhi      = None
+        self.phaseBMag          = None
+        self.phaseBOmega        = None
+        self.phaseBPhi          = None
         
-        self.phaseCMag      = None
-        self.phaseCOmega    = None
-        self.phaseCPhi      = None
+        self.phaseCMag          = None
+        self.phaseCOmega        = None
+        self.phaseCPhi          = None
         
-        self.pllOmega       = None
-        self.pllPhi         = None
+        self.pllOmega           = None
+        self.pllPhi             = None
         
-        self.timeEnd        = None
+        self.timeEnd            = None
 
-        self.time_samples   = None
+        # for three-phase
+        self.time_samples       = None
 
-        self.phaseAdata = None
-        self.phaseAdata_real = None
-        self.phaseAdata_imag = None
-
-        self.phaseBdata = None
-        self.phaseBdata_real = None
-        self.phaseBdata_imag = None
-
-        self.phaseCdata = None
-        self.phaseCdata_real = None
-        self.phaseCdata_imag = None
-
-        # self.
+        self.phaseAdata         = None        
+        self.phaseBdata         = None        
+        self.phaseCdata         = None
         
-        self.btn_update.clicked.connect(self.update)
+        # Fortescue symmetrical components
+        self.phaseA_pos         = None
+        self.phaseA_neg         = None
+        
+        self.phaseB_pos         = None
+        self.phaseB_neg         = None
+        
+        self.phaseC_pos         = None
+        self.phaseC_neg         = None
+
+        self.phaseZero          = None
+
+        # Clarke Transform (DSOGI)
+        self.alpha              = None
+        self.beta               = None
+
+        self.alpha_pos          = None
+        self.beta_pos           = None
+
+        self.alpha_neg          = None
+        self.beta_neg           = None
+
+        # Park Transform
+        self.thetaPLL           = None
+
+        self.d                  = None
+        self.q                  = None
+
+        self.d_pos              = None
+        self.q_pos              = None
+
+        self.d_neg              = None
+        self.q_neg              = None
+
+        # axes limits
+        self.xlim_max = None
+        self.xlim_min = None
+
+        self.ylim_max = None
+        self.ylim_min = None
+
+        # connects
+        self.btn_update.clicked.connect(self.updateAll)
         self.file_saveData.triggered.connect(self.save_data)
 
     def retranslateUi(self, MainWindow):
@@ -340,14 +378,22 @@ class Ui_MainWindow(object):
         self.file_saveSetting.setText(_translate("MainWindow", "Save Setting"))
         self.file_Exit.setText(_translate("MainWindow", "Exit"))
 
-    def update(self):
-        
-        plt.close('all')
+    def updateAll(self):
 
+        self.update_data()
+
+        self.update_plots()
+    
+    def update_data(self):
+        '''
+        Update the user inputs.
+        '''
+        
         print(gsyIO.date_time_now() + 'Updating')
 
         list_temp = []
         
+        # convert user inputs to numerics
         self.phaseAMag      = self.to_numeric(self.ledt_phaseAMag.text())
         self.phaseAOmega    = self.to_numeric(self.ledt_phaseAOmega.text())
         self.phaseAPhi      = self.to_numeric(self.ledt_phaseAPhi.text())
@@ -382,29 +428,112 @@ class Ui_MainWindow(object):
 
         list_temp.append(['Time = ', self.timeEnd])
 
+        # print to console
         for item in list_temp:
 
             print(gsyIO.date_time_now() + str(item[0]) +str(item[1]))
 
-        self.phaseAdata, self.time_samples  = self.make_data(self.phaseAMag, self.phaseAOmega, self.phaseAPhi)
-        self.phaseAdata_real = self.phaseAdata.real
-        self.phaseAdata_imag = self.phaseAdata.imag
+        if self.timeEnd == 0:
 
-        self.phaseBdata, _ = self.make_data(self.phaseBMag, self.phaseBOmega, self.phaseBPhi)
-        self.phaseBdata_real = self.phaseBdata.real
-        self.phaseBdata_imag = self.phaseBdata.imag
+            root = tk.Tk()
+    
+            root.withdraw()
+            
+            msgbox.showerror('Error', 
+                             'Error when making phase data. Time cannot be zero.')
+            
+            root.destroy()
 
-        self.phaseCdata, _ = self.make_data(self.phaseCMag, self.phaseCOmega, self.phaseCPhi)
-        self.phaseCdata_real = self.phaseCdata.real
-        self.phaseCdata_imag = self.phaseCdata.imag
+            return False
 
-        plt.plot(self.time_samples, self.phaseAdata, self.time_samples, self.phaseBdata, self.time_samples, self.phaseCdata)
-
-        plt.show()
-
-        print(self.phaseAdata.real)
+        # make three-phase data
+        self.phaseAdata, self.time_samples  = self.make_phase(self.phaseAMag, 
+                                                              self.phaseAOmega,
+                                                              self.phaseAPhi)
         
+        self.phaseBdata, _                  = self.make_phase(self.phaseBMag, 
+                                                              self.phaseBOmega, 
+                                                              self.phaseBPhi)
+        
+        self.phaseCdata, _                  = self.make_phase(self.phaseCMag, 
+                                                              self.phaseCOmega, 
+                                                              self.phaseCPhi)
+        
+        # calculations for Fortescue, Clarke and Park
+        # Fortescue
+        (self.phaseA_pos, self.phaseB_pos, 
+         self.phaseC_pos, self.phaseA_neg, 
+         self.phaseB_neg, self.phaseC_neg, 
+         self.phaseZero)                    = trf.cal_symm(self.phaseAdata, 
+                                                           self.phaseBdata, 
+                                                           self.phaseCdata)
+
+        # Clarke
+        self.alpha, self.beta, _            = trf.cal_clarke(self.phaseAdata, 
+                                                             self.phaseBdata,
+                                                             self.phaseCdata)
+
+        # Clarke symm
+        (self.alpha_pos, self.beta_pos, 
+         self.alpha_neg, self.beta_neg, 
+         _)                                 = trf.cal_clarke_dsogi(self.phaseAdata, 
+                                                                   self.phaseBdata,
+                                                                   self.phaseCdata)
+
+        # Park 
+        self.thetaPLL = self.pllOmega * self.time_samples + self.pllPhi
+
+        self.d, self.q, _ = trf.cal_park(self.thetaPLL, self.alpha, self.beta)
+
+        # Park symm
+        self.d_pos, self.q_pos, _ = trf.cal_park(self.thetaPLL, self.alpha_pos, self.beta_pos)
+
+        self.d_neg, self.q_neg, _ = trf.cal_park(self.thetaPLL, self.alpha_neg, self.beta_neg)
+
+        # axes limits
+        self.xlim_max = self.timeEnd
+        self.xlim_min = 0
+        
+
+        self.ylim_max = max(abs(self.phaseAMag), abs(self.phaseBMag), abs(self.phaseCMag),
+                            max(self.alpha), max(self.beta), max(self.d), max(self.q),
+                            max(self.phaseZero))
+
+        self.ylim_max += self.ylim_max / 20
+
+        self.ylim_min = -1 * self.ylim_max
+
+        return True
+
+
+    def update_plots(self):
+
+        plt.close('all')
+
+        plt_time_dom.pltTimeDom(self.time_samples, 
+
+                                self.xlim_min, self.xlim_max,
+                                self.ylim_min, self.ylim_max, 
+
+                                self.phaseAdata, self.phaseBdata, self.phaseCdata,
+                                self.phaseA_pos,self.phaseB_pos, self.phaseC_pos,
+                                self.phaseA_neg, self.phaseB_neg, self.phaseC_neg,
+
+                                self.phaseZero,
+
+                                self.alpha, self.beta,
+                                self.alpha_pos, self.beta_pos,
+                                self.alpha_neg, self.beta_neg,
+
+                                self.d, self.q,
+                                self.d_pos, self.q_pos,
+                                self.d_neg, self.q_neg)
+
     def to_numeric(self, str_input):
+
+        '''
+        Evaluate user inputs to numerics.
+        '''
 
         aeval = Interpreter()
 
@@ -424,7 +553,11 @@ class Ui_MainWindow(object):
                 
                 return 0
 
+
     def cal_samples(self):
+        '''
+        Calculate the number of samples needed.
+        '''
 
         max_omega = max(abs(self.phaseAOmega), 
                         abs(self.phaseBOmega),
@@ -438,7 +571,7 @@ class Ui_MainWindow(object):
 
         elif max_freq == 0:
 
-            samples = 1e6
+            samples = 1e3
 
             return samples
 
@@ -449,8 +582,10 @@ class Ui_MainWindow(object):
 
             return samples
 
-    def make_data(self, mag, omega, phi):
-
+    def make_phase(self, mag, omega, phi):
+        '''
+        Create the phase signal in complex form.
+        '''
         samples = self.cal_samples()
 
         array_time = np.linspace(0, self.timeEnd, samples)
@@ -459,28 +594,131 @@ class Ui_MainWindow(object):
 
         return trf.to_complex(mag, x), array_time
 
+        
     def save_data(self):
+        '''
+        Save the generated data in CSV.
+        '''
 
-        header = ['time', 
-                  'Phase-A Omega', 'Phase-A Phi', 'Phase-A Real', 'Phase-A Imag',
-                  'Phase-B Omega', 'Phase-B Phi', 'Phase-B Real', 'Phase-B Imag',
-                  'Phase-C Omega', 'Phase-C Phi', 'Phase-C Real', 'Phase-C Imag']
+        bool_temp = self.update_data()
 
-        phase_a_omaga   = [self.phaseAOmega] * len(self.time_samples)
-        phase_a_phi     = [self.phaseAPhi] * len(self.time_samples)
+        if bool_temp == False:
 
-        phase_b_omaga   = [self.phaseBOmega] * len(self.time_samples)
-        phase_b_phi     = [self.phaseBPhi] * len(self.time_samples)
+            root = tk.Tk()
 
-        phase_c_omaga   = [self.phaseCOmega] * len(self.time_samples)
-        phase_c_phi     = [self.phaseCPhi] * len(self.time_samples)
+            root.withdraw()
+            
+            msgbox.showerror('Error', 
+                             'Error when making phase data. Time cannot be zero.')
+            
+            root.destroy()
 
-        data_sets = [self.time_samples, 
-                     phase_a_omaga, phase_a_phi, self.phaseAdata_real, self.phaseAdata_imag,
-                     phase_b_omaga, phase_b_phi, self.phaseBdata_real, self.phaseBdata_imag,
-                     phase_c_omaga, phase_c_phi, self.phaseCdata_real, self.phaseCdata_imag]
+            return False
+
+        header = ['time',
+
+                  'Phase-A Mag', 'Phase-A Omega', 'Phase-A Phi',
+                  'Phase-A Real', 'Phase-A Imag',
+
+                  'Phase-B Mag', 'Phase-B Omega', 'Phase-B Phi',
+                  'Phase-B Real', 'Phase-B Imag',
+
+                  'Phase-C Mag', 'Phase-C Omega', 'Phase-C Phi',
+                  'Phase-C Real', 'Phase-C Imag',
+
+                  'Phase-A + Real', 'Phase-A + Imag',
+                  'Phase-B + Real', 'Phase-B + Imag',
+                  'Phase-C + Real', 'Phase-C + Imag',
+
+                  'Phase-A - Real', 'Phase-A - Imag',
+                  'Phase-B - Real', 'Phase-B - Imag',
+                  'Phase-C - Real', 'Phase-C - Imag',
+
+                  'Zero Real', 'Zero Imag',
+
+                  'Alpha Real', 'Alpha Imag', 
+                  'Beta Real', 'Beta Imag',
+
+                  'Alpha + Real', 'Alpha + Image',
+                  'Beta + Real', 'Beta + Image', 
+
+                  'Alpha - Real', 'Alpha - Imag',
+                  'Beta - Real', 'Beta - Imag',
+
+                  'd Real', 'd Imag',
+                  'q Real', 'q Imag',
+
+                  'd + Real', 'd + Imag',
+                  'q + Real', 'q + Imag',
+                  
+                  'd - Real', 'd - Imag',
+                  'q - Real', 'q - Imag',
+                  
+                  'PLL Omega', 'PLL Phi',
+
+                  'PLL theta']
+
+        phase_a_mag     = [self.phaseAMag]      * len(self.time_samples)
+        phase_a_omega   = [self.phaseAOmega]    * len(self.time_samples)
+        phase_a_phi     = [self.phaseAPhi]      * len(self.time_samples)
+
+        phase_b_mag     = [self.phaseBMag]      * len(self.time_samples)
+        phase_b_omega   = [self.phaseBOmega]    * len(self.time_samples)
+        phase_b_phi     = [self.phaseBPhi]      * len(self.time_samples)
+
+        phase_c_mag     = [self.phaseCMag]      * len(self.time_samples)
+        phase_c_omega   = [self.phaseCOmega]    * len(self.time_samples)
+        phase_c_phi     = [self.phaseCPhi]      * len(self.time_samples)
+
+        pll_omega       = [self.pllOmega]       * len(self.time_samples)
+        pll_phi         = [self.pllPhi]         * len(self.time_samples)
+
+        data_sets = [self.time_samples,
+
+                     phase_a_mag, phase_a_omega, phase_a_phi,
+                     self.phaseAdata.real, self.phaseAdata.imag,
+
+                     phase_b_mag, phase_b_omega, phase_b_phi,
+                     self.phaseBdata.real, self.phaseBdata.imag,
+
+                     phase_c_mag, phase_c_omega, phase_c_phi,
+                     self.phaseCdata.real, self.phaseCdata.imag,
+                     
+                     self.phaseA_pos.real, self.phaseA_pos.imag,
+                     self.phaseB_pos.real, self.phaseB_pos.imag,
+                     self.phaseC_pos.real, self.phaseC_pos.imag,
+                     
+                     self.phaseA_neg.real, self.phaseA_neg.imag,
+                     self.phaseB_neg.real, self.phaseB_neg.imag,
+                     self.phaseC_neg.real, self.phaseC_neg.imag,
+                     
+                     self.phaseZero.real, self.phaseZero.imag,
+                     
+                     self.alpha.real, self.alpha.imag,
+                     self.beta.real, self.beta.imag,
+                     
+                     self.alpha_pos.real, self.alpha_pos.imag,
+                     self.beta_pos.real, self.beta_pos.imag,
+                     
+                     self.alpha_neg.real, self.alpha_neg.imag,
+                     self.beta_neg.real, self.beta_neg.imag,
+                     
+                     self.d.real, self.d.imag,
+                     self.q.real, self.q.imag,
+                     
+                     self.d_pos.real, self.d_pos.imag,
+                     self.q_pos.real, self.q_pos.imag,
+                     
+                     self.d_neg.real, self.d_neg.imag,
+                     self.q_neg.real, self.q_neg.imag,
+                     
+                     pll_omega, pll_phi,
+
+                     self.thetaPLL]
 
         gsyIO.save_csv_gui(header, data_sets)
+
+        return True
 
 
 
