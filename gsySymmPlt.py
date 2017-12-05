@@ -3,6 +3,7 @@
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 CONST_WITH = 1280
@@ -23,7 +24,7 @@ mpl.rcParams['font.weight'] = 'bold'
 mpl.rcParams['mathtext.fontset'] = 'cm'
 
 
-def pltTimeDom(time, 
+def pltTimeDom(time,
                xlim_min, xlim_max,
                ylim_min, ylim_max,
                a, b, c, 
@@ -38,7 +39,8 @@ def pltTimeDom(time,
                d_neg, q_neg):
 
     fig_main = plt.figure(figsize=(CONST_WITH/CONST_DPI, CONST_HEIGHT/CONST_DPI), 
-                          dpi=CONST_DPI, num='Time domain plots')
+                          dpi=CONST_DPI, 
+                          num='Time domain plots')
     
     # 3-phase inputs and symmetrical components
     ax1 = plt.subplot(4, 3, 1)
@@ -218,4 +220,84 @@ def pltTimeDom(time,
     plt.xlabel('Time (s)')
 
     plt.tight_layout(h_pad=1.7, rect=[0, -0.01, 1, 1])
+    plt.show()
+
+
+def pltPolar(r_max,
+             a, b, c,
+             a_pos, b_pos, c_pos,
+             a_neg, b_neg, c_neg,
+             zero,
+             alpha, beta,
+             alpha_pos, beta_pos,
+             alpha_neg, beta_neg,
+             d, q,
+             d_pos, q_pos,
+             d_neg, q_neg):
+
+    fig_polar = plt.figure(figsize=(CONST_WITH/CONST_DPI, CONST_HEIGHT/CONST_DPI), 
+                           dpi=CONST_DPI, 
+                           num='Polar Domain Plots')
+
+    ax_polar1 = plt.subplot(231, projection='polar')
+
+    polar1_input_a = ax_polar1.plot(omega * time, abs(a), label=r'Phase-A Input', color='r', lw=2)
+    polar1_input_b = ax_polar1.plot(omega * time, abs(b), label=r'Phase-B Input', color='g', lw=2)
+    polar1_input_c = ax_polar1.plot(omega * time, abs(c), label=r'Phase-C Input', color='b', lw=2)
+
+    polar1_legned = ax_polar1.legend(loc='upper left', bbox_to_anchor=(-0.55, 1))
+
+    ax_polar1.set_rmax(1.2)
+
+
+    ax_polar2 = plt.subplot(234, projection='polar')
+    polar2_input_a_pos = ax_polar2.plot(omega * time, abs(a_pos), label=r'Phase-A +', color='r', lw=5)
+    polar2_input_b_pos = ax_polar2.plot(omega * time, abs(b_pos), label=r'Phase-B +', color='g', lw=3)
+    polar2_input_c_pos = ax_polar2.plot(omega * time, abs(c_pos), label=r'Phase-C +', color='b', lw=1)
+
+    polar2_input_a_neg = ax_polar2.plot(omega * time, abs(a_neg), label=r'Phase-A -', color='pink', lw=5)
+    polar2_input_b_neg = ax_polar2.plot(omega * time, abs(b_neg), label=r'Phase-B -', color='limegreen', lw=3)
+    polar2_input_c_neg = ax_polar2.plot(omega * time, abs(c_neg), label=r'Phase-C -', color='skyblue', lw=1)
+
+    polar2_zero = ax_polar2.plot(omega * time, abs(zero), label=r'Zero', color='k', lw=1)
+    polar2_legned = ax_polar2.legend(loc='lower left', bbox_to_anchor=(-0.55, -0.2))
+    ax_polar2.set_rmax(1.2)
+
+    ax_polar3 = plt.subplot(232, projection='polar')
+    polar3_alpha = ax_polar3.plot(omega * time, abs(alpha), label=r'$\alpha$', color='r', lw=2)
+    polar3_beta = ax_polar3.plot(omega * time, abs(beta), label=r'$\beta$', color='g', lw=2)
+    polar3_legned = ax_polar3.legend(loc='upper right', bbox_to_anchor=(1.3, 1))
+    ax_polar3.set_rmax(1.2)
+
+    ax_polar4 = plt.subplot(235, projection='polar')
+    polar4_alpha_pos = ax_polar4.plot(omega * time, abs(alpha_pos_dsogi), label=r'$\alpha_+$', color='r', lw=2)
+    polar4_beta_pos = ax_polar4.plot(omega * time, abs(beta_pos_dsogi), label=r'$\beta_+$', color='g', lw=2)
+
+    polar4_alpha_neg = ax_polar4.plot(omega * time, abs(alpha_neg_dsogi), label=r'$\alpha_-$', color='pink', lw=2)
+    polar4_beta_neg = ax_polar4.plot(omega * time, abs(beta_neg_dsogi), label=r'$\beta_-$', color='limegreen', lw=2)
+
+    polar4_zero = ax_polar4.plot(omega * time, abs(zero), label=r'Zero', color='k', lw=1)
+
+    polar4_legned = ax_polar4.legend(loc='lower right', bbox_to_anchor=(1.3, -0.2))
+    ax_polar4.set_rmax(1.2)
+
+    ax_polar5 = plt.subplot(233, projection='polar')
+    polar5_d = ax_polar5.plot(omega * time, abs(d), label=r'$d$', color='r', lw=2)
+    polar5_q = ax_polar5.plot(omega * time, abs(q), label=r'$q$', color='g', lw=2)
+    polar5_legned = ax_polar5.legend(loc='upper right', bbox_to_anchor=(1.4, 1))
+    ax_polar5.set_rmax(1.2)
+
+    ax_polar6 = plt.subplot(236, projection='polar')
+    polar6_d_pos = ax_polar6.plot(omega * time, abs(d_pos_dsogi), label=r'$d_+$', color='r', lw=2)
+    polar6_q_pos = ax_polar6.plot(omega * time, abs(q_pos_dsogi), label=r'$q_+$', color='g', lw=2)
+
+    polar6_d_neg = ax_polar6.plot(omega * time, abs(d_neg_dsogi), label=r'$d_-$', color='pink', lw=2)
+    polar6_q_neg = ax_polar6.plot(omega * time, abs(q_neg_dsogi), label=r'$q_-$', color='limegreen', lw=2)
+
+    polar6_zero = ax_polar6.plot(omega * time, abs(zero), label=r'Zero', color='k', lw=1)
+
+    polar6_legned = ax_polar6.legend(loc='lower right', bbox_to_anchor=(1.4, -0.2))
+    ax_polar6.set_rmax(1.2)
+
+    plt.tight_layout()
     plt.show()
