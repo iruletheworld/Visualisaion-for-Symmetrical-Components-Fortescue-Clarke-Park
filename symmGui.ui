@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>536</width>
+    <height>421</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>493</width>
+    <height>404</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1000</width>
+    <height>1000</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>493</width>
+    <height>404</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QLabel" name="lbl_equations">
+      <property name="font">
+       <font>
+        <family>Arial Unicode MS</family>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="locale">
+       <locale language="English" country="UnitedStates"/>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Equations:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;:/equations_/equations_all_inputs_150.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+      </property>
+      <property name="margin">
+       <number>-1</number>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="lbl_units">
+      <property name="font">
+       <font>
+        <family>Arial Unicode MS</family>
+        <pointsize>9</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Units : angular freq. are in rad/s; phases are in rad, time in seconds&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="1" column="0">
+       <widget class="QLabel" name="lbl_phaseBMag">
+        <property name="font">
+         <font>
+          <family>Times New Roman</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mag&lt;span style=&quot; vertical-align:sub;&quot;&gt;b&lt;/span&gt;&lt;span style=&quot; font-style:normal;&quot;&gt; : &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLineEdit" name="ledt_phaseAOmega">
+        <property name="toolTip">
+         <string>The angular frequency of Phase-A input</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QLabel" name="lbl_phaseAPhi">
+        <property name="font">
+         <font>
+          <family>Times New Roman</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&amp;phi;&lt;span style=&quot; vertical-align:sub;&quot;&gt;a&lt;/span&gt;&lt;span style=&quot; font-style:normal;&quot;&gt; :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="lbl_phaseAMag">
+        <property name="font">
+         <font>
+          <family>Times New Roman</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mag&lt;span style=&quot; vertical-align:sub;&quot;&gt;a&lt;/span&gt;&lt;span style=&quot; font-style:normal;&quot;&gt; : &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="ledt_phaseAMag">
+        <property name="toolTip">
+         <string>The magnitude of Phase-A input</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5">
+       <widget class="QLineEdit" name="ledt_phaseAPhi">
+        <property name="toolTip">
+         <string>The initial phase of Phase-A input</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="ledt_phaseCMag">
+        <property name="toolTip">
+         <string>The magnitude of Phase-C input</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="5">
+       <widget class="QLineEdit" name="ledt_phaseBPhi">
+        <property name="toolTip">
+         <string>The initial phase of Phase-B input</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="lbl_phaseCMag">
+        <property name="font">
+         <font>
+          <family>Times New Roman</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mag&lt;span style=&quot; vertical-align:sub;&quot;&gt;c&lt;/span&gt;&lt;span style=&quot; font-style:normal;&quot;&gt; : &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3">
+       <widget class="QLineEdit" name="ledt_phaseCOmega">
+        <property name="toolTip">
+         <string>The angular frequency of Phase-C input</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="lbl_phaseCOmega">
+        <property name="font">
+         <font>
+          <family>Times New Roman</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ω&lt;span style=&quot; vertical-align:sub;&quot;&gt;c&lt;/span&gt;&lt;span style=&quot; font-style:normal;&quot;&gt; :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="ledt_pllOmega">
+        <property name="toolTip">
+         <string>The angular frequency of the PLL</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="lbl_pllOmega">
+        <property name="font">
+         <font>
+          <family>Times New Roman</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ω&lt;span style=&quot; vertical-align:sub;&quot;&gt;PLL&lt;/span&gt;&lt;span style=&quot; font-style:normal;&quot;&gt; :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="5">
+       <widget class="QLineEdit" name="ledt_phaseCPhi">
+        <property name="toolTip">
+         <string>The initial phase of Phase-C input</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="4">
+       <widget class="QLabel" name="lbl_phaseCPhi">
+        <property name="font">
+         <font>
+          <family>Times New Roman</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&amp;phi;&lt;span style=&quot; vertical-align:sub;&quot;&gt;c&lt;/span&gt;&lt;span style=&quot; font-style:normal;&quot;&gt; :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLineEdit" name="ledt_pllPhi">
+        <property name="toolTip">
+         <string>The initial phase of the PLL</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="ledt_time">
+        <property name="toolTip">
+         <string>The total time</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="lbl_time">
+        <property name="font">
+         <font>
+          <family>Times New Roman</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;t&lt;span style=&quot; font-style:normal;&quot;&gt; : &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QLineEdit" name="ledt_phaseBOmega">
+        <property name="toolTip">
+         <string>The angular frequency of Phase-B input</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <widget class="QLabel" name="lbl_phaseBPhi">
+        <property name="font">
+         <font>
+          <family>Times New Roman</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&amp;phi;&lt;span style=&quot; vertical-align:sub;&quot;&gt;b&lt;/span&gt;&lt;span style=&quot; font-style:normal;&quot;&gt; :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QLabel" name="lbl_pllPhase">
+        <property name="font">
+         <font>
+          <family>Times New Roman</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&amp;phi;&lt;span style=&quot; vertical-align:sub;&quot;&gt;PLL&lt;/span&gt;&lt;span style=&quot; font-style:normal;&quot;&gt; :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="lbl_phaseBOmega">
+        <property name="font">
+         <font>
+          <family>Times New Roman</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ω&lt;span style=&quot; vertical-align:sub;&quot;&gt;b&lt;/span&gt;&lt;span style=&quot; font-style:normal;&quot;&gt; :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="ledt_phaseBMag">
+        <property name="toolTip">
+         <string>The magnitude of Phase-B input</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="lbl_phaseAOmega">
+        <property name="font">
+         <font>
+          <family>Times New Roman</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <italic>true</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ω&lt;span style=&quot; vertical-align:sub;&quot;&gt;a&lt;/span&gt;&lt;span style=&quot; font-style:normal;&quot;&gt; :&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="5">
+       <widget class="QPushButton" name="btn_update">
+        <property name="font">
+         <font>
+          <family>Arial Unicode MS</family>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Update</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>536</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_file">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="file_saveData"/>
+    <addaction name="file_saveSetting"/>
+    <addaction name="file_Exit"/>
+   </widget>
+   <widget class="QMenu" name="menu_help">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="help_Documentation"/>
+    <addaction name="separator"/>
+    <addaction name="help_About"/>
+   </widget>
+   <addaction name="menu_file"/>
+   <addaction name="menu_help"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="file_saveData">
+   <property name="text">
+    <string>Save Data</string>
+   </property>
+  </action>
+  <action name="help_Documentation">
+   <property name="text">
+    <string>Documentation</string>
+   </property>
+  </action>
+  <action name="help_About">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="file_saveSetting">
+   <property name="text">
+    <string>Save Setting</string>
+   </property>
+  </action>
+  <action name="file_Exit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>ledt_phaseAMag</tabstop>
+  <tabstop>ledt_phaseAOmega</tabstop>
+  <tabstop>ledt_phaseAPhi</tabstop>
+  <tabstop>ledt_phaseBMag</tabstop>
+  <tabstop>ledt_phaseBOmega</tabstop>
+  <tabstop>ledt_phaseBPhi</tabstop>
+  <tabstop>ledt_phaseCMag</tabstop>
+  <tabstop>ledt_phaseCOmega</tabstop>
+  <tabstop>ledt_phaseCPhi</tabstop>
+  <tabstop>ledt_pllOmega</tabstop>
+  <tabstop>ledt_pllPhi</tabstop>
+ </tabstops>
+ <resources>
+  <include location="images/equations.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>file_Exit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>267</x>
+     <y>210</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
