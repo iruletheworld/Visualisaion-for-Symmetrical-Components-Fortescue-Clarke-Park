@@ -38,7 +38,7 @@ def pltTimeDom(time,
 
     fig_main = plt.figure(figsize=(CONST_WITH/CONST_DPI, CONST_HEIGHT/CONST_DPI), 
                           dpi=CONST_DPI, num='Time domain plots')
-
+    
     # 3-phase inputs and symmetrical components
     ax1 = plt.subplot(4, 3, 1)
     ax1_a, = ax1.plot(time, a, label=r'Phase-A Input', color='r', lw=2)
@@ -214,7 +214,7 @@ def pltTimeDom(time,
 
     plt.grid(True)
 
+    plt.xlabel('Time (s)')
+
     plt.tight_layout(h_pad=1.7, rect=[0, -0.01, 1, 1])
     plt.show()
-
-    plt.xlabel('Time (s)')
