@@ -164,7 +164,7 @@ phi_b = -2/3 * np.pi
 phi_c = 2/3 * np.pi
 
 mag_a = 1.2
-mag_b = 0.1
+mag_b = 0
 mag_c = 1
 
 
