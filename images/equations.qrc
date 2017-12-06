@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="equations_">
+    <file>20171206__files/image007.png</file>
     <file>equations_all_inputs_150.png</file>
     <file>equations_all_inputs.png</file>
   </qresource>
