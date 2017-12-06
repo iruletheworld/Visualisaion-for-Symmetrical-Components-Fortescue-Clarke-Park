@@ -54,7 +54,7 @@ def pltTimeDom(time,
 
     fig_main = plt.figure(figsize=(CONST_WITH/CONST_DPI, CONST_HEIGHT/CONST_DPI), 
                           dpi=CONST_DPI, 
-                          num='Time domain plots')
+                          num='Time Domain Plots')
     
     # 3-phase inputs and symmetrical components
     ax1 = plt.subplot(4, 3, 1)
@@ -260,6 +260,8 @@ def pltPolar(r_max,
                            dpi=CONST_DPI, 
                            num='Polar Domain Plots')
 
+    # plt.subplots_adjust(hspace=0.33)
+
     if len(a) > 20:
 
         Nth_marker = 20
@@ -290,6 +292,12 @@ def pltPolar(r_max,
                                      color=CONST_COLOR_CMB_C, lw=2,
                                      marker='.', markersize=10, 
                                      markevery=Nth_marker)
+    
+    # rotate the radius labels by -93 degrees
+    ax_polar1.set_rlabel_position(-93)
+
+    ax_polar1.set_title('Three-Phase Inputs', y=1.1,
+                        family='Arial', fontsize=CONST_TITLE_FONTSIZE, fontweight='bold')
 
     polar1_legned   = ax_polar1.legend(loc='upper left', bbox_to_anchor=[-0.5, 1.1])
 
@@ -329,7 +337,15 @@ def pltPolar(r_max,
                                          markevery=Nth_marker)
 
     polar2_zero         = ax_polar2.plot(np.angle(zero), abs(zero), label=r'Zero',
-                                         color=CONST_COLOR_ZERO, lw=1)
+                                         color=CONST_COLOR_ZERO, lw=2,
+                                         marker='X', markersize=7,
+                                         markevery=Nth_marker)
+
+    # rotate the radius labels by -93 degrees
+    ax_polar2.set_rlabel_position(-93)
+
+    ax_polar2.set_title('Fortescue Components', y=1.1,
+                        family='Arial', fontsize=CONST_TITLE_FONTSIZE, fontweight='bold')
 
     polar2_legned       = ax_polar2.legend(loc='lower left', bbox_to_anchor=[-0.5, -0.2])
 
@@ -348,6 +364,12 @@ def pltPolar(r_max,
                                      marker='.', markersize=10, 
                                      markevery=Nth_marker)
     
+    # rotate the radius labels by -93 degrees
+    ax_polar3.set_rlabel_position(-93)
+
+    ax_polar3.set_title('Clarke Transform', y=1.1,
+                        family='Arial', fontsize=CONST_TITLE_FONTSIZE, fontweight='bold')
+
     polar3_legned   = ax_polar3.legend(loc='upper right', bbox_to_anchor=[1.2, 1.1])
     
     ax_polar3.set_rmax(r_max)
@@ -376,7 +398,15 @@ def pltPolar(r_max,
                                          markevery=Nth_marker)
 
     polar4_zero         = ax_polar4.plot(np.angle(zero), abs(zero), label=r'Zero',
-                                         color=CONST_COLOR_ZERO, lw=1)
+                                         color=CONST_COLOR_ZERO, lw=2,
+                                         marker='X', markersize=7,
+                                         markevery=Nth_marker)
+
+    # rotate the radius labels by -93 degrees
+    ax_polar4.set_rlabel_position(-93)
+
+    ax_polar4.set_title('Clarke Components (DSOGI)', y=1.1,
+                        family='Arial', fontsize=CONST_TITLE_FONTSIZE, fontweight='bold')
 
     polar4_legned       = ax_polar4.legend(loc='lower right', bbox_to_anchor=[1.3, -0.2])
 
@@ -396,8 +426,14 @@ def pltPolar(r_max,
                                      color=CONST_COLOR_CMB_B, lw=2, 
                                      marker='.', markersize=10, 
                                      markevery=Nth_marker)
+
+    # rotate the radius labels by -93 degrees
+    ax_polar5.set_rlabel_position(-93)
     
-    polar5_legned   = ax_polar5.legend(loc='upper right')
+    ax_polar5.set_title('Park Transform', y=1.1,
+                        family='Arial', fontsize=CONST_TITLE_FONTSIZE, fontweight='bold')
+    
+    polar5_legned = ax_polar5.legend(loc='upper right', bbox_to_anchor=[1.2, 1.1])
     
     ax_polar5.set_rmax(r_max)
 
@@ -425,12 +461,21 @@ def pltPolar(r_max,
                                      markevery=Nth_marker)
 
     polar6_zero     = ax_polar6.plot(np.angle(zero), abs(zero), label=r'Zero',
-                                     color=CONST_COLOR_ZERO, lw=1)
+                                     color=CONST_COLOR_ZERO, lw=2,
+                                     marker='X', markersize=7,
+                                     markevery=Nth_marker)
 
-    polar6_legned   = ax_polar6.legend(loc='lower right')
+    # rotate the radius labels by -93 degrees
+    ax_polar6.set_rlabel_position(-93)
+
+    ax_polar6.set_title('Park Components', y=1.1,
+                        family='Arial', fontsize=CONST_TITLE_FONTSIZE, fontweight='bold')
+
+    polar6_legned = ax_polar6.legend(loc='lower right', bbox_to_anchor=[1.3, -0.2])
 
     ax_polar6.set_rmax(r_max)
 
-    # plt.tight_layout()
+    # plt.tight_layout(h_pad=0.5, rect=[0.06, 0.05, 0.98, 0.995])
+    plt.tight_layout(rect=[0.06, 0.05, 0.98, 0.995])
 
     plt.show()
