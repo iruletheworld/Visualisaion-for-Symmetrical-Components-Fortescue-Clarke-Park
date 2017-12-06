@@ -420,7 +420,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Symmetrical Components © Dr. GAO, Siyu"))
         self.lbl_equations.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:12pt;\">Equations:</span></p><p><img src=\":/equations_/20171206__files/image007.png\"/></p></body></html>"))
-        self.lbl_units.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" color:#ff0000;\">Units : angular freq. are in rad/s; phases are in rad, time in seconds</span></p></body></html>"))
+        self.lbl_units.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" color:#ff0000;\">Units : &omega; are in rad/s; phases are in rad; time is in seconds</span></p></body></html>"))
         self.lbl_phaseBMag.setText(_translate("MainWindow", "<html><head/><body><p>Mag<span style=\" vertical-align:sub;\">b</span><span style=\" font-style:normal;\"> : </span></p></body></html>"))
         self.ledt_phaseAOmega.setToolTip(_translate("MainWindow", "The angular frequency of Phase-A input"))
         self.lbl_phaseAPhi.setText(_translate("MainWindow", "<html><head/><body><p>&phi;<span style=\" vertical-align:sub;\">a</span><span style=\" font-style:normal;\"> :</span></p></body></html>"))
