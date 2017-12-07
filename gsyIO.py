@@ -551,3 +551,63 @@ def save_csv_gui(list_header, list_data):
         locRoot.destroy()
         
         return False   
+
+def save_image():
+
+    str_ini_dir = os.getcwd()
+
+    str_title = 'Save as image'
+
+    list_filetypes = [('Portable Network Graphics','*.png'),
+                      ('Portable Document Format', '*.pdf'),
+                      ('Encapsulated Poscript','*.eps'),
+                      ('Joint Photographic Experts Group','*.jpeg *.jpg'),
+                      ('PGF code for LaTex','*.pgf'),
+                      ('Postscript','*.ps'),
+                      ('Raw RGBA bitmap','*.raw *.rgba'),
+                      ('Scalable Vector Graphics','*.svg *.svgz'),
+                      ('Tagged Image File Format','*.tif *.tiff'),                      
+                      ('all files','*.*')]
+
+    try:
+    
+        locRoot = tk.Tk()
+        
+        locRoot.withdraw()
+        
+        str_file_path = filedialog.asksaveasfilename(initialdir=str_ini_dir,
+                                                      title=str_title,
+                                                      defaultextension='.png',
+                                                      filetypes = list_filetypes)
+            
+        locRoot.destroy()
+
+        return str_file_path
+
+    except:
+
+        return ''
+
+def prompt_msg(str_title, str_msg, str_type='info'):
+
+    locRoot = tk.Tk()
+
+    locRoot.withdraw()
+
+    if str_type == 'info':
+
+        msgbox.showinfo(str_title, str_msg)
+
+    elif str_type == 'err':
+
+        msgbox.showerror(str_title, str_msg)
+
+    elif str_type == 'warn':
+
+        msgbox.showwarning(str_title, str_msg)
+
+    else:
+        
+        msgbox.showinfo(str_title, str_msg)
+
+    locRoot.destroy()

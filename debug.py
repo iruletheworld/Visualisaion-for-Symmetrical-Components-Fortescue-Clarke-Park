@@ -1,10 +1,25 @@
-from tkinter import filedialog
-from tkinter import *
+import gsyIO
+
+str_filename = gsyIO.save_image()
+
+print(str_filename)
+
+index_ext = str_filename.rfind('.')
+
+print(index_ext)
+
+str_time = str_filename[:index_ext] + '_time' + str_filename[(index_ext):]
+
+print(str_time)
+
+
+# from tkinter import filedialog
+# from tkinter import *
  
-root = Tk()
-root.filename =  filedialog.asksaveasfilename(initialdir = "/",title = "Select file",defaultextension='.jpg',filetypes = (("jpeg files","*.jpg"),('csv', '*.csv'),("all files","*.*")))
-print (root.filename)
-root.destroy()
+# root = Tk()
+# root.filename =  filedialog.asksaveasfilename(initialdir = "/",title = "Select file",defaultextension='.jpg',filetypes = (("jpeg files","*.jpg"),('csv', '*.csv'),("all files","*.*")))
+# print (root.filename)
+# root.destroy()
 
 
 # =============================================================================
@@ -164,8 +179,8 @@ root.destroy()
 # phi_c = 2/3 * np.pi
 
 # mag_a = 1.2
-# mag_b = 0.62
-# mag_c = 0.27
+# mag_b = 0
+# mag_c = 1
 
 
 # # time vector
@@ -182,13 +197,13 @@ root.destroy()
 # phase_c = omega * time + phi_c
 
 # # 3-phase inputs
-# input_a = trf.to_complex(mag_a, (n * phase_a))
-# input_b = trf.to_complex(mag_b, (n * phase_b))
-# input_c = trf.to_complex(mag_c, (n * phase_c))
+# # input_a = trf.to_complex(mag_a, (n * phase_a))
+# # input_b = trf.to_complex(mag_b, (n * phase_b))
+# # input_c = trf.to_complex(mag_c, (n * phase_c))
 
-# #input_a = mag_a * (cos(n * phase_a) + 1j * sin(n * phase_a))
-# #input_b = mag_b * (cos(n * phase_b) + 1j * sin(n * phase_b))
-# #input_c = mag_c * (cos(n * phase_c) + 1j * sin(n * phase_c))
+# input_a = mag_a * (cos(n * phase_a) + 1j * sin(n * phase_a))
+# input_b = mag_b * (cos(n * phase_b) + 1j * sin(n * phase_b))
+# input_c = mag_c * (cos(n * phase_c) + 1j * sin(n * phase_c))
 
 # # Fortescue
 # a_pos, b_pos, c_pos, a_neg, b_neg, c_neg, zero = trf.cal_symm(input_a, input_b, input_c)
@@ -202,8 +217,12 @@ root.destroy()
 # # normal Park Transform
 # d, q, _ = trf.cal_park(omega*time, alpha, beta,)
 
+# # print(d)
+
 # # postive Park (DSOGI)
 # d_pos_dsogi, q_pos_dsogi, _ = trf.cal_park(omega*time, alpha_pos_dsogi, beta_pos_dsogi)
+
+# # print(d_pos_dsogi)
 
 # # negative Park (DSOGI)
 # d_neg_dsogi, q_neg_dsogi, _ = trf.cal_park(omega*time, alpha_neg_dsogi, beta_neg_dsogi)
@@ -302,62 +321,65 @@ root.destroy()
 # plt.ylim([ylim_min, ylim_max])
 
 # plt.tight_layout()
-# # plt.show()
+# plt.show()
 
 # fig_polar = plt.figure(figsize=(CONST_WITH/CONST_DPI, CONST_HEIGHT/CONST_DPI), dpi=CONST_DPI)
 
 # ax_polar1 = plt.subplot(231, projection='polar')
-# polar1_input_a = ax_polar1.plot(omega * time, abs(input_a), label=r'Phase-A Input', color='r', lw=2)
-# polar1_input_b = ax_polar1.plot(omega * time, abs(input_b), label=r'Phase-B Input', color='g', lw=2)
-# polar1_input_c = ax_polar1.plot(omega * time, abs(input_c), label=r'Phase-C Input', color='b', lw=2)
+# polar1_input_a = ax_polar1.plot(np.angle(input_a), abs(input_a), label=r'Phase-A Input', color='r', lw=5)
+# polar1_input_b = ax_polar1.plot(np.angle(input_b), abs(input_b), label=r'Phase-B Input', color='g', lw=3)
+# polar1_input_c = ax_polar1.plot(np.angle(input_c), abs(input_c), label=r'Phase-C Input', color='b', lw=1)
 # polar1_legned = ax_polar1.legend(loc='upper left', bbox_to_anchor=(-0.55, 1))
 # ax_polar1.set_rmax(1.2)
 
 # ax_polar2 = plt.subplot(234, projection='polar')
-# polar2_input_a_pos = ax_polar2.plot(omega * time, abs(a_pos), label=r'Phase-A +', color='r', lw=5)
-# polar2_input_b_pos = ax_polar2.plot(omega * time, abs(b_pos), label=r'Phase-B +', color='g', lw=3)
-# polar2_input_c_pos = ax_polar2.plot(omega * time, abs(c_pos), label=r'Phase-C +', color='b', lw=1)
+# polar2_input_a_pos = ax_polar2.plot(np.angle(a_pos), abs(a_pos), label=r'Phase-A +', color='r', lw=5)
+# polar2_input_b_pos = ax_polar2.plot(np.angle(b_pos), abs(b_pos), label=r'Phase-B +', color='g', lw=3)
+# polar2_input_c_pos = ax_polar2.plot(np.angle(c_pos), abs(c_pos), label=r'Phase-C +', color='b', lw=1)
 
-# polar2_input_a_neg = ax_polar2.plot(omega * time, abs(a_neg), label=r'Phase-A -', color='pink', lw=5)
-# polar2_input_b_neg = ax_polar2.plot(omega * time, abs(b_neg), label=r'Phase-B -', color='limegreen', lw=3)
-# polar2_input_c_neg = ax_polar2.plot(omega * time, abs(c_neg), label=r'Phase-C -', color='skyblue', lw=1)
+# polar2_input_a_neg = ax_polar2.plot(np.angle(a_neg), abs(a_neg), label=r'Phase-A -', color='pink', lw=5)
+# polar2_input_b_neg = ax_polar2.plot(np.angle(b_neg), abs(b_neg), label=r'Phase-B -', color='limegreen', lw=3)
+# polar2_input_c_neg = ax_polar2.plot(np.angle(c_neg), abs(c_neg), label=r'Phase-C -', color='skyblue', lw=1)
 
-# polar2_zero = ax_polar2.plot(omega * time, abs(zero), label=r'Zero', color='k', lw=1)
+# polar2_zero = ax_polar2.plot(np.angle(zero), abs(zero), label=r'Zero', color='k', lw=1)
 # polar2_legned = ax_polar2.legend(loc='lower left', bbox_to_anchor=(-0.55, -0.2))
 # ax_polar2.set_rmax(1.2)
 
 # ax_polar3 = plt.subplot(232, projection='polar')
-# polar3_alpha = ax_polar3.plot(omega * time, abs(alpha), label=r'$\alpha$', color='r', lw=2)
-# polar3_beta = ax_polar3.plot(omega * time, abs(beta), label=r'$\beta$', color='g', lw=2)
+# polar3_alpha = ax_polar3.plot(np.angle(alpha), abs(alpha), label=r'$\alpha$', color='r', lw=2)
+# polar3_beta = ax_polar3.plot(np.angle(beta), abs(beta), label=r'$\beta$', color='g', lw=2)
 # polar3_legned = ax_polar3.legend(loc='upper right', bbox_to_anchor=(1.3, 1))
 # ax_polar3.set_rmax(1.2)
 
 # ax_polar4 = plt.subplot(235, projection='polar')
-# polar4_alpha_pos = ax_polar4.plot(omega * time, abs(alpha_pos_dsogi), label=r'$\alpha_+$', color='r', lw=2)
-# polar4_beta_pos = ax_polar4.plot(omega * time, abs(beta_pos_dsogi), label=r'$\beta_+$', color='g', lw=2)
+# polar4_alpha_pos = ax_polar4.plot(np.angle(alpha_pos_dsogi), abs(alpha_pos_dsogi), label=r'$\alpha_+$', color='r', lw=2)
+# polar4_beta_pos = ax_polar4.plot(np.angle(beta_pos_dsogi), abs(beta_pos_dsogi), label=r'$\beta_+$', color='g', lw=2)
 
-# polar4_alpha_neg = ax_polar4.plot(omega * time, abs(alpha_neg_dsogi), label=r'$\alpha_-$', color='pink', lw=2)
-# polar4_beta_neg = ax_polar4.plot(omega * time, abs(beta_neg_dsogi), label=r'$\beta_-$', color='limegreen', lw=2)
+# polar4_alpha_neg = ax_polar4.plot(np.angle(alpha_neg_dsogi), abs(alpha_neg_dsogi), label=r'$\alpha_-$', color='pink', lw=2)
+# polar4_beta_neg = ax_polar4.plot(np.angle(beta_neg_dsogi), abs(beta_neg_dsogi), label=r'$\beta_-$', color='limegreen', lw=2)
 
-# polar4_zero = ax_polar4.plot(omega * time, abs(zero), label=r'Zero', color='k', lw=1)
+# polar4_zero = ax_polar4.plot(np.angle(zero), abs(zero), label=r'Zero', color='k', lw=1)
 
 # polar4_legned = ax_polar4.legend(loc='lower right', bbox_to_anchor=(1.3, -0.2))
 # ax_polar4.set_rmax(1.2)
 
 # ax_polar5 = plt.subplot(233, projection='polar')
-# polar5_d = ax_polar5.plot(omega * time, abs(d), label=r'$d$', color='r', lw=2)
-# polar5_q = ax_polar5.plot(omega * time, abs(q), label=r'$q$', color='g', lw=2)
+# polar5_d = ax_polar5.plot(np.angle(d), abs(d), label=r'$d$', color='r', lw=2)
+# polar5_q = ax_polar5.plot(np.angle(q), abs(q), label=r'$q$', color='g', lw=2)
 # polar5_legned = ax_polar5.legend(loc='upper right', bbox_to_anchor=(1.4, 1))
 # ax_polar5.set_rmax(1.2)
 
 # ax_polar6 = plt.subplot(236, projection='polar')
-# polar6_d_pos = ax_polar6.plot(omega * time, abs(d_pos_dsogi), label=r'$d_+$', color='r', lw=2)
-# polar6_q_pos = ax_polar6.plot(omega * time, abs(q_pos_dsogi), label=r'$q_+$', color='g', lw=2)
+# polar6_d_pos = ax_polar6.plot(np.angle(d_pos_dsogi), abs(d_pos_dsogi), label=r'$d_+$', color='r', lw=2, marker='.')
+# polar6_q_pos = ax_polar6.plot(np.angle(q_pos_dsogi), abs(q_pos_dsogi), label=r'$q_+$', color='g', lw=2, marker='.')
 
-# polar6_d_neg = ax_polar6.plot(omega * time, abs(d_neg_dsogi), label=r'$d_-$', color='pink', lw=2)
-# polar6_q_neg = ax_polar6.plot(omega * time, abs(q_neg_dsogi), label=r'$q_-$', color='limegreen', lw=2)
+# # print(abs(d_pos_dsogi))
+# # print(np.angle(d_pos_dsogi))
 
-# polar6_zero = ax_polar6.plot(omega * time, abs(zero), label=r'Zero', color='k', lw=1)
+# polar6_d_neg = ax_polar6.plot(np.angle(d_neg_dsogi), abs(d_neg_dsogi), label=r'$d_-$', color='pink', lw=2, marker='.')
+# polar6_q_neg = ax_polar6.plot(np.angle(q_neg_dsogi), abs(q_neg_dsogi), label=r'$q_-$', color='limegreen', lw=2, marker='.')
+
+# polar6_zero = ax_polar6.plot(np.angle(zero), abs(zero), label=r'Zero', color='k', lw=2)
 
 # polar6_legned = ax_polar6.legend(loc='lower right', bbox_to_anchor=(1.4, -0.2))
 # ax_polar6.set_rmax(1.2)
