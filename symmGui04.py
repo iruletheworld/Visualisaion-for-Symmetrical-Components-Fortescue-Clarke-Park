@@ -439,7 +439,8 @@ class Ui_MainWindow(object):
         # menu connects
         self.file_Update.triggered.connect(self.updateAll)
         self.file_saveData.triggered.connect(self.save_data)
-
+        self.file_saveFigures.triggered.connect(self.save_fig)
+        self.file_saveSetting.triggered.connect(self.save_setting)
         self.file_Exit.triggered.connect(MainWindow.close)
 
     def retranslateUi(self, MainWindow):
@@ -1010,14 +1011,43 @@ class Ui_MainWindow(object):
 
             print('No figure found')
 
+            gsyIO.prompt_msg('No figure found','No figure found', 'err')
+
             return False
         
         else:
             
-            self.fig_time_plts.savefig(r'.\testtime.png')
-            self.fig_polar_plts.savefig(r'.\testploar.png')
+            str_filename = gsyIO.save_image()
 
-        return True
+            if len(str_filename) == 0:
+
+                gsyIO.prompt_msg('Save cancelled', 'User cancelled', 'warn')
+
+                return False
+
+            else:
+
+                index = str_filename.rfind('.')
+
+                str_time_filename = str_filename[:index] + '_time' + str_filename[index:]
+
+                str_polar_filename = str_filename[:index] + '_polar' + str_filename[index:]
+
+                print(str_time_filename)
+                print(str_polar_filename)
+
+                self.fig_time_plts.savefig(str_time_filename)
+                self.fig_polar_plts.savefig(str_polar_filename)
+
+                str_msg = ('Figures saved.' 
+                            + '\n'
+                            + '\n' + str_time_filename
+                            + '\n'
+                            + '\n' + str_polar_filename)
+
+                gsyIO.prompt_msg('Figures saved', str_msg)
+
+                return True
 
 import equations
 

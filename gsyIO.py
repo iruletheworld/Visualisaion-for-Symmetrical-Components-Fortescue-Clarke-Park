@@ -558,11 +558,11 @@ def save_image():
 
     str_title = 'Save as image'
 
-    list_filetypes = [('Encapsulated Poscript','*.eps'),
+    list_filetypes = [('Portable Network Graphics','*.png'),
+                      ('Portable Document Format', '*.pdf'),
+                      ('Encapsulated Poscript','*.eps'),
                       ('Joint Photographic Experts Group','*.jpeg *.jpg'),
                       ('PGF code for LaTex','*.pgf'),
-                      ('Portable Document Format','*.pdf'),
-                      ('Portable Network Graphics','*.png'),
                       ('Postscript','*.ps'),
                       ('Raw RGBA bitmap','*.raw *.rgba'),
                       ('Scalable Vector Graphics','*.svg *.svgz'),
@@ -587,3 +587,27 @@ def save_image():
     except:
 
         return ''
+
+def prompt_msg(str_title, str_msg, str_type='info'):
+
+    locRoot = tk.Tk()
+
+    locRoot.withdraw()
+
+    if str_type == 'info':
+
+        msgbox.showinfo(str_title, str_msg)
+
+    elif str_type == 'err':
+
+        msgbox.showerror(str_title, str_msg)
+
+    elif str_type == 'warn':
+
+        msgbox.showwarning(str_title, str_msg)
+
+    else:
+        
+        msgbox.showinfo(str_title, str_msg)
+
+    locRoot.destroy()

@@ -4,6 +4,14 @@ str_filename = gsyIO.save_image()
 
 print(str_filename)
 
+index_ext = str_filename.rfind('.')
+
+print(index_ext)
+
+str_time = str_filename[:index_ext] + '_time' + str_filename[(index_ext):]
+
+print(str_time)
+
 
 # from tkinter import filedialog
 # from tkinter import *
