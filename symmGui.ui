@@ -477,33 +477,66 @@
      </layout>
     </item>
     <item>
-     <widget class="QLabel" name="lbl_copyright">
-      <property name="baseSize">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Arial Unicode MS</family>
-       </font>
-      </property>
-      <property name="locale">
-       <locale language="English" country="UnitedKingdom"/>
-      </property>
-      <property name="text">
-       <string>© Dr.GAO, Siyu; 2017
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="lbl_copyright">
+        <property name="baseSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial Unicode MS</family>
+         </font>
+        </property>
+        <property name="locale">
+         <locale language="English" country="UnitedKingdom"/>
+        </property>
+        <property name="text">
+         <string>© Dr.GAO, Siyu; 2017
 siyu.gao@outlook.com</string>
-      </property>
-     </widget>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="lbl_info">
+        <property name="baseSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>8</pointsize>
+          <weight>9</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 75 8pt &quot;Arial&quot;;
+color: rgb(255, 0, 0);</string>
+        </property>
+        <property name="locale">
+         <locale language="English" country="UnitedKingdom"/>
+        </property>
+        <property name="text">
+         <string>This is info</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
    <zorder>lbl_equations</zorder>
    <zorder>lbl_units</zorder>
    <zorder>lbl_copyright</zorder>
-   <zorder>layoutWidget</zorder>
    <zorder></zorder>
+   <zorder>lbl_info</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

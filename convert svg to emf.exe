@@ -1,0 +1,16 @@
+ref: http://inkscape.13.x6.nabble.com/Export-SVG-to-EMF-using-command-line-td4972514.html
+
+If you need to convert svg to emf for Windows (which I have to), then you can use inkscape from cmd.
+
+The command is something like
+
+(make sure inkscape is in your PATH or you are in the dir of inkscape installation)
+(this has only been tested on Windows 7)
+
+inkscape foo.svg --export-emf=bar.emf
+
+Then, the idea is, put all your svgs in a folder (easier to manage), use Python to get a list of all filenames by type ".svg", then call inkscape to convert all of then to emf.
+
+I might write a function for this. 
+
+Bloody MS Word and all that.
