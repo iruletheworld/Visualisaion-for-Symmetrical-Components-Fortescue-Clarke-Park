@@ -588,6 +588,7 @@ def save_image():
 
         return ''
 
+
 def prompt_msg(str_title, str_msg, str_type='info'):
 
     locRoot = tk.Tk()
