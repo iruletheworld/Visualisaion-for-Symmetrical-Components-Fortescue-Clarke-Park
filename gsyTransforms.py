@@ -488,9 +488,105 @@ def cal_park(theta, alpha, beta, zero=0):
 
 
 # =============================================================================
-# <Function: calculate the Park Transform (DDSRF)>
+# <Function: calculate the Park Transform (DSRF)>
 # =============================================================================
-def cal_park_ddsrf(theta, alpha, beta, zero=0):
+def cal_park_dsrf(theta, alpha, beta, zero=0):
+
+    """
+    .. _cal_park_dsrf :
+
+    Calculates the Park Transform of 
+    the Double Synchronous Reference Frame (DSRF). 
+
+    Accepts complex forms of Clarke Transform inputs 
+    and the angle of the Synchronous Reference Frame (SRF). 
+    
+    The DSRF approach is inferior to the DSOGI approach.
+
+    Event the Decoupled-DSRF (DDSRF) is still inferior to the
+    DSOGI approach since its performance is hugely dependent on the
+    filters used to decouple the DSRF
+    (bascially getting rid of the harmonics introudced by the DSRF).
+
+    Returns the :math:`d_{+DSRF}`, :math:`q_{+DSRF}`,
+    :math:`d_{-DSRF}`, :math:`q_{-DSRF}`, and :math:`Zero` components.
+
+    .. math ::
+
+        \left[\\begin{matrix}d_{+DSRF} \\\\ q_{+DSRF} \end{matrix}\\right]
+        = 
+        \left[
+        \\begin{matrix} 
+        \cos\\theta & \sin\\theta
+        \\\\ 
+        -\sin\\theta & \cos\\theta
+        \end{matrix}
+        \\right] 
+        \left[
+        \\begin{matrix} 
+        \\alpha 
+        \\\\
+        \\beta
+        \end{matrix}
+        \\right]
+
+        \\\\
+
+        \left[\\begin{matrix}d_{-DSRF} \\\\ q_{-DSRF} \end{matrix}\\right]
+        = 
+        \left[
+        \\begin{matrix} 
+        \cos\\theta & -\sin\\theta
+        \\\\ 
+        \sin\\theta & \cos\\theta
+        \end{matrix}
+        \\right] 
+        \left[
+        \\begin{matrix} 
+        \\alpha 
+        \\\\
+        \\beta
+        \end{matrix}
+        \\right]
+
+    Parameters
+    ----------
+    theta : float in radians
+        The angle of the SRF, usually provided by a PLL.
+
+    alpha : complex or a list of complex
+        The :math:`\\alpha` component of the Clarke Transform
+
+    beta : complex or a list of complex
+        The :math:`\\beta` component of the Clarke Transform
+
+    zero : any, default = 0
+        The :math:`Zero` sequence. This would be output directly without manipulation. 
+        Since the Zero sequence does not change.
+
+    Returns
+    -------
+    d_dsrf_pos : complex
+        The alpha component.
+
+    q_dsrf_pos : complex
+        The beta component.
+
+    zero : as input parameter "zero"
+        The Zero sequence.
+    
+    Examples
+    --------
+    
+    .. code :: python
+
+        import gsyTransforms as trf
+
+        alpha, beta, zero = trf.cal_clarke(phaseAdata,
+                                           phaseBdata,
+                                           phaseCdata)
+
+    """
 
     # Park transform (DDSRF)
     
@@ -509,19 +605,19 @@ def cal_park_ddsrf(theta, alpha, beta, zero=0):
         raise ValueError('Element length mismatch.'
                          + 'The length of theta, alpha and beta must be all the same')
 
-    d_ddsrf_pos = cos(theta) * alpha + sin(theta) * beta
+    d_dsrf_pos = cos(theta) * alpha + sin(theta) * beta
 
-    q_ddsrf_pos = -1 * sin(theta) * alpha + cos(theta) * beta
+    q_dsrf_pos = -1 * sin(theta) * alpha + cos(theta) * beta
 
-    d_ddsrf_neg = cos(theta) * alpha + (-sin(theta)) * beta
+    d_dsrf_neg = cos(theta) * alpha + (-sin(theta)) * beta
 
-    q_ddsrf_neg = sin(theta) * alpha + cos(theta) * beta
+    q_dsrf_neg = sin(theta) * alpha + cos(theta) * beta
 
     zero = zero
 
-    return d_ddsrf_pos, q_ddsrf_pos, d_ddsrf_neg, q_ddsrf_neg, zero
+    return d_dsrf_pos, q_dsrf_pos, d_dsrf_neg, q_dsrf_neg, zero
 # =============================================================================
-# </Function: calculate the Park Transform (DDSRF)>
+# </Function: calculate the Park Transform (DSRF)>
 # =============================================================================
 
 
