@@ -12,7 +12,7 @@ Dynamic Visualisation for Symmetrical Components's documentation!
 
    gsyTransforms
    gsyIO
-
+   gsyPlt
 
 
 Indices and tables

@@ -92,10 +92,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="gsyTransforms.html">1. Library for transforms : gsyTransforms</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">2. Library for custom IOs : gsyIO</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#change-log">2.1. Change Log</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#version-0-1-4">2.1.1. Version : 0.1.4</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#change-log">2.1. Change Log</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#list-of-functions">2.2. List of functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#function-definitions">2.3. Function definitions</a></li>
 </ul>
@@ -166,19 +163,41 @@
   <div class="section" id="module-gsyIO">
 <span id="library-for-custom-ios-gsyio"></span><h1>2. Library for custom IOs : gsyIO<a class="headerlink" href="#module-gsyIO" title="Permalink to this headline">¶</a></h1>
 <p>Custom module for genreal IO.</p>
+<p>Module Name : gsyIO</p>
 <p>Author : 高斯羽 博士 (Dr. GAO, Siyu)</p>
-<p>Version : 0.1.4</p>
-<p>Last Modified : 2017-12-04</p>
+<p>Version : 0.2.0</p>
+<p>Last Modified : 2017-12-12</p>
 <div class="section" id="change-log">
 <h2>2.1. Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="version-0-1-4">
-<h3>2.1.1. Version : 0.1.4<a class="headerlink" href="#version-0-1-4" title="Permalink to this headline">¶</a></h3>
-</div>
+<ul>
+<li><p class="first"><strong>Notable changes:</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>Version <span class="classifier-delimiter">:</span> <span class="classifier">0.2.0</span></dt>
+<dd><ul class="first last">
+<li>Added “data_time_now”</li>
+<li>Added “prompt_msg”</li>
+<li>Added “save_csv”</li>
+<li>Added “save_csv_gui”</li>
+<li>Added “save_image_gui”</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
 </div>
 <div class="section" id="list-of-functions">
 <h2>2.2. List of functions<a class="headerlink" href="#list-of-functions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
+<li><a class="reference internal" href="#date-time-now">date_time_now</a></li>
+<li><a class="reference internal" href="#prompt-msg">prompt_msg</a></li>
 <li><a class="reference internal" href="#save-csv">save_csv</a></li>
+<li><a class="reference internal" href="#save-csv-gui">save_csv_gui</a></li>
+<li><a class="reference internal" href="#save-image-gui">save_image_gui</a></li>
 <li><a class="reference internal" href="#save-txt">save_txt</a></li>
 <li><a class="reference internal" href="#save-txt-on-event">save_txt_on_event</a></li>
 <li><a class="reference internal" href="#search-file-and-start">search_file_and_start</a></li>
@@ -187,11 +206,83 @@
 <div class="section" id="function-definitions">
 <h2>2.3. Function definitions<a class="headerlink" href="#function-definitions" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
+<dt id="gsyIO.date_time_now">
+<code class="descclassname">gsyIO.</code><code class="descname">date_time_now</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gsyIO.date_time_now" title="Permalink to this definition">¶</a></dt>
+<dd><p id="date-time-now">Return the system date and time as a string.</p>
+<p>Return format: ‘yyyy-mm-dd, HH:MM:SS:’</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>None</strong></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>str_date_time</strong> : str</p>
+<blockquote class="last">
+<div><p>Formatted system date time string in ‘yyyy-mm-dd, HH:MM:SS:’. 
+The last colon is intended for printing to the console (or making logs).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">date_time_now</span><span class="p">()</span>
+<span class="go">&#39;2017-11-20, 15:14:42:&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsyIO.prompt_msg">
+<code class="descclassname">gsyIO.</code><code class="descname">prompt_msg</code><span class="sig-paren">(</span><em>str_title</em>, <em>str_msg</em>, <em>str_type='info'</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyIO.prompt_msg" title="Permalink to this definition">¶</a></dt>
+<dd><p id="prompt-msg">This function is a wrapper for tk’s three different message boxes.</p>
+<p>This function prompts a message box with the message given.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>str_title</strong> : str</p>
+<blockquote>
+<div><p>Title of the message box.</p>
+</div></blockquote>
+<p><strong>str_msg</strong> : str</p>
+<blockquote>
+<div><p>The message to be shown.</p>
+</div></blockquote>
+<p><strong>str_type</strong> : str, default = “info”</p>
+<blockquote>
+<div><p>Type of the message box.</p>
+<ul class="simple">
+<li>“info” = information message box. This is the default value.</li>
+<li>“err” = error message box</li>
+<li>“warn” = warning message box</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<span class="kn">import</span> <span class="nn">tkinter.messagebox</span> <span class="k">as</span> <span class="nn">msgbox</span>
+
+<span class="kn">import</span> <span class="nn">gsyIO</span>
+
+<span class="n">gsyIO</span><span class="o">.</span><span class="n">prompt_msg</span><span class="p">(</span><span class="s1">&#39;message title&#39;</span><span class="p">,</span> <span class="s1">&#39;message body&#39;</span><span class="p">,</span> <span class="s1">&#39;err&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
 <dt id="gsyIO.save_csv">
 <code class="descclassname">gsyIO.</code><code class="descname">save_csv</code><span class="sig-paren">(</span><em>list_header</em>, <em>list_data</em>, <em>str_file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyIO.save_csv" title="Permalink to this definition">¶</a></dt>
 <dd><p id="save-csv">This function combines the given headers and the given data and then writes
 them into the given CSV file path.</p>
-<p>This function uses the csv module.</p>
+<p>This function uses the “csv” module.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -212,7 +303,8 @@ them into the given CSV file path.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool</p>
 <blockquote>
-<div><p>Returns True if file saved with no exception. No return if exceptions.</p>
+<div><p>Returns True if file saved with no exception. 
+No return if exceptions. Instead, the exceptions would be raised.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -239,12 +331,14 @@ them into the given CSV file path.</p>
 <div class="line"><a class="reference external" href="https://goo.gl/SknzT8">https://goo.gl/SknzT8</a></div>
 <div class="line"><a class="reference external" href="https://goo.gl/qqWV8b">https://goo.gl/qqWV8b</a></div>
 </div>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">temp_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">list_data</span><span class="p">))</span>        
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">temp_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">list_data</span><span class="p">))</span>
 </pre></div>
 </div>
 <p class="rubric">Examples</p>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="kn">from</span> <span class="nn">gsyIO</span> <span class="k">import</span> <span class="n">save_csv</span>
 
 <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
 
@@ -259,6 +353,113 @@ them into the given CSV file path.</p>
 <span class="n">str_file_path</span> <span class="o">=</span> <span class="s1">&#39;c:/temp/test.csv&#39;</span>
 
 <span class="n">bool_saved</span> <span class="o">=</span> <span class="n">save_csv</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="n">data_set</span><span class="p">,</span> <span class="n">str_file_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsyIO.save_csv_gui">
+<code class="descclassname">gsyIO.</code><code class="descname">save_csv_gui</code><span class="sig-paren">(</span><em>list_header</em>, <em>list_data</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyIO.save_csv_gui" title="Permalink to this definition">¶</a></dt>
+<dd><p id="save-csv-gui">This function is a gui wrapper for “save_csv”.</p>
+<p>This function prompts a file save dialogue to allow the user to select the 
+directory and filename.</p>
+<p>This function would then return the full path to “save_csv” to allow saving CSV.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>list_header</strong> : list</p>
+<blockquote>
+<div><p>The headers for the data sets.</p>
+</div></blockquote>
+<p><strong>list_data</strong> : list</p>
+<blockquote>
+<div><p>The data sets. Each list element can be a 1-D list.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool</p>
+<blockquote class="last">
+<div><p>Returns True if file saved with no exception. Returns False if exceptions.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+
+<span class="n">data1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">)</span>
+
+<span class="n">data2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">38</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;data1&#39;</span><span class="p">,</span> <span class="s1">&#39;data2&#39;</span><span class="p">]</span>
+
+<span class="n">data_set</span> <span class="o">=</span> <span class="p">[</span><span class="n">time</span><span class="p">,</span> <span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">]</span>
+
+<span class="n">save_csv_gui</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="n">data_set</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="gsyIO.save_image_gui">
+<code class="descclassname">gsyIO.</code><code class="descname">save_image_gui</code><span class="sig-paren">(</span><em>list_filetypes=[('Scalable Vector Graphics', '*.svg *.svgz'), ('Portable Network Graphics', '*.png'), ('Portable Document Format', '*.pdf'), ('Encapsulated Poscript', '*.eps'), ('Joint Photographic Experts Group', '*.jpeg *.jpg'), ('PGF code for LaTex', '*.pgf'), ('Postscript', '*.ps'), ('Raw RGBA bitmap', '*.raw *.rgba'), ('Tagged Image File Format', '*.tif *.tiff'), ('all files', '*.*')]</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyIO.save_image_gui" title="Permalink to this definition">¶</a></dt>
+<dd><p id="save-image-gui">This function is a gui wrapper for getting the image full path. The actual
+implementation of image saving is up to you.</p>
+<p>This function prompts a file save dialogue to allow the user to select the 
+directory and filename.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>list_filetypes</strong> : list</p>
+<blockquote>
+<div><p>The list for image filetype filters.</p>
+<p>The default list is :</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">CONST_IMAGE_FILETER</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Scalable Vector Graphics&#39;</span><span class="p">,</span><span class="s1">&#39;*.svg *.svgz&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;Portable Network Graphics&#39;</span><span class="p">,</span><span class="s1">&#39;*.png&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;Portable Document Format&#39;</span><span class="p">,</span> <span class="s1">&#39;*.pdf&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;Encapsulated Poscript&#39;</span><span class="p">,</span><span class="s1">&#39;*.eps&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;Joint Photographic Experts Group&#39;</span><span class="p">,</span><span class="s1">&#39;*.jpeg *.jpg&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;PGF code for LaTex&#39;</span><span class="p">,</span><span class="s1">&#39;*.pgf&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;Postscript&#39;</span><span class="p">,</span><span class="s1">&#39;*.ps&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;Raw RGBA bitmap&#39;</span><span class="p">,</span><span class="s1">&#39;*.raw *.rgba&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;Tagged Image File Format&#39;</span><span class="p">,</span><span class="s1">&#39;*.tif *.tiff&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;all files&#39;</span><span class="p">,</span><span class="s1">&#39;*.*&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>str_file_path</strong> : str</p>
+<blockquote class="last">
+<div><p>The full path of the image file.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+
+<span class="n">data1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">)</span>
+
+<span class="n">data2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">38</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;data1&#39;</span><span class="p">,</span> <span class="s1">&#39;data2&#39;</span><span class="p">]</span>
+
+<span class="n">data_set</span> <span class="o">=</span> <span class="p">[</span><span class="n">time</span><span class="p">,</span> <span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">]</span>
+
+<span class="n">str_filename</span> <span class="o">=</span> <span class="n">save_csv_gui</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="n">data_set</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">str_filename</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -283,7 +484,7 @@ them into the given CSV file path.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool</p>
 <blockquote class="last">
-<div><p>Returns True if read successful (no exception). 
+<div><p>Returns True if read successful (no exception).
 Returns False on exception.</p>
 </div></blockquote>
 </td>
