@@ -225,13 +225,13 @@ def cal_clarke(a, b, c):
     Returns
     -------
     alpha : complex
-        The alpha component.
+        The :math:`\\alpha` component.
 
     beta : complex
-        The beta component.
+        The :math:`\\beta` component.
 
     zero : complex
-        The Zero sequence.
+        The :math:`Zero` sequence.
     
     Examples
     --------
@@ -271,6 +271,8 @@ def cal_clarke_dsogi(a, b, c):
 
     Accepts complex forms of three-phase inputs. Returns the :math:`\\alpha_+`,
     :math:`\\beta_+`, :math:`\\alpha_-`, :math:`\\beta_-` and the :math:`Zero` component.
+
+    The Zero sequence is calculated by using the Clarke Transform.
 
     .. math ::
 
@@ -325,14 +327,20 @@ def cal_clarke_dsogi(a, b, c):
 
     Returns
     -------
-    alpha : complex
-        The alpha component.
+    alpha_pos_dsogi : complex
+        The :math:`\\alpha_+` component.
 
-    beta : complex
-        The beta component.
+    beta_pos_dsogi : complex
+        The :math:`\\beta_+` component.
+
+    alpha_neg_dsogi : complex
+        The :math:`\\alpha_-` component.
+
+    beta_neg_dsogi : complex
+        The :math:`\\beta_-` component.
 
     zero : complex
-        The Zero sequence.
+        The :math:`Zero` sequence.
     
     Examples
     --------
@@ -363,9 +371,6 @@ def cal_clarke_dsogi(a, b, c):
     
     beta_neg_dsogi = 1/2 * ( -1 * alpha * QUAD + beta )
 
-    # Zero sequence
-    zero = 1/3 * ( a + b + c )
-
     return alpha_pos_dsogi, beta_pos_dsogi, alpha_neg_dsogi, beta_neg_dsogi, zero
 # =============================================================================
 # </Function: calculate the DSOGI symmetrical components for the amplitude invariant Clarke Transform>
@@ -376,6 +381,82 @@ def cal_clarke_dsogi(a, b, c):
 # <Function: calculate the Park Transform (normal)>
 # =============================================================================
 def cal_park(theta, alpha, beta, zero=0):
+
+    """
+    .. _cal_park :
+
+    Calculates the Park Transform. 
+
+    Accepts complex forms of Clarke Transform inputs 
+    and the angle of the Synchronous Reference Frame (SRF). This is angle
+    is commonly provided by the Phase-Locked Loop (PLL) but not always.
+    This angle also has huge impact on the outputs of the Park Transform 
+    since the changes in the frequencies of the inputs are strongly related
+    to this angle.
+
+    Returns the :math:`d`, :math:`q`, :math:`Zero` components.
+
+    .. math ::
+
+        \left[\\begin{matrix}d \\\\ q \\\\ Zero \end{matrix}\\right]
+        = 
+        \left[
+        \\begin{matrix} 
+        \cos\\theta & \sin\\theta  & 0
+        \\\\ 
+        -\sin\\theta & \cos\\theta  & 0
+        \\\\
+        0 & 0 & 1
+        \end{matrix}
+        \\right] 
+        \left[
+        \\begin{matrix} 
+        \\alpha 
+        \\\\
+        \\beta
+        \\\\
+        Zero
+        \end{matrix}
+        \\right]
+
+    Parameters
+    ----------
+    theta : float in radians
+        The angle of the SRF, usually provided by a PLL.
+
+    alpha : complex or a list of complex
+        The :math:`\\alpha` component of the Clarke Transform
+
+    beta : complex or a list of complex
+        The :math:`\\beta` component of the Clarke Transform
+
+    zero : any, default = 0
+        The :math:`Zero` sequence. This would be output directly without manipulation. 
+        Since the Zero sequence does not change.
+
+    Returns
+    -------
+    d : complex
+        The alpha component.
+
+    q : complex
+        The beta component.
+
+    zero : as input parameter "zero"
+        The Zero sequence.
+    
+    Examples
+    --------
+    
+    .. code :: python
+
+        import gsyTransforms as trf
+
+        alpha, beta, zero = trf.cal_clarke(phaseAdata,
+                                           phaseBdata,
+                                           phaseCdata)
+
+    """
     
     # Park transform (normal)
     

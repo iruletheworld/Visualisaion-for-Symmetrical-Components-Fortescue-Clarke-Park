@@ -1,4 +1,4 @@
-Library for custom IOs : gsyPlt
+Library for custom Plots : gsyPlt
 ==============================================
 
 .. automodule:: gsyPlt

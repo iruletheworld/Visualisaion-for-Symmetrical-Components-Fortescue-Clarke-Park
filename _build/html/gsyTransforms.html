@@ -98,6 +98,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="gsyIO.html">2. Library for custom IOs : gsyIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsyPlt.html">3. Library for custom Plots : gsyPlt</a></li>
 </ul>
 
             
@@ -198,10 +199,10 @@ Fortescue (3-phase symmetrical components), Clarke (DSOGI), Park (normal &amp; D
 <ul class="simple">
 <li><a class="reference internal" href="#cal-clarke">cal_clarke</a></li>
 <li><a class="reference internal" href="#cal-clarke-dsogi">cal_clarke_dsogi</a></li>
-<li><a href="#id1"><span class="problematic" id="id2">cal_park_</span></a></li>
-<li><a href="#id3"><span class="problematic" id="id4">cal_park_ddsrf_</span></a></li>
+<li><a class="reference internal" href="#cal-park">cal_park</a></li>
+<li><a href="#id1"><span class="problematic" id="id2">cal_park_ddsrf_</span></a></li>
 <li><a class="reference internal" href="#cal-symm">cal_symm</a></li>
-<li><a href="#id5"><span class="problematic" id="id6">to_complex_</span></a></li>
+<li><a href="#id3"><span class="problematic" id="id4">to_complex_</span></a></li>
 </ul>
 </div>
 <div class="section" id="function-definitions">
@@ -351,7 +352,73 @@ quad &amp; 1
 <dl class="function">
 <dt id="gsyTransforms.cal_park">
 <code class="descclassname">gsyTransforms.</code><code class="descname">cal_park</code><span class="sig-paren">(</span><em>theta</em>, <em>alpha</em>, <em>beta</em>, <em>zero=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyTransforms.cal_park" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p id="cal-park">Calculates the Park Transform.</p>
+<p>Accepts complex forms of Clarke Transform inputs and the PLL angle.
+Returns the <span class="math">\(d\)</span>, <span class="math">\(q\)</span>, <span class="math">\(Zero\)</span> components.</p>
+<div class="math">
+\[\begin{split}\left[\begin{matrix}d \\ q \\ Zero \end{matrix}\right]
+= 
+\left[
+\begin{matrix} 
+\cos\theta &amp; \sin\theta  &amp; 0
+\\ 
+-\sin\theta &amp; \cos\theta  &amp; 0
+\\
+0 &amp; 0 &amp; 1
+\end{matrix}
+\right] 
+\left[
+\begin{matrix} 
+\alpha 
+\\
+\beta
+\\
+Zero
+\end{matrix}
+\right]\end{split}\]</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>a</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Phase-A inputs</p>
+</div></blockquote>
+<p><strong>b</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Phase-B inputs</p>
+</div></blockquote>
+<p><strong>c</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Phase-C inputs</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>alpha</strong> : complex</p>
+<blockquote>
+<div><p>The alpha component.</p>
+</div></blockquote>
+<p><strong>beta</strong> : complex</p>
+<blockquote>
+<div><p>The beta component.</p>
+</div></blockquote>
+<p><strong>zero</strong> : complex</p>
+<blockquote class="last">
+<div><p>The Zero sequence.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gsyTransforms</span> <span class="k">as</span> <span class="nn">trf</span>
+
+<span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">zero</span> <span class="o">=</span> <span class="n">trf</span><span class="o">.</span><span class="n">cal_clarke</span><span class="p">(</span><span class="n">phaseAdata</span><span class="p">,</span>
+                                   <span class="n">phaseBdata</span><span class="p">,</span>
+                                   <span class="n">phaseCdata</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="function">
 <dt id="gsyTransforms.cal_park_ddsrf">
