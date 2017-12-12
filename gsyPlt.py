@@ -1,5 +1,40 @@
-'''
-'''
+"""
+Custom module for plottings that I need.
+
+This module uses "matplotlib" heavily.
+
+Module Name : gsyPlt
+
+Author : 高斯羽 博士 (Dr. GAO, Siyu)
+
+Version : 0.1.0
+
+Last Modified : 2017-12-12
+
+Change Log
+----------------------
+* **Notable changes:**
+
+    + Version : 0.1.0
+        - Added "pltPolarDom"
+        - Added "pltTimeDom"
+
+List of functions
+----------------------
+
+* date_time_now_
+* prompt_msg_
+* save_csv_
+* save_csv_gui_
+* save_image_gui_
+* save_txt_
+* save_txt_on_event_
+* search_file_and_start_
+
+Function definitions
+----------------------
+
+"""
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -37,7 +72,9 @@ mpl.rcParams['font.serif'] = 'Times New Roman'
 mpl.rcParams['font.weight'] = 'bold'
 mpl.rcParams['mathtext.fontset'] = 'cm'
 
-
+# =============================================================================
+# <Function: plotting time domain data for symmetrical components>
+# =============================================================================
 def pltTimeDom(time,
                xlim_min, xlim_max,
                ylim_min, ylim_max,
@@ -244,8 +281,11 @@ def pltTimeDom(time,
     plt.show()
 
     return fig_main
+# =============================================================================
+# <Function: plotting time domain data for symmetrical components>
+# =============================================================================
 
-def pltPolar(r_max,
+def pltPolarDom(r_max,
              a, b, c,
              a_pos, b_pos, c_pos,
              a_neg, b_neg, c_neg,
