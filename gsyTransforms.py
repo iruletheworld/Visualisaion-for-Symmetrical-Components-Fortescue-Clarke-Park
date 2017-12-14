@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Calculations for the following transforms:
-Fortescue (3-phase symmetrical components), Clarke (DSOGI), Park (normal & DDSRF).abs
+Fortescue (3-phase symmetrical components), Clarke (normal and DSOGI), Park (normal and DSRF).
 
 Module Name : gsyTransforms
 
@@ -9,7 +9,7 @@ Author : Dr. GAO, Siyu
 
 Version : 0.1.2
 
-Last Modified : 2017-12-12
+Last Modified : 2017-12-14
 
 Change Log
 ----------------------
@@ -30,7 +30,7 @@ List of functions
 * cal_clarke_
 * cal_clarke_dsogi_
 * cal_park_
-* cal_park_ddsrf_
+* cal_park_dsrf_
 * cal_symm_
 * to_complex_
 
@@ -52,7 +52,7 @@ def cal_symm(a, b, c):
 
     Calculates the 3-phase symmetrical components (Fortescue). 
 
-    Accepts complex forms of three-phase inputs. Returns the Positive sequence,
+    Accepts complex form of three-phase inputs. Returns the Positive sequence,
     the Negative sequence and the Zero sequence.
 
     .. math ::
@@ -90,7 +90,7 @@ def cal_symm(a, b, c):
         \end{matrix}\\right] 
         \left[\\begin{matrix} 
         a \\\\ b \\\\ c 
-        \end{matrix}\\right]        
+        \end{matrix}\\right]
         
         \\\\
 
@@ -107,6 +107,24 @@ def cal_symm(a, b, c):
         a \\\\ b \\\\ c 
         \end{matrix}\\right]
 
+    ===================== ============================================================
+    where:
+    ===================== ============================================================
+    :math:`A`               is the :math:`120^{\circ}` shifter;
+    :math:`a`               is the Phase-A input;
+    :math:`b`               is the Phase-B input;
+    :math:`c`               is the Phase-C input;
+    :math:`a_+`             is the positive sequence of Phase-A input;
+    :math:`b_+`             is the positive sequence of Phase-B input;
+    :math:`c_+`             is the positive sequence of Phase-C input;
+    :math:`a_-`             is the negative sequence of Phase-A input;
+    :math:`b_-`             is the negative sequence of Phase-B input;
+    :math:`c_-`             is the negative sequence of Phase-C input;
+    :math:`a_{Zero}`        is the zero sequence of Phase-A input;
+    :math:`b_{Zero}`        is the zero sequence of Phase-B input;
+    :math:`c_{Zero}`        is the zero sequence of Phase-C input.
+    ===================== ============================================================
+
     Parameters
     ----------
     a : complex or a list of complex
@@ -120,26 +138,27 @@ def cal_symm(a, b, c):
 
     Returns
     -------
-    a_pos : complex
+    a_pos : complex or a list of complex
         Phase-A Positive sequence.
 
-    b_pos : complex
+    b_pos : complex or a list of complex
         Phase-B Positive sequence.
 
-    c_pos : complex
+    c_pos : complex or a list of complex
         Phase-C Positive sequence.
 
-    a_neg : complex
+    a_neg : complex or a list of complex
         Phase-A Negative sequence.
 
-    b_neg : complex
+    b_neg : complex or a list of complex
         Phase-B Negative sequence.
 
-    c_neg : complex
+    c_neg : complex or a list of complex
         Phase-C Negative sequence.
 
-    Zero : complex
-        Ther Zero sequence.
+    Zero : complex or a list of complex
+        Ther Zero sequence. Since all zero sequence components are
+        the same, only one is returned.
     
     
     Examples
@@ -155,8 +174,6 @@ def cal_symm(a, b, c):
          phaseZero)              = trf.cal_symm(phaseAdata,
                                                 phaseBdata,
                                                 phaseCdata)
-
-
     """
 
     # 120 degree rotator
@@ -195,7 +212,7 @@ def cal_clarke(a, b, c):
 
     Calculates the amplitude invariant Clarke Transform. 
 
-    Accepts complex forms of three-phase inputs. Returns the :math:`\\alpha` component,
+    Accepts complex form of three-phase inputs. Returns the :math:`\\alpha` component,
     :math:`\\beta` component and the :math:`Zero` component.
 
     .. math ::
@@ -209,28 +226,39 @@ def cal_clarke(a, b, c):
         \end{matrix}\\right] 
         \left[\\begin{matrix} 
         a \\\\ b \\\\ c 
-        \end{matrix}\\right] 
+        \end{matrix}\\right]
+
+    ===================== ============================================================
+    where:
+    ===================== ============================================================
+    :math:`a`               is the Phase-A input;
+    :math:`b`               is the Phase-B input;
+    :math:`c`               is the Phase-C input;
+    :math:`\\alpha`         is the :math:`\\alpha` component of the Clarke Transform;
+    :math:`\\beta`          is the :math:`\\beta` component of the Clarke Transform;
+    :math:`Zero`            is the :math:`Zero` sequnece component.
+    ===================== ============================================================
     
     Parameters
     ----------
     a : complex or a list of complex
-        Phase-A inputs
+        Phase-A input
 
     b : complex or a list of complex
-        Phase-B inputs
+        Phase-B input
 
     c : complex or a list of complex
-        Phase-C inputs
+        Phase-C input
 
     Returns
     -------
-    alpha : complex
+    alpha : complex or a list of complex
         The :math:`\\alpha` component.
 
-    beta : complex
+    beta : complex or a list of complex
         The :math:`\\beta` component.
 
-    zero : complex
+    zero : complex or a list of complex
         The :math:`Zero` sequence.
     
     Examples
@@ -267,12 +295,17 @@ def cal_clarke_dsogi(a, b, c):
     .. _cal_clarke_dsogi :
 
     Calculates the Positive sequence and Negative sequence of the Clarke Transform based
-    on the method of the Double Second-Order Generalised Integrator. 
+    on the method of the Double Second-Order Generalised Integrator (DSOGI). 
 
-    Accepts complex forms of three-phase inputs. Returns the :math:`\\alpha_+`,
+    Accepts complex form of three-phase inputs. Returns the :math:`\\alpha_+`,
     :math:`\\beta_+`, :math:`\\alpha_-`, :math:`\\beta_-` and the :math:`Zero` component.
 
     The Zero sequence is calculated by using the Clarke Transform.
+
+    For more information of the DSOGI [#]_:
+
+    .. [#] Teodorescu, R., Liserre, M., and Rodríguez, P., *Grid Converters for Photovoltaic 
+        and Wind Power Systems*. 2011: John Wiley & Sons, Ltd. 
 
     .. math ::
 
@@ -314,6 +347,18 @@ def cal_clarke_dsogi(a, b, c):
         \end{matrix}
         \\right]
 
+    ===================== ============================================================
+    where:
+    ===================== ============================================================
+    :math:`quad`            is the :math:`-90^{\circ}` shifter;
+    :math:`\\alpha`         is the :math:`\\alpha` component of the Clarke Transform;
+    :math:`\\beta`          is the :math:`\\beta` component of the Clarke Transform;
+    :math:`\\alpha_+`       is the positive sequnece of the :math:`\\alpha` component;
+    :math:`\\beta_+`        is the positive sequnece of the :math:`\\beta` component;
+    :math:`\\alpha_-`       is the negative sequnece of the :math:`\\alpha` component;
+    :math:`\\beta_-`        is the negative sequnece of the :math:`\\beta` component.
+    ===================== ============================================================
+
     Parameters
     ----------
     a : complex or a list of complex
@@ -327,19 +372,19 @@ def cal_clarke_dsogi(a, b, c):
 
     Returns
     -------
-    alpha_pos_dsogi : complex
+    alpha_pos_dsogi : complex or a list of complex
         The :math:`\\alpha_+` component.
 
-    beta_pos_dsogi : complex
+    beta_pos_dsogi : complex or a list of complex
         The :math:`\\beta_+` component.
 
-    alpha_neg_dsogi : complex
+    alpha_neg_dsogi : complex or a list of complex
         The :math:`\\alpha_-` component.
 
-    beta_neg_dsogi : complex
+    beta_neg_dsogi : complex or a list of complex
         The :math:`\\beta_-` component.
 
-    zero : complex
+    zero : complex or a list of complex
         The :math:`Zero` sequence.
     
     Examples
@@ -349,9 +394,11 @@ def cal_clarke_dsogi(a, b, c):
 
         import gsyTransforms as trf
 
-        alpha, beta, zero = trf.cal_clarke(phaseAdata,
-                                           phaseBdata,
-                                           phaseCdata)
+        (alpha_pos_dsogi, beta_pos_dsogi,
+         alpha_neg_dsogi, beta_neg_dsogi,
+         zero)                              = trf.cal_clarke_dsogi(phaseAdata,
+                                                                   phaseBdata,
+                                                                   phaseCdata)
 
     """
     
@@ -387,8 +434,8 @@ def cal_park(theta, alpha, beta, zero=0):
 
     Calculates the Park Transform. 
 
-    Accepts complex forms of Clarke Transform inputs 
-    and the angle of the Synchronous Reference Frame (SRF). This is angle
+    Accepts complex form of the Clarke Transform inputs 
+    and the angle of the Synchronous Reference Frame (SRF). This angle
     is commonly provided by the Phase-Locked Loop (PLL) but not always.
     This angle also has huge impact on the outputs of the Park Transform 
     since the changes in the frequencies of the inputs are strongly related
@@ -419,9 +466,20 @@ def cal_park(theta, alpha, beta, zero=0):
         \end{matrix}
         \\right]
 
+    ===================== ============================================================
+    where:
+    ===================== ============================================================
+    :math:`\\theta`         is the SRF angle in radians;
+    :math:`\\alpha`         is the :math:`\\alpha` component of the Clarke Transform;
+    :math:`\\beta`          is the :math:`\\beta` component of the Clarke Transform;
+    :math:`Zero`            is the :math:`Zero` sequence;
+    :math:`d`               is the :math:`d` component of the Park Transform;
+    :math:`q`               is the :math:`q` component of the Park Transform;
+    ===================== ============================================================
+
     Parameters
     ----------
-    theta : float in radians
+    theta : float or a list of float in radians
         The angle of the SRF, usually provided by a PLL.
 
     alpha : complex or a list of complex
@@ -431,16 +489,16 @@ def cal_park(theta, alpha, beta, zero=0):
         The :math:`\\beta` component of the Clarke Transform
 
     zero : any, default = 0
-        The :math:`Zero` sequence. This would be output directly without manipulation. 
-        Since the Zero sequence does not change.
+        The :math:`Zero` sequence. This would be output directly without manipulation, 
+        since the Zero sequence does not change.
 
     Returns
     -------
-    d : complex
-        The alpha component.
+    d : complex or a list of complex
+        The :math:`d` component.
 
-    q : complex
-        The beta component.
+    q : complex or a list of complex
+        The :math:`q` component.
 
     zero : as input parameter "zero"
         The Zero sequence.
@@ -452,9 +510,9 @@ def cal_park(theta, alpha, beta, zero=0):
 
         import gsyTransforms as trf
 
-        alpha, beta, zero = trf.cal_clarke(phaseAdata,
-                                           phaseBdata,
-                                           phaseCdata)
+        d, q, zero = trf.cal_park(phaseAdata,
+                                  phaseBdata,
+                                  phaseCdata)
 
     """
     
@@ -498,7 +556,7 @@ def cal_park_dsrf(theta, alpha, beta, zero=0):
     Calculates the Park Transform of 
     the Double Synchronous Reference Frame (DSRF). 
 
-    Accepts complex forms of Clarke Transform inputs 
+    Accepts complex form of the Clarke Transform inputs 
     and the angle of the Synchronous Reference Frame (SRF). 
     
     The DSRF approach is inferior to the DSOGI approach.
@@ -508,8 +566,7 @@ def cal_park_dsrf(theta, alpha, beta, zero=0):
     filters used to decouple the DSRF
     (bascially getting rid of the harmonics introudced by the DSRF).
 
-    Returns the :math:`d_{+DSRF}`, :math:`q_{+DSRF}`,
-    :math:`d_{-DSRF}`, :math:`q_{-DSRF}`, and :math:`Zero` components.
+    Returns the :math:`d_{+DSRF}, q_{+DSRF},d_{-DSRF}, q_{-DSRF}` and :math:`Zero` components.
 
     .. math ::
 
@@ -549,9 +606,21 @@ def cal_park_dsrf(theta, alpha, beta, zero=0):
         \end{matrix}
         \\right]
 
+    ===================== ============================================================
+    where:
+    ===================== ============================================================
+    :math:`\\theta`         is the SRF angle in radians;
+    :math:`\\alpha`         is the :math:`\\alpha` component of the Clarke Transform;
+    :math:`\\beta`          is the :math:`\\beta` component of the Clarke Transform;
+    :math:`d_{+DSRF}`       is the DSRF positive :math:`d` component;
+    :math:`q_{+DSRF}`       is the DSRF positive :math:`q` component;
+    :math:`d_{-DSRF}`       is the DSRF negative :math:`d` component;
+    :math:`q_{-DSRF}`       is the DSRF negative :math:`q` component.
+    ===================== ============================================================
+
     Parameters
     ----------
-    theta : float in radians
+    theta : float or a list of float in radians
         The angle of the SRF, usually provided by a PLL.
 
     alpha : complex or a list of complex
@@ -561,19 +630,25 @@ def cal_park_dsrf(theta, alpha, beta, zero=0):
         The :math:`\\beta` component of the Clarke Transform
 
     zero : any, default = 0
-        The :math:`Zero` sequence. This would be output directly without manipulation. 
+        The :math:`Zero` sequence. This would be outputed directly without manipulation. 
         Since the Zero sequence does not change.
 
     Returns
     -------
-    d_dsrf_pos : complex
-        The alpha component.
+    d_dsrf_pos : complex or a list of complex
+        The DSRF positive :math:`d` component.
 
-    q_dsrf_pos : complex
-        The beta component.
+    q_dsrf_pos : complex or a list of complex
+        The DSRF positive :math:`q` component.
+
+    d_dsrf_neg : complex or a list of complex
+        The DSRF negative :math:`d` component.
+
+    q_dsrf_neg : complex or a list of complex
+        The DSRF negative :math:`q` component.
 
     zero : as input parameter "zero"
-        The Zero sequence.
+        The :math:`Zero` sequence.
     
     Examples
     --------
@@ -582,9 +657,11 @@ def cal_park_dsrf(theta, alpha, beta, zero=0):
 
         import gsyTransforms as trf
 
-        alpha, beta, zero = trf.cal_clarke(phaseAdata,
-                                           phaseBdata,
-                                           phaseCdata)
+        (d_dsrf_pos, q_dsrf_pos,
+         d_dsrf_neg, q_dsrf_neg,
+         zero)                      = trf.cal_park_dsrf(phaseAdata,
+                                                        phaseBdata,
+                                                        phaseCdata)
 
     """
 
@@ -625,6 +702,59 @@ def cal_park_dsrf(theta, alpha, beta, zero=0):
 # <Function: convert to complex number>
 # =============================================================================
 def to_complex(r, x, real_offset=0, imag_offset=0):
+
+    """
+    .. _to_complex :
+
+    Converts to complex number according to given parameters. 
+
+    .. math ::
+
+        Real &= r \cdot \cos(x) + Offset_{real} 
+
+        Imag &= r \cdot \sin(x) + Offset_{imag} 
+
+        Complex &= Real + j \cdot Imag 
+
+    ===================== =====================================
+    where:
+    ===================== =====================================
+    :math:`r`             is the radius of the complex number;
+    :math:`x`             is the angle in radians;
+    :math:`Offset_{real}` is the offset to the real part;
+    :math:`Offset_{imag}` is the offset to the imaginary part;
+    :math:`j`             is the imaginary unit.
+    ===================== =====================================
+
+    Parameters
+    ----------
+    r : float or a list of float
+        The radius of the complex number.
+
+    x : float or a list of float in radians
+        The angle of the phasor/vector.
+
+    real_offset : float or a list of float
+        The offset to the real part, like a DC offset, whose imagnary part is zero.
+
+    imag_offset : float or a list of float
+        The offset to the imaginary part.
+
+    Returns
+    -------
+    complex or a list of complex
+        The complex number caculated according to the given parameters.
+    
+    Examples
+    --------
+    
+    .. code :: python
+
+        import gsyTransforms as trf
+        import numpy as np
+
+        a = trf.to_complex(1, np.pi*2/3)
+    """
     
     real = r * cos(x) + real_offset
     

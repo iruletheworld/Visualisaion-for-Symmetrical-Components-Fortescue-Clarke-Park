@@ -22,14 +22,8 @@ Change Log
 List of functions
 ----------------------
 
-* date_time_now_
+* pltTimeDom_
 * prompt_msg_
-* save_csv_
-* save_csv_gui_
-* save_image_gui_
-* save_txt_
-* save_txt_on_event_
-* search_file_and_start_
 
 Function definitions
 ----------------------
@@ -89,27 +83,150 @@ def pltTimeDom(time,
                d_pos, q_pos, 
                d_neg, q_neg):
 
+    """
+    .. _pltTimeDom :
+
+    Plots the time domain data in a 4 by 3 grid of subplots.
+
+    Parameters
+    ----------
+    time : float or a list of float
+        Time data.
+
+    xlim_min : float
+        Minimum of x axis. This is also the minimum of time.
+
+    xlim_max : float
+        Maximum of x axis. This is also the maximum of time.
+
+    ylim_min : float
+        Minimum of y axis.
+
+    ylim_max : float
+        Maximum of y axis.
+
+    a : float or a list of float
+        Phase-A input.
+
+    b : float or a list of float
+        Phase-B input.
+
+    c : float or a list of float
+        Phase-C input.
+
+    a_pos : float or a list of float
+        Positive sequence of Phase-A input.
+
+    b_pos : float or a list of float
+        Positive sequence of Phase-B input.
+
+    c_pos : float or a list of float
+        Positive sequence of Phase-C input.
+
+    a_neg : float or a list of float
+        Negative sequence of Phase-A input.
+
+    b_neg : float or a list of float
+        Negative sequence of Phase-B input.
+
+    c_neg : float or a list of float
+        Negative sequence of Phase-C input.
+
+    zero : float or a list of float
+        The Zero sequence
+
+    alpha : float or a list of float
+        The :math:`\\alpha` component of the Clarke Transform.
+
+    beta : float or a list of float
+        The :math:`\\beta` component of the Clarke Transform.
+
+    alpha_pos : float or a list of float
+        The :math:`\\alpha_+` component of the Clarke Transform (DSOGI).
+
+    beta_pos : float or a list of float
+        The :math:`\\beta_+` component of the Clarke Transform (DSOGI).
+
+    alpha_neg : float or a list of float
+        The :math:`\\alpha_-` component of the Clarke Transform (DSOGI).
+
+    beta_neg : float or a list of float
+        The :math:`\\beta_-` component of the Clarke Transform (DSOGI).
+
+    d : float or a list of float
+        The :math:`d` component of the Park Transform.
+
+    q : float or a list of float
+        The :math:`q` component of the Park Transform.
+
+    d_pos : float or a list of float
+        The :math:`d_+` component of the Park Transform (by applying the 
+        Park Transform on the DSOGI Clarke Transform components).
+
+    q_pos : float or a list of float
+        The :math:`q_+` component of the Park Transform (by applying the 
+        Park Transform on the DSOGI Clarke Transform components).
+
+    d_neg : float or a list of float
+        The :math:`d_-` component of the Park Transform (by applying the 
+        Park Transform on the DSOGI Clarke Transform components).
+
+    q_neg : float or a list of float
+        The :math:`q_-` component of the Park Transform (by applying the 
+        Park Transform on the DSOGI Clarke Transform components).
+
+    Returns
+    -------
+    fig_main : matplotlib figure object
+        The figure object.
+    
+    Examples
+    --------
+    
+    .. code :: python
+
+        fig_time_dom = gsyPlt.pltTimeDom(time,
+                                         xlim_min, xlim_max,
+                                         ylim_min, ylim_max,
+                                         a, b, c,
+                                         a_pos, b_pos, c_pos,
+                                         a_neg, b_neg, c_neg,
+                                         zero, 
+                                         alpha, beta,
+                                         alpha_pos, beta_pos,
+                                         alpha_neg, beta_neg,
+                                         d, q,
+                                         d_pos, q_pos,
+                                         d_neg, q_neg)
+    """
+
+    # make the figure
     fig_main = plt.figure(figsize=(CONST_WITH/CONST_DPI, CONST_HEIGHT/CONST_DPI), 
                           dpi=CONST_DPI, 
                           num='Time Domain Plots')
     
+    # subplot 1
     # 3-phase inputs and symmetrical components
     ax1 = plt.subplot(4, 3, 1)
     ax1_a, = ax1.plot(time, a, label=r'Phase-A Input', color=CONST_COLOR_CMB_A, lw=2)
     ax1_b, = ax1.plot(time, b, label=r'Phase-B Input', color=CONST_COLOR_CMB_B, lw=2)
     ax1_c, = ax1.plot(time, c, label=r'Phase-C Input', color=CONST_COLOR_CMB_C, lw=2)
 
+    # set the axes title
     ax1.set_title('Three-Phase Inputs', y=1.2, 
                   family='Arial', fontsize=CONST_TITLE_FONTSIZE, fontweight='bold')
 
+    # set the axes legend
     ax1_legend = plt.legend(handles=[ax1_a, ax1_b, ax1_c], fontsize=9,
                             ncol=3,                            
                             loc='upper center',
                             bbox_to_anchor=[CONST_BBOX_LEFT, CONST_BBOX_HEIGT1])
     
+    #d set the limits
     plt.xlim([xlim_min, xlim_max])
     plt.ylim([ylim_min, ylim_max])
 
+    # grid on
     plt.grid(True)
 
     ax2 = plt.subplot(4, 3, 4)
@@ -282,9 +399,13 @@ def pltTimeDom(time,
 
     return fig_main
 # =============================================================================
-# <Function: plotting time domain data for symmetrical components>
+# </Function: plotting time domain data for symmetrical components>
 # =============================================================================
 
+
+# =============================================================================
+# <Function: plotting polar domain data for symmetrical components>
+# =============================================================================
 def pltPolarDom(r_max,
              a, b, c,
              a_pos, b_pos, c_pos,
@@ -522,3 +643,6 @@ def pltPolarDom(r_max,
     plt.show()
 
     return fig_polar
+# =============================================================================
+# </Function: plotting polar domain data for symmetrical components>
+# =============================================================================

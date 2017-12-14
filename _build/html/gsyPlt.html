@@ -192,14 +192,8 @@
 <div class="section" id="list-of-functions">
 <h2>3.2. List of functions<a class="headerlink" href="#list-of-functions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a href="#id1"><span class="problematic" id="id2">date_time_now_</span></a></li>
-<li><a href="#id3"><span class="problematic" id="id4">prompt_msg_</span></a></li>
-<li><a href="#id5"><span class="problematic" id="id6">save_csv_</span></a></li>
-<li><a href="#id7"><span class="problematic" id="id8">save_csv_gui_</span></a></li>
-<li><a href="#id9"><span class="problematic" id="id10">save_image_gui_</span></a></li>
-<li><a href="#id11"><span class="problematic" id="id12">save_txt_</span></a></li>
-<li><a href="#id13"><span class="problematic" id="id14">save_txt_on_event_</span></a></li>
-<li><a href="#id15"><span class="problematic" id="id16">search_file_and_start_</span></a></li>
+<li><a class="reference internal" href="#plttimedom">pltTimeDom</a></li>
+<li><a href="#id1"><span class="problematic" id="id2">prompt_msg_</span></a></li>
 </ul>
 </div>
 <div class="section" id="function-definitions">
@@ -212,7 +206,150 @@
 <dl class="function">
 <dt id="gsyPlt.pltTimeDom">
 <code class="descclassname">gsyPlt.</code><code class="descname">pltTimeDom</code><span class="sig-paren">(</span><em>time</em>, <em>xlim_min</em>, <em>xlim_max</em>, <em>ylim_min</em>, <em>ylim_max</em>, <em>a</em>, <em>b</em>, <em>c</em>, <em>a_pos</em>, <em>b_pos</em>, <em>c_pos</em>, <em>a_neg</em>, <em>b_neg</em>, <em>c_neg</em>, <em>zero</em>, <em>alpha</em>, <em>beta</em>, <em>alpha_pos</em>, <em>beta_pos</em>, <em>alpha_neg</em>, <em>beta_neg</em>, <em>d</em>, <em>q</em>, <em>d_pos</em>, <em>q_pos</em>, <em>d_neg</em>, <em>q_neg</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyPlt.pltTimeDom" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p id="plttimedom">Plots the time domain data in a 4 by 3 grid of subplots.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>time</strong> : float or a list of float</p>
+<blockquote>
+<div><p>Time data.</p>
+</div></blockquote>
+<p><strong>xlim_min</strong> : float</p>
+<blockquote>
+<div><p>Minimum of x axis. This is also the minimum of time.</p>
+</div></blockquote>
+<p><strong>xlim_max</strong> : float</p>
+<blockquote>
+<div><p>Maximum of x axis. This is also the maximum of time.</p>
+</div></blockquote>
+<p><strong>ylim_min</strong> : float</p>
+<blockquote>
+<div><p>Minimum of y axis.</p>
+</div></blockquote>
+<p><strong>ylim_max</strong> : float</p>
+<blockquote>
+<div><p>Maximum of y axis.</p>
+</div></blockquote>
+<p><strong>a</strong> : float or a list of float</p>
+<blockquote>
+<div><p>Phase-A input.</p>
+</div></blockquote>
+<p><strong>b</strong> : float or a list of float</p>
+<blockquote>
+<div><p>Phase-B input.</p>
+</div></blockquote>
+<p><strong>c</strong> : float or a list of float</p>
+<blockquote>
+<div><p>Phase-C input.</p>
+</div></blockquote>
+<p><strong>a_pos</strong> : float or a list of float</p>
+<blockquote>
+<div><p>Positive sequence of Phase-A input.</p>
+</div></blockquote>
+<p><strong>b_pos</strong> : float or a list of float</p>
+<blockquote>
+<div><p>Positive sequence of Phase-B input.</p>
+</div></blockquote>
+<p><strong>c_pos</strong> : float or a list of float</p>
+<blockquote>
+<div><p>Positive sequence of Phase-C input.</p>
+</div></blockquote>
+<p><strong>a_neg</strong> : float or a list of float</p>
+<blockquote>
+<div><p>Negative sequence of Phase-A input.</p>
+</div></blockquote>
+<p><strong>b_neg</strong> : float or a list of float</p>
+<blockquote>
+<div><p>Negative sequence of Phase-B input.</p>
+</div></blockquote>
+<p><strong>c_neg</strong> : float or a list of float</p>
+<blockquote>
+<div><p>Negative sequence of Phase-C input.</p>
+</div></blockquote>
+<p><strong>zero</strong> : float or a list of float</p>
+<blockquote>
+<div><p>The Zero sequence</p>
+</div></blockquote>
+<p><strong>alpha</strong> : float or a list of float</p>
+<blockquote>
+<div><p>The <span class="math">\(\alpha\)</span> component of the Clarke Transform.</p>
+</div></blockquote>
+<p><strong>beta</strong> : float or a list of float</p>
+<blockquote>
+<div><p>The <span class="math">\(\beta\)</span> component of the Clarke Transform.</p>
+</div></blockquote>
+<p><strong>alpha_pos</strong> : float or a list of float</p>
+<blockquote>
+<div><p>The <span class="math">\(\alpha_+\)</span> component of the Clarke Transform (DSOGI).</p>
+</div></blockquote>
+<p><strong>beta_pos</strong> : float or a list of float</p>
+<blockquote>
+<div><p>The <span class="math">\(\beta_+\)</span> component of the Clarke Transform (DSOGI).</p>
+</div></blockquote>
+<p><strong>alpha_neg</strong> : float or a list of float</p>
+<blockquote>
+<div><p>The <span class="math">\(\alpha_-\)</span> component of the Clarke Transform (DSOGI).</p>
+</div></blockquote>
+<p><strong>beta_neg</strong> : float or a list of float</p>
+<blockquote>
+<div><p>The <span class="math">\(\beta_-\)</span> component of the Clarke Transform (DSOGI).</p>
+</div></blockquote>
+<p><strong>d</strong> : float or a list of float</p>
+<blockquote>
+<div><p>The <span class="math">\(d\)</span> component of the Park Transform.</p>
+</div></blockquote>
+<p><strong>q</strong> : float or a list of float</p>
+<blockquote>
+<div><p>The <span class="math">\(q\)</span> component of the Park Transform.</p>
+</div></blockquote>
+<p><strong>d_pos</strong> : float or a list of float</p>
+<blockquote>
+<div><p>The <span class="math">\(d_+\)</span> component of the Park Transform (by applying the 
+Park Transform on the DSOGI Clarke Transform components).</p>
+</div></blockquote>
+<p><strong>q_pos</strong> : float or a list of float</p>
+<blockquote>
+<div><p>The <span class="math">\(q_+\)</span> component of the Park Transform (by applying the 
+Park Transform on the DSOGI Clarke Transform components).</p>
+</div></blockquote>
+<p><strong>d_neg</strong> : float or a list of float</p>
+<blockquote>
+<div><p>The <span class="math">\(d_-\)</span> component of the Park Transform (by applying the 
+Park Transform on the DSOGI Clarke Transform components).</p>
+</div></blockquote>
+<p><strong>q_neg</strong> : float or a list of float</p>
+<blockquote>
+<div><p>The <span class="math">\(q_-\)</span> component of the Park Transform (by applying the 
+Park Transform on the DSOGI Clarke Transform components).</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>fig_main</strong> : matplotlib figure object</p>
+<blockquote class="last">
+<div><p>The figure object.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">fig_time_dom</span> <span class="o">=</span> <span class="n">gsyPlt</span><span class="o">.</span><span class="n">pltTimeDom</span><span class="p">(</span><span class="n">time</span><span class="p">,</span>
+                                 <span class="n">xlim_min</span><span class="p">,</span> <span class="n">xlim_max</span><span class="p">,</span>
+                                 <span class="n">ylim_min</span><span class="p">,</span> <span class="n">ylim_max</span><span class="p">,</span>
+                                 <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span>
+                                 <span class="n">a_pos</span><span class="p">,</span> <span class="n">b_pos</span><span class="p">,</span> <span class="n">c_pos</span><span class="p">,</span>
+                                 <span class="n">a_neg</span><span class="p">,</span> <span class="n">b_neg</span><span class="p">,</span> <span class="n">c_neg</span><span class="p">,</span>
+                                 <span class="n">zero</span><span class="p">,</span> 
+                                 <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span>
+                                 <span class="n">alpha_pos</span><span class="p">,</span> <span class="n">beta_pos</span><span class="p">,</span>
+                                 <span class="n">alpha_neg</span><span class="p">,</span> <span class="n">beta_neg</span><span class="p">,</span>
+                                 <span class="n">d</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span>
+                                 <span class="n">d_pos</span><span class="p">,</span> <span class="n">q_pos</span><span class="p">,</span>
+                                 <span class="n">d_neg</span><span class="p">,</span> <span class="n">q_neg</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
 
 </div>
 </div>
