@@ -91,8 +91,14 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Library for transforms : gsyTransforms</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Library for transforms : gsyTransforms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#change-log">1.1. Change Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-of-functions">1.2. List of functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#function-definitions">1.3. Function definitions</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="gsyIO.html">2. Library for custom IOs : gsyIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsyPlt.html">3. Library for custom Plots : gsyPlt</a></li>
 </ul>
 
             
@@ -159,15 +165,53 @@
   <div class="section" id="module-gsyTransforms">
 <span id="library-for-transforms-gsytransforms"></span><h1>1. Library for transforms : gsyTransforms<a class="headerlink" href="#module-gsyTransforms" title="Permalink to this headline">¶</a></h1>
 <p>Calculations for the following transforms:
-Fortescue (3-phase symmetrical components), Clarke (DSOGI), Park (normal &amp; DDSRF)</p>
+Fortescue (3-phase symmetrical components), Clarke (normal and DSOGI), Park (normal and DSRF).</p>
+<p>Module Name : gsyTransforms</p>
 <p>Author : Dr. GAO, Siyu</p>
-<p>Version : 0.1.0</p>
-<p>Last Modified : 2017-11-30</p>
+<p>Version : 0.1.2</p>
+<p>Last Modified : 2017-12-14</p>
+<div class="section" id="change-log">
+<h2>1.1. Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first"><strong>Notable changes:</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>Version <span class="classifier-delimiter">:</span> <span class="classifier">0.1.2</span></dt>
+<dd><ul class="first last">
+<li>Added “cal_clarke”</li>
+<li>Added “cal_clarke_dsogi”</li>
+<li>Added “cal_park”</li>
+<li>Added “cal_park_ddsrf”</li>
+<li>Added “cal_symm”</li>
+<li>Added “to_complex”</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="list-of-functions">
+<h2>1.2. List of functions<a class="headerlink" href="#list-of-functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="#cal-clarke">cal_clarke</a></li>
+<li><a class="reference internal" href="#cal-clarke-dsogi">cal_clarke_dsogi</a></li>
+<li><a class="reference internal" href="#cal-park">cal_park</a></li>
+<li><a class="reference internal" href="#cal-park-dsrf">cal_park_dsrf</a></li>
+<li><a class="reference internal" href="#cal-symm">cal_symm</a></li>
+<li><a class="reference internal" href="#to-complex">to_complex</a></li>
+</ul>
+</div>
+<div class="section" id="function-definitions">
+<h2>1.3. Function definitions<a class="headerlink" href="#function-definitions" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="gsyTransforms.cal_clarke">
 <code class="descclassname">gsyTransforms.</code><code class="descname">cal_clarke</code><span class="sig-paren">(</span><em>a</em>, <em>b</em>, <em>c</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyTransforms.cal_clarke" title="Permalink to this definition">¶</a></dt>
 <dd><p id="cal-clarke">Calculates the amplitude invariant Clarke Transform.</p>
-<p>Accepts complex forms of three-phase inputs. Returns the <span class="math">\(\alpha\)</span> component,
+<p>Accepts complex form of three-phase inputs. Returns the <span class="math">\(\alpha\)</span> component,
 <span class="math">\(\beta\)</span> component and the <span class="math">\(Zero\)</span> component.</p>
 <div class="math">
 \[\begin{split}\left[\begin{matrix} \alpha \\ \beta \\ Zero \end{matrix}\right] 
@@ -179,39 +223,481 @@ Fortescue (3-phase symmetrical components), Clarke (DSOGI), Park (normal &amp; D
 \end{matrix}\right] 
 \left[\begin{matrix} 
 a \\ b \\ c 
-\end{matrix}\right] \end{split}\]</div>
+\end{matrix}\right]\end{split}\]</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">where:</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="math">\(a\)</span></td>
+<td>is the Phase-A input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(b\)</span></td>
+<td>is the Phase-B input;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(c\)</span></td>
+<td>is the Phase-C input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\alpha\)</span></td>
+<td>is the <span class="math">\(\alpha\)</span> component of the Clarke Transform;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\beta\)</span></td>
+<td>is the <span class="math">\(\beta\)</span> component of the Clarke Transform;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(Zero\)</span></td>
+<td>is the <span class="math">\(Zero\)</span> sequnece component.</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>a</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Phase-A input</p>
+</div></blockquote>
+<p><strong>b</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Phase-B input</p>
+</div></blockquote>
+<p><strong>c</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Phase-C input</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>alpha</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(\alpha\)</span> component.</p>
+</div></blockquote>
+<p><strong>beta</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(\beta\)</span> component.</p>
+</div></blockquote>
+<p><strong>zero</strong> : complex or a list of complex</p>
+<blockquote class="last">
+<div><p>The <span class="math">\(Zero\)</span> sequence.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gsyTransforms</span> <span class="k">as</span> <span class="nn">trf</span>
+
+<span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">zero</span> <span class="o">=</span> <span class="n">trf</span><span class="o">.</span><span class="n">cal_clarke</span><span class="p">(</span><span class="n">phaseAdata</span><span class="p">,</span>
+                                   <span class="n">phaseBdata</span><span class="p">,</span>
+                                   <span class="n">phaseCdata</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
 <dt id="gsyTransforms.cal_clarke_dsogi">
 <code class="descclassname">gsyTransforms.</code><code class="descname">cal_clarke_dsogi</code><span class="sig-paren">(</span><em>a</em>, <em>b</em>, <em>c</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyTransforms.cal_clarke_dsogi" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p id="cal-clarke-dsogi">Calculates the Positive sequence and Negative sequence of the Clarke Transform based
+on the method of the Double Second-Order Generalised Integrator (DSOGI).</p>
+<p>Accepts complex form of three-phase inputs. Returns the <span class="math">\(\alpha_+\)</span>,
+<span class="math">\(\beta_+\)</span>, <span class="math">\(\alpha_-\)</span>, <span class="math">\(\beta_-\)</span> and the <span class="math">\(Zero\)</span> component.</p>
+<p>The Zero sequence is calculated by using the Clarke Transform.</p>
+<p>For more information of the DSOGI <a class="footnote-reference" href="#id2" id="id1">[1]</a>:</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Teodorescu, R., Liserre, M., and Rodríguez, P., <em>Grid Converters for Photovoltaic 
+and Wind Power Systems</em>. 2011: John Wiley &amp; Sons, Ltd.</td></tr>
+</tbody>
+</table>
+<div class="math">
+\[ \begin{align}\begin{aligned}quad = e^{-j \frac{1}{2} \pi} = \angle -90^{\circ}\\\begin{split}\\\end{split}\\\begin{split}\left[\begin{matrix}\alpha_+ \\ \beta_+ \end{matrix}\right]
+= \frac{1}{2} 
+\left[
+\begin{matrix} 
+1 &amp; -quad 
+\\ 
+quad &amp; 1
+\end{matrix}
+\right] 
+\left[
+\begin{matrix} 
+\alpha 
+\\
+\beta
+\end{matrix}
+\right]\end{split}\\\begin{split}\\\end{split}\\\begin{split}\left[\begin{matrix} \alpha_- \\ \beta_- \end{matrix}\right]
+= \frac{1}{2} 
+\left[
+\begin{matrix} 
+1 &amp; quad 
+\\ 
+-quad &amp; 1
+\end{matrix}
+\right] 
+\left[
+\begin{matrix} 
+\alpha \\ \beta
+\end{matrix}
+\right]\end{split}\end{aligned}\end{align} \]</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">where:</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="math">\(quad\)</span></td>
+<td>is the <span class="math">\(-90^{\circ}\)</span> shifter;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\alpha\)</span></td>
+<td>is the <span class="math">\(\alpha\)</span> component of the Clarke Transform;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\beta\)</span></td>
+<td>is the <span class="math">\(\beta\)</span> component of the Clarke Transform;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\alpha_+\)</span></td>
+<td>is the positive sequnece of the <span class="math">\(\alpha\)</span> component;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\beta_+\)</span></td>
+<td>is the positive sequnece of the <span class="math">\(\beta\)</span> component;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\alpha_-\)</span></td>
+<td>is the negative sequnece of the <span class="math">\(\alpha\)</span> component;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\beta_-\)</span></td>
+<td>is the negative sequnece of the <span class="math">\(\beta\)</span> component.</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>a</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Phase-A inputs</p>
+</div></blockquote>
+<p><strong>b</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Phase-B inputs</p>
+</div></blockquote>
+<p><strong>c</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Phase-C inputs</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>alpha_pos_dsogi</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(\alpha_+\)</span> component.</p>
+</div></blockquote>
+<p><strong>beta_pos_dsogi</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(\beta_+\)</span> component.</p>
+</div></blockquote>
+<p><strong>alpha_neg_dsogi</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(\alpha_-\)</span> component.</p>
+</div></blockquote>
+<p><strong>beta_neg_dsogi</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(\beta_-\)</span> component.</p>
+</div></blockquote>
+<p><strong>zero</strong> : complex or a list of complex</p>
+<blockquote class="last">
+<div><p>The <span class="math">\(Zero\)</span> sequence.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gsyTransforms</span> <span class="k">as</span> <span class="nn">trf</span>
+
+<span class="p">(</span><span class="n">alpha_pos_dsogi</span><span class="p">,</span> <span class="n">beta_pos_dsogi</span><span class="p">,</span>
+ <span class="n">alpha_neg_dsogi</span><span class="p">,</span> <span class="n">beta_neg_dsogi</span><span class="p">,</span>
+ <span class="n">zero</span><span class="p">)</span>                              <span class="o">=</span> <span class="n">trf</span><span class="o">.</span><span class="n">cal_clarke_dsogi</span><span class="p">(</span><span class="n">phaseAdata</span><span class="p">,</span>
+                                                           <span class="n">phaseBdata</span><span class="p">,</span>
+                                                           <span class="n">phaseCdata</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="function">
 <dt id="gsyTransforms.cal_park">
 <code class="descclassname">gsyTransforms.</code><code class="descname">cal_park</code><span class="sig-paren">(</span><em>theta</em>, <em>alpha</em>, <em>beta</em>, <em>zero=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyTransforms.cal_park" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p id="cal-park">Calculates the Park Transform.</p>
+<p>Accepts complex form of the Clarke Transform inputs 
+and the angle of the Synchronous Reference Frame (SRF). This angle
+is commonly provided by the Phase-Locked Loop (PLL) but not always.
+This angle also has huge impact on the outputs of the Park Transform 
+since the changes in the frequencies of the inputs are strongly related
+to this angle.</p>
+<p>Returns the <span class="math">\(d\)</span>, <span class="math">\(q\)</span>, <span class="math">\(Zero\)</span> components.</p>
+<div class="math">
+\[\begin{split}\left[\begin{matrix}d \\ q \\ Zero \end{matrix}\right]
+= 
+\left[
+\begin{matrix} 
+\cos\theta &amp; \sin\theta  &amp; 0
+\\ 
+-\sin\theta &amp; \cos\theta  &amp; 0
+\\
+0 &amp; 0 &amp; 1
+\end{matrix}
+\right] 
+\left[
+\begin{matrix} 
+\alpha 
+\\
+\beta
+\\
+Zero
+\end{matrix}
+\right]\end{split}\]</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">where:</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="math">\(\theta\)</span></td>
+<td>is the SRF angle in radians;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\alpha\)</span></td>
+<td>is the <span class="math">\(\alpha\)</span> component of the Clarke Transform;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\beta\)</span></td>
+<td>is the <span class="math">\(\beta\)</span> component of the Clarke Transform;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(Zero\)</span></td>
+<td>is the <span class="math">\(Zero\)</span> sequence;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(d\)</span></td>
+<td>is the <span class="math">\(d\)</span> component of the Park Transform;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(q\)</span></td>
+<td>is the <span class="math">\(q\)</span> component of the Park Transform;</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>theta</strong> : float or a list of float in radians</p>
+<blockquote>
+<div><p>The angle of the SRF, usually provided by a PLL.</p>
+</div></blockquote>
+<p><strong>alpha</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(\alpha\)</span> component of the Clarke Transform</p>
+</div></blockquote>
+<p><strong>beta</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(\beta\)</span> component of the Clarke Transform</p>
+</div></blockquote>
+<p><strong>zero</strong> : any, default = 0</p>
+<blockquote>
+<div><p>The <span class="math">\(Zero\)</span> sequence. This would be output directly without manipulation, 
+since the Zero sequence does not change.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>d</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(d\)</span> component.</p>
+</div></blockquote>
+<p><strong>q</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(q\)</span> component.</p>
+</div></blockquote>
+<p><strong>zero</strong> : as input parameter “zero”</p>
+<blockquote class="last">
+<div><p>The Zero sequence.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gsyTransforms</span> <span class="k">as</span> <span class="nn">trf</span>
+
+<span class="n">d</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">zero</span> <span class="o">=</span> <span class="n">trf</span><span class="o">.</span><span class="n">cal_park</span><span class="p">(</span><span class="n">phaseAdata</span><span class="p">,</span>
+                          <span class="n">phaseBdata</span><span class="p">,</span>
+                          <span class="n">phaseCdata</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="function">
-<dt id="gsyTransforms.cal_park_ddsrf">
-<code class="descclassname">gsyTransforms.</code><code class="descname">cal_park_ddsrf</code><span class="sig-paren">(</span><em>theta</em>, <em>alpha</em>, <em>beta</em>, <em>zero=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyTransforms.cal_park_ddsrf" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="gsyTransforms.cal_park_dsrf">
+<code class="descclassname">gsyTransforms.</code><code class="descname">cal_park_dsrf</code><span class="sig-paren">(</span><em>theta</em>, <em>alpha</em>, <em>beta</em>, <em>zero=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyTransforms.cal_park_dsrf" title="Permalink to this definition">¶</a></dt>
+<dd><p id="cal-park-dsrf">Calculates the Park Transform of 
+the Double Synchronous Reference Frame (DSRF).</p>
+<p>Accepts complex form of the Clarke Transform inputs 
+and the angle of the Synchronous Reference Frame (SRF).</p>
+<p>The DSRF approach is inferior to the DSOGI approach.</p>
+<p>Event the Decoupled-DSRF (DDSRF) is still inferior to the
+DSOGI approach since its performance is hugely dependent on the
+filters used to decouple the DSRF
+(bascially getting rid of the harmonics introudced by the DSRF).</p>
+<p>Returns the <span class="math">\(d_{+DSRF}, q_{+DSRF},d_{-DSRF}, q_{-DSRF}\)</span> and <span class="math">\(Zero\)</span> components.</p>
+<div class="math">
+\[ \begin{align}\begin{aligned}\begin{split}\left[\begin{matrix}d_{+DSRF} \\ q_{+DSRF} \end{matrix}\right]
+= 
+\left[
+\begin{matrix} 
+\cos\theta &amp; \sin\theta
+\\ 
+-\sin\theta &amp; \cos\theta
+\end{matrix}
+\right] 
+\left[
+\begin{matrix} 
+\alpha 
+\\
+\beta
+\end{matrix}
+\right]\end{split}\\\begin{split}\\\end{split}\\\begin{split}\left[\begin{matrix}d_{-DSRF} \\ q_{-DSRF} \end{matrix}\right]
+= 
+\left[
+\begin{matrix} 
+\cos\theta &amp; -\sin\theta
+\\ 
+\sin\theta &amp; \cos\theta
+\end{matrix}
+\right] 
+\left[
+\begin{matrix} 
+\alpha 
+\\
+\beta
+\end{matrix}
+\right]\end{split}\end{aligned}\end{align} \]</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">where:</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="math">\(\theta\)</span></td>
+<td>is the SRF angle in radians;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\alpha\)</span></td>
+<td>is the <span class="math">\(\alpha\)</span> component of the Clarke Transform;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\beta\)</span></td>
+<td>is the <span class="math">\(\beta\)</span> component of the Clarke Transform;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(d_{+DSRF}\)</span></td>
+<td>is the DSRF positive <span class="math">\(d\)</span> component;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(q_{+DSRF}\)</span></td>
+<td>is the DSRF positive <span class="math">\(q\)</span> component;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(d_{-DSRF}\)</span></td>
+<td>is the DSRF negative <span class="math">\(d\)</span> component;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(q_{-DSRF}\)</span></td>
+<td>is the DSRF negative <span class="math">\(q\)</span> component.</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>theta</strong> : float or a list of float in radians</p>
+<blockquote>
+<div><p>The angle of the SRF, usually provided by a PLL.</p>
+</div></blockquote>
+<p><strong>alpha</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(\alpha\)</span> component of the Clarke Transform</p>
+</div></blockquote>
+<p><strong>beta</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(\beta\)</span> component of the Clarke Transform</p>
+</div></blockquote>
+<p><strong>zero</strong> : any, default = 0</p>
+<blockquote>
+<div><p>The <span class="math">\(Zero\)</span> sequence. This would be outputed directly without manipulation. 
+Since the Zero sequence does not change.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>d_dsrf_pos</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The DSRF positive <span class="math">\(d\)</span> component.</p>
+</div></blockquote>
+<p><strong>q_dsrf_pos</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The DSRF positive <span class="math">\(q\)</span> component.</p>
+</div></blockquote>
+<p><strong>d_dsrf_neg</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The DSRF negative <span class="math">\(d\)</span> component.</p>
+</div></blockquote>
+<p><strong>q_dsrf_neg</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The DSRF negative <span class="math">\(q\)</span> component.</p>
+</div></blockquote>
+<p><strong>zero</strong> : as input parameter “zero”</p>
+<blockquote class="last">
+<div><p>The <span class="math">\(Zero\)</span> sequence.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gsyTransforms</span> <span class="k">as</span> <span class="nn">trf</span>
+
+<span class="p">(</span><span class="n">d_dsrf_pos</span><span class="p">,</span> <span class="n">q_dsrf_pos</span><span class="p">,</span>
+ <span class="n">d_dsrf_neg</span><span class="p">,</span> <span class="n">q_dsrf_neg</span><span class="p">,</span>
+ <span class="n">zero</span><span class="p">)</span>                      <span class="o">=</span> <span class="n">trf</span><span class="o">.</span><span class="n">cal_park_dsrf</span><span class="p">(</span><span class="n">phaseAdata</span><span class="p">,</span>
+                                                <span class="n">phaseBdata</span><span class="p">,</span>
+                                                <span class="n">phaseCdata</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="function">
 <dt id="gsyTransforms.cal_symm">
 <code class="descclassname">gsyTransforms.</code><code class="descname">cal_symm</code><span class="sig-paren">(</span><em>a</em>, <em>b</em>, <em>c</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyTransforms.cal_symm" title="Permalink to this definition">¶</a></dt>
 <dd><p id="cal-symm">Calculates the 3-phase symmetrical components (Fortescue).</p>
-<p>Accepts complex forms of three-phase inputs. Returns the positive sequence,
-the negative sequence and the zero sequence.</p>
+<p>Accepts complex form of three-phase inputs. Returns the Positive sequence,
+the Negative sequence and the Zero sequence.</p>
 <div class="math">
 \[A = e^{j \frac{2}{3} \pi} = \angle 120^{\circ}\]</div>
-<p>Commonly, the lowercase of <span class="math">\(A\)</span>, <span class="math">\(\alpha\)</span>, is used to avoid confusion with <span class="math">\(a\)</span> (/eɪ/).</p>
+<p>Commonly, the lowercase of <span class="math">\(A\)</span>, <span class="math">\(\alpha\)</span>, is used. 
+To avoid confusion with <span class="math">\(a\)</span> (/eɪ/), the uppercase, <span class="math">\(A\)</span>, is used here instead.</p>
 <div class="math">
 \[ \begin{align}\begin{aligned}\begin{split}\left[\begin{matrix} 
 a_{+} \\ b_{+} \\ c_{+}
 \end{matrix}\right] 
-= \frac{1}{3} 
+&amp;= \frac{1}{3} 
 \left[\begin{matrix} 
 1 &amp; A &amp; A^2 
 \\ A^2 &amp; 1 &amp; A
@@ -219,10 +705,10 @@ a_{+} \\ b_{+} \\ c_{+}
 \end{matrix}\right] 
 \left[\begin{matrix} 
 a \\ b \\ c 
-\end{matrix}\right]\end{split}\\\begin{split}\left[\begin{matrix} 
+\end{matrix}\right]\end{split}\\\begin{split}\\\end{split}\\\begin{split}\left[\begin{matrix} 
 a_{-} \\ b_{-} \\ c_{-}
 \end{matrix}\right] 
-= \frac{1}{3} 
+&amp;= \frac{1}{3} 
 \left[\begin{matrix} 
 1 &amp; A^2 &amp; A
 \\ A &amp; 1 &amp; A^2
@@ -230,9 +716,7 @@ a_{-} \\ b_{-} \\ c_{-}
 \end{matrix}\right] 
 \left[\begin{matrix} 
 a \\ b \\ c 
-\end{matrix}\right]\end{split}\end{aligned}\end{align} \]</div>
-<div class="math">
-\[\begin{split}\left[\begin{matrix} 
+\end{matrix}\right]\end{split}\\\begin{split}\\\end{split}\\\begin{split}\left[\begin{matrix} 
 a_{Zero} \\ b_{Zero} \\ c_{Zero}
 \end{matrix}\right] 
 = \frac{1}{3} 
@@ -243,15 +727,197 @@ a_{Zero} \\ b_{Zero} \\ c_{Zero}
 \end{matrix}\right] 
 \left[\begin{matrix} 
 a \\ b \\ c 
-\end{matrix}\right]\end{split}\]</div>
+\end{matrix}\right]\end{split}\end{aligned}\end{align} \]</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">where:</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="math">\(A\)</span></td>
+<td>is the <span class="math">\(120^{\circ}\)</span> shifter;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(a\)</span></td>
+<td>is the Phase-A input;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(b\)</span></td>
+<td>is the Phase-B input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(c\)</span></td>
+<td>is the Phase-C input;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(a_+\)</span></td>
+<td>is the positive sequence of Phase-A input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(b_+\)</span></td>
+<td>is the positive sequence of Phase-B input;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(c_+\)</span></td>
+<td>is the positive sequence of Phase-C input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(a_-\)</span></td>
+<td>is the negative sequence of Phase-A input;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(b_-\)</span></td>
+<td>is the negative sequence of Phase-B input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(c_-\)</span></td>
+<td>is the negative sequence of Phase-C input;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(a_{Zero}\)</span></td>
+<td>is the zero sequence of Phase-A input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(b_{Zero}\)</span></td>
+<td>is the zero sequence of Phase-B input;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(c_{Zero}\)</span></td>
+<td>is the zero sequence of Phase-C input.</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>a</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Phase-A inputs</p>
+</div></blockquote>
+<p><strong>b</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Phase-B inputs</p>
+</div></blockquote>
+<p><strong>c</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Phase-C inputs</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>a_pos</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Phase-A Positive sequence.</p>
+</div></blockquote>
+<p><strong>b_pos</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Phase-B Positive sequence.</p>
+</div></blockquote>
+<p><strong>c_pos</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Phase-C Positive sequence.</p>
+</div></blockquote>
+<p><strong>a_neg</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Phase-A Negative sequence.</p>
+</div></blockquote>
+<p><strong>b_neg</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Phase-B Negative sequence.</p>
+</div></blockquote>
+<p><strong>c_neg</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Phase-C Negative sequence.</p>
+</div></blockquote>
+<p><strong>Zero</strong> : complex or a list of complex</p>
+<blockquote class="last">
+<div><p>Ther Zero sequence. Since all zero sequence components are
+the same, only one is returned.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gsyTransforms</span> <span class="k">as</span> <span class="nn">trf</span>
+
+<span class="p">(</span><span class="n">phaseA_pos</span><span class="p">,</span> <span class="n">phaseB_pos</span><span class="p">,</span>
+ <span class="n">phaseC_pos</span><span class="p">,</span> <span class="n">phaseA_neg</span><span class="p">,</span> 
+ <span class="n">phaseB_neg</span><span class="p">,</span> <span class="n">phaseC_neg</span><span class="p">,</span> 
+ <span class="n">phaseZero</span><span class="p">)</span>              <span class="o">=</span> <span class="n">trf</span><span class="o">.</span><span class="n">cal_symm</span><span class="p">(</span><span class="n">phaseAdata</span><span class="p">,</span>
+                                        <span class="n">phaseBdata</span><span class="p">,</span>
+                                        <span class="n">phaseCdata</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
 <dt id="gsyTransforms.to_complex">
-<code class="descclassname">gsyTransforms.</code><code class="descname">to_complex</code><span class="sig-paren">(</span><em>mag</em>, <em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyTransforms.to_complex" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descclassname">gsyTransforms.</code><code class="descname">to_complex</code><span class="sig-paren">(</span><em>r</em>, <em>x</em>, <em>real_offset=0</em>, <em>imag_offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyTransforms.to_complex" title="Permalink to this definition">¶</a></dt>
+<dd><p id="to-complex">Converts to complex number according to given parameters.</p>
+<div class="math">
+\[ \begin{align}\begin{aligned}Real &amp;= r \cdot \cos(x) + Offset_{real} \\Imag &amp;= r \cdot \sin(x) + Offset_{imag} \\Complex &amp;= Real + j \cdot Imag \end{aligned}\end{align} \]</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">where:</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="math">\(r\)</span></td>
+<td>is the radius of the complex number;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(x\)</span></td>
+<td>is the angle in radians;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(Offset_{real}\)</span></td>
+<td>is the offset to the real part;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(Offset_{imag}\)</span></td>
+<td>is the offset to the imaginary part;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(j\)</span></td>
+<td>is the imaginary unit.</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>r</strong> : float or a list of float</p>
+<blockquote>
+<div><p>The radius of the complex number.</p>
+</div></blockquote>
+<p><strong>x</strong> : float or a list of float in radians</p>
+<blockquote>
+<div><p>The angle of the phasor/vector.</p>
+</div></blockquote>
+<p><strong>real_offset</strong> : float or a list of float</p>
+<blockquote>
+<div><p>The offset to the real part, like a DC offset, whose imagnary part is zero.</p>
+</div></blockquote>
+<p><strong>imag_offset</strong> : float or a list of float</p>
+<blockquote>
+<div><p>The offset to the imaginary part.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">complex or a list of complex</p>
+<blockquote class="last">
+<div><p>The complex number caculated according to the given parameters.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">gsyTransforms</span> <span class="k">as</span> <span class="nn">trf</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
+<span class="n">a</span> <span class="o">=</span> <span class="n">trf</span><span class="o">.</span><span class="n">to_complex</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
 </div>
 
 

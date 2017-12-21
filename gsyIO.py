@@ -2,23 +2,34 @@
 """
 Custom module for genreal IO.
 
+Module Name : gsyIO
+
 Author : 高斯羽 博士 (Dr. GAO, Siyu)
 
-Version : 0.1.4
+Version : 0.2.0
 
-Last Modified : 2017-12-04
+Last Modified : 2017-12-12
 
 Change Log
 ----------------------
+* **Notable changes:**
 
-* Version : 0.1.4
-    - notable
+    + Version : 0.2.0
+        - Added "data_time_now"
+        - Added "prompt_msg"
+        - Added "save_csv"
+        - Added "save_csv_gui"
+        - Added "save_image_gui"
 
 
 List of functions
 ----------------------
 
+* date_time_now_
+* prompt_msg_
 * save_csv_
+* save_csv_gui_
+* save_image_gui_
 * save_txt_
 * save_txt_on_event_
 * search_file_and_start_
@@ -38,6 +49,17 @@ import time
 from tkinter import filedialog
 from time import gmtime, strftime, sleep
 
+CONST_IMAGE_FILETER = [('Scalable Vector Graphics','*.svg *.svgz'),
+                       ('Portable Network Graphics','*.png'),
+                       ('Portable Document Format', '*.pdf'),
+                       ('Encapsulated Poscript','*.eps'),
+                       ('Joint Photographic Experts Group','*.jpeg *.jpg'),
+                       ('PGF code for LaTex','*.pgf'),
+                       ('Postscript','*.ps'),
+                       ('Raw RGBA bitmap','*.raw *.rgba'),
+                       ('Tagged Image File Format','*.tif *.tiff'),
+                       ('all files','*.*')]
+
 # =============================================================================
 # <Function: get system time and date>
 # =============================================================================
@@ -55,7 +77,7 @@ def date_time_now():
 
     Returns
     -------
-    locStr_time_date : str
+    str_date_time : str
         Formatted system date time string in 'yyyy-mm-dd, HH:MM:SS:'. 
         The last colon is intended for printing to the console (or making logs).
 
@@ -65,12 +87,13 @@ def date_time_now():
     '2017-11-20, 15:14:42:'
     """
 
-    locStr_time_date = strftime('%Y-%m-%d, %H:%M:%S:', gmtime())
+    str_date_time = strftime('%Y-%m-%d, %H:%M:%S:', gmtime())
 
-    return locStr_time_date
+    return str_date_time
 # =============================================================================
 # </Function: get system time and date>
 # =============================================================================
+
 
 # =============================================================================
 # <Function: save the text as a txt file>
@@ -92,11 +115,10 @@ def save_txt(str_file_path, str_txt):
 
     Returns
     -------
-    
     bool
-        Returns True if read successful (no exception). 
+        Returns True if read successful (no exception).
         Returns False on exception.
-    
+
     Examples
     --------
     .. code:: python
@@ -126,10 +148,10 @@ def save_txt(str_file_path, str_txt):
 # <Function: save the text as a txt file on event>
 # =============================================================================
 def save_txt_on_event(event, str_txt):
-    
+
     """
     .. _save_txt_on_event :     
-        
+
     This funciton calls the "save_txt" function to save the string into a text
     file.
     
@@ -245,7 +267,8 @@ def save_txt_on_event(event, str_txt):
 
 
 # =============================================================================
-# <Function: search the file according to the given filename and start it with os default app>    
+# <Function: search the file according to the given filename 
+# and start it with os default app>
 # =============================================================================    
 def search_file_and_start(str_pattern, str_filename):
     
@@ -315,7 +338,8 @@ def search_file_and_start(str_pattern, str_filename):
     
     return bool_found    
 # =============================================================================
-# </Function: search the file according to the given filename and start it with os default app>    
+# </Function: search the file according to the given filename
+# and start it with os default app>    
 # =============================================================================
     
 
@@ -330,8 +354,7 @@ def save_csv(list_header, list_data, str_file_path):
     This function combines the given headers and the given data and then writes
     them into the given CSV file path.
         
-        
-    This function uses the csv module.
+    This function uses the "csv" module.
     
     Parameters
     ----------
@@ -347,7 +370,8 @@ def save_csv(list_header, list_data, str_file_path):
     Returns
     -------    
     bool
-        Returns True if file saved with no exception. No return if exceptions.
+        Returns True if file saved with no exception. 
+        No return if exceptions. Instead, the exceptions would be raised.
         
     Raises
     -------
@@ -371,7 +395,7 @@ def save_csv(list_header, list_data, str_file_path):
         
     .. code:: python
         
-        temp_data = list(zip(*list_data))        
+        temp_data = list(zip(*list_data))
     
     Examples
     --------
@@ -379,6 +403,8 @@ def save_csv(list_header, list_data, str_file_path):
     
         import numpy as np
         import csv
+
+        from gsyIO import save_csv
         
         time = np.arange(0, 1, 0.05)
 
@@ -393,7 +419,6 @@ def save_csv(list_header, list_data, str_file_path):
         str_file_path = 'c:/temp/test.csv'
         
         bool_saved = save_csv(headers, data_set, str_file_path)
-        
     """
     
     # error messages
@@ -403,8 +428,9 @@ def save_csv(list_header, list_data, str_file_path):
     str_err_msg_data_len_mismatch = ('The length of each data set'
                                      + ' must be all the same')
     
-    # error check 1, raise ValueError if the number of headers is not the same
-    # as the number of data sets
+    # error check 1, 
+    # raise ValueError if the number of headers 
+    # is not the same as the number of data sets
     if len(list_header) != len(list_data):
         
         print('Error: Header mismatch.' 
@@ -419,8 +445,8 @@ def save_csv(list_header, list_data, str_file_path):
         pass
     
     
-    # error check 2, raise ValueError if the lenght of the data sets are not the
-    # same
+    # error check 2,
+    # raise ValueError if the lenght of the data sets are not the same
     bool_data_len = all( len(x) == len(list_data[0]) for x in list_data )
     
     if bool_data_len == False:
@@ -464,17 +490,67 @@ def save_csv(list_header, list_data, str_file_path):
 # =============================================================================
 # </Function: save the data as a CSV file>
 # =============================================================================
-        
+
+
+# =============================================================================
+# <Function: gui for saving the data as a CSV file>
+# =============================================================================
 def save_csv_gui(list_header, list_data):
+
+    """
+    .. _save_csv_gui :     
+        
+    This function is a gui wrapper for "save_csv".
+        
+    This function prompts a file save dialogue to allow the user to select the 
+    directory and filename.
+
+    This function would then return the full path to "save_csv" to allow saving CSV.
     
+    Parameters
+    ----------
+    list_header : list
+        The headers for the data sets.
+        
+    list_data : list
+        The data sets. Each list element can be a 1-D list.
+    
+    Returns
+    -------    
+    bool
+        Returns True if file saved with no exception. Returns False if exceptions.
+    
+    Examples
+    --------
+    .. code:: python
+    
+        import numpy as np
+        import csv
+        
+        time = np.arange(0, 1, 0.05)
+
+        data1 = np.arange(21, 20, -0.05)
+        
+        data2 = np.arange(38, 39, 0.05)
+        
+        headers = ['time', 'data1', 'data2']
+        
+        data_set = [time, data1, data2]
+        
+        save_csv_gui(headers, data_set)
+        
+    """
+
     bool_success = False
-    
+
     try:
     
         locRoot = tk.Tk()
         
         locRoot.withdraw()
         
+        # you need to set the "defaulttextension" otherwise the returned string 
+        # would not have any extension
         str_file_path = filedialog.asksaveasfilename(initialdir=os.getcwd(),
                                                       title="Save as CSV",
                                                       defaultextension='.csv',
@@ -492,6 +568,8 @@ def save_csv_gui(list_header, list_data):
             
             pass
         
+        # if the last four letter (case insensitive) is ".csv" then pass,
+        # if not, add ".csv"
         if str_file_path[-4:].casefold() == '.csv'.casefold():
             
             pass
@@ -500,7 +578,7 @@ def save_csv_gui(list_header, list_data):
             
             str_file_path = str_file_path + '.csv'
 
-        print(str_file_path)
+        # print(str_file_path)
             
         bool_success = save_csv(list_header, list_data, str_file_path)
     
@@ -550,30 +628,86 @@ def save_csv_gui(list_header, list_data):
         
         locRoot.destroy()
         
-        return False   
+        return False
+# =============================================================================
+# <Function: gui for saving the data as a CSV file>
+# =============================================================================
 
-def save_image():
 
-    str_ini_dir = os.getcwd()
+# =============================================================================
+# <Function: gui for saving images>
+# =============================================================================
+def save_image_gui(list_filetypes=CONST_IMAGE_FILETER):
 
-    str_title = 'Save as image'
+    """
+    .. _save_image_gui :     
+        
+    This function is a gui wrapper for getting the image full path. The actual
+    implementation of image saving is up to you.
+        
+    This function prompts a file save dialogue to allow the user to select the 
+    directory and filename.
+    
+    Parameters
+    ----------
+    list_filetypes : list
+        The list for image filetype filters.
 
-    list_filetypes = [('Portable Network Graphics','*.png'),
+        The default list is :
+
+        .. code :: python
+
+            CONST_IMAGE_FILETER = [('Scalable Vector Graphics','*.svg *.svgz'),
+                      ('Portable Network Graphics','*.png'),
                       ('Portable Document Format', '*.pdf'),
                       ('Encapsulated Poscript','*.eps'),
                       ('Joint Photographic Experts Group','*.jpeg *.jpg'),
                       ('PGF code for LaTex','*.pgf'),
                       ('Postscript','*.ps'),
                       ('Raw RGBA bitmap','*.raw *.rgba'),
-                      ('Scalable Vector Graphics','*.svg *.svgz'),
-                      ('Tagged Image File Format','*.tif *.tiff'),                      
+                      ('Tagged Image File Format','*.tif *.tiff'),
                       ('all files','*.*')]
+
+       
+
+    Returns
+    -------    
+    str_file_path : str
+        The full path of the image file.
+    
+    Examples
+    --------
+    .. code:: python
+    
+        import numpy as np
+        import csv
+        
+        time = np.arange(0, 1, 0.05)
+
+        data1 = np.arange(21, 20, -0.05)
+        
+        data2 = np.arange(38, 39, 0.05)
+        
+        headers = ['time', 'data1', 'data2']
+        
+        data_set = [time, data1, data2]
+        
+        str_filename = save_csv_gui(headers, data_set)
+
+        print(str_filename)
+    """
+
+    str_ini_dir = os.getcwd()
+
+    str_title = 'Save as image'
 
     try:
     
         locRoot = tk.Tk()
         
         locRoot.withdraw()
+
+        # print('just above')
         
         str_file_path = filedialog.asksaveasfilename(initialdir=str_ini_dir,
                                                       title=str_title,
@@ -586,10 +720,57 @@ def save_image():
 
     except:
 
+        # print('exception img')
+
         return ''
+# =============================================================================
+# </Function: gui for saving images>
+# =============================================================================
 
 
+# =============================================================================
+# <Function: prompt different types of messages>
+# =============================================================================
 def prompt_msg(str_title, str_msg, str_type='info'):
+
+    """
+    .. _prompt_msg :     
+        
+    This function is a wrapper for tk's three different message boxes.
+        
+    This function prompts a message box with the message given.
+    
+    Parameters
+    ----------
+    str_title : str
+        Title of the message box.
+
+    str_msg : str
+        The message to be shown.
+
+    str_type : str, default = "info"
+        Type of the message box.
+
+        * "info" = information message box. This is the default value.
+        * "err" = error message box
+        * "warn" = warning message box
+
+
+    Returns
+    -------    
+    None
+    
+    Examples
+    --------
+    .. code:: python
+    
+        import tkinter as tk
+        import tkinter.messagebox as msgbox
+
+        import gsyIO
+
+        gsyIO.prompt_msg('message title', 'message body', 'err')
+    """
 
     locRoot = tk.Tk()
 
@@ -612,3 +793,6 @@ def prompt_msg(str_title, str_msg, str_type='info'):
         msgbox.showinfo(str_title, str_msg)
 
     locRoot.destroy()
+# =============================================================================
+# </Function: prompt different types of messages>
+# =============================================================================
