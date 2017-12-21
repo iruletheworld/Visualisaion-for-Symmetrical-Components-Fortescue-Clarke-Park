@@ -708,20 +708,20 @@ class Ui_MainWindow(object):
                                                self.d_pos, self.q_pos,
                                                self.d_neg, self.q_neg)
 
-        self.fig_polar_plts = gsyPlt.pltPolar(self.ylim_max,
-                                              self.phaseAdata, self.phaseBdata, self.phaseCdata,
-                                              self.phaseA_pos, self.phaseB_pos, self.phaseC_pos,
-                                              self.phaseA_neg, self.phaseB_neg, self.phaseC_neg,
-                                            
-                                              self.phaseZero,
-                                            
-                                              self.alpha, self.beta,
-                                              self.alpha_pos, self.beta_pos,
-                                              self.alpha_neg, self.beta_neg,
-                                            
-                                              self.d, self.q,
-                                              self.d_pos, self.q_pos,
-                                              self.d_neg, self.q_neg)
+        self.fig_polar_plts = gsyPlt.pltPolarDom(self.ylim_max,
+                                                 self.phaseAdata, self.phaseBdata, self.phaseCdata,
+                                                 self.phaseA_pos, self.phaseB_pos, self.phaseC_pos,
+                                                 self.phaseA_neg, self.phaseB_neg, self.phaseC_neg,
+                                                
+                                                 self.phaseZero,
+                                                
+                                                 self.alpha, self.beta,
+                                                 self.alpha_pos, self.beta_pos,
+                                                 self.alpha_neg, self.beta_neg,
+                                                
+                                                 self.d, self.q,
+                                                 self.d_pos, self.q_pos,
+                                                 self.d_neg, self.q_neg)
 
         self.print_info('Plots updated')
 
