@@ -9,7 +9,7 @@ Author : 高斯羽 博士 (Dr. GAO, Siyu)
 
 Version : 0.1.0
 
-Last Modified : 2017-12-12
+Last Modified : 2017-12-21
 
 Change Log
 ----------------------
@@ -417,6 +417,123 @@ def pltPolarDom(r_max,
              d, q,
              d_pos, q_pos,
              d_neg, q_neg):
+
+    """
+    .. _pltPolarDom :
+
+    Plots the time domain data in a 4 by 3 grid of subplots.
+
+    Parameters
+    ----------
+    time : float or a list of float
+        Time data.
+
+    xlim_min : float
+        Minimum of x axis. This is also the minimum of time.
+
+    xlim_max : float
+        Maximum of x axis. This is also the maximum of time.
+
+    ylim_min : float
+        Minimum of y axis.
+
+    ylim_max : float
+        Maximum of y axis.
+
+    a : float or a list of float
+        Phase-A input.
+
+    b : float or a list of float
+        Phase-B input.
+
+    c : float or a list of float
+        Phase-C input.
+
+    a_pos : float or a list of float
+        Positive sequence of Phase-A input.
+
+    b_pos : float or a list of float
+        Positive sequence of Phase-B input.
+
+    c_pos : float or a list of float
+        Positive sequence of Phase-C input.
+
+    a_neg : float or a list of float
+        Negative sequence of Phase-A input.
+
+    b_neg : float or a list of float
+        Negative sequence of Phase-B input.
+
+    c_neg : float or a list of float
+        Negative sequence of Phase-C input.
+
+    zero : float or a list of float
+        The Zero sequence
+
+    alpha : float or a list of float
+        The :math:`\\alpha` component of the Clarke Transform.
+
+    beta : float or a list of float
+        The :math:`\\beta` component of the Clarke Transform.
+
+    alpha_pos : float or a list of float
+        The :math:`\\alpha_+` component of the Clarke Transform (DSOGI).
+
+    beta_pos : float or a list of float
+        The :math:`\\beta_+` component of the Clarke Transform (DSOGI).
+
+    alpha_neg : float or a list of float
+        The :math:`\\alpha_-` component of the Clarke Transform (DSOGI).
+
+    beta_neg : float or a list of float
+        The :math:`\\beta_-` component of the Clarke Transform (DSOGI).
+
+    d : float or a list of float
+        The :math:`d` component of the Park Transform.
+
+    q : float or a list of float
+        The :math:`q` component of the Park Transform.
+
+    d_pos : float or a list of float
+        The :math:`d_+` component of the Park Transform (by applying the 
+        Park Transform on the DSOGI Clarke Transform components).
+
+    q_pos : float or a list of float
+        The :math:`q_+` component of the Park Transform (by applying the 
+        Park Transform on the DSOGI Clarke Transform components).
+
+    d_neg : float or a list of float
+        The :math:`d_-` component of the Park Transform (by applying the 
+        Park Transform on the DSOGI Clarke Transform components).
+
+    q_neg : float or a list of float
+        The :math:`q_-` component of the Park Transform (by applying the 
+        Park Transform on the DSOGI Clarke Transform components).
+
+    Returns
+    -------
+    fig_main : matplotlib figure object
+        The figure object.
+    
+    Examples
+    --------
+    
+    .. code :: python
+
+        fig_time_dom = gsyPlt.pltTimeDom(time,
+                                         xlim_min, xlim_max,
+                                         ylim_min, ylim_max,
+                                         a, b, c,
+                                         a_pos, b_pos, c_pos,
+                                         a_neg, b_neg, c_neg,
+                                         zero, 
+                                         alpha, beta,
+                                         alpha_pos, beta_pos,
+                                         alpha_neg, beta_neg,
+                                         d, q,
+                                         d_pos, q_pos,
+                                         d_neg, q_neg)
+    """
 
     fig_polar = plt.figure(figsize=(CONST_WITH/CONST_DPI, CONST_HEIGHT/CONST_DPI), 
                            dpi=CONST_DPI, 
