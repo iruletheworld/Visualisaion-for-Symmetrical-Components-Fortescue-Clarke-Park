@@ -10,6 +10,7 @@ Dynamic Visualisation for Symmetrical Components's documentation!
    :maxdepth: 3
    :numbered:
 
+   intro
    gsyTransforms
    gsyIO
    gsyPlt

@@ -22,8 +22,8 @@ Change Log
 List of functions
 ----------------------
 
+* pltPolarDom_
 * pltTimeDom_
-* prompt_msg_
 
 Function definitions
 ----------------------
