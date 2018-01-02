@@ -49,7 +49,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Dynamic Visualisation for Symmetrical Components'
-copyright = '2017, GAO, Siyu'
+copyright = '2017 - 2018, GAO, Siyu'
 author = 'GAO, Siyu'
 
 # The version info for the project you're documenting, acts as replacement for

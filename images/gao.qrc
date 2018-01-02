@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="gao">
+    <file>gao.png</file>
+  </qresource>
+</RCC>

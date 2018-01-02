@@ -1,0 +1,879 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2. Introduction &mdash; Dynamic Visualisation for Symmetrical Components 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Dynamic Visualisation for Symmetrical Components 0.1.0 documentation" href="index.html"/>
+        <link rel="next" title="3. Library for transforms : gsyTransforms" href="gsyTransforms.html"/>
+        <link rel="prev" title="1. Preface" href="preface.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Dynamic Visualisation for Symmetrical Components
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">1. Preface</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#user-defined-inputs">2.1. User-Defined Inputs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#three-phase-inputs">2.1.1. Three-Phase Inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pll-angle">2.1.2. PLL Angle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fortescue-transform-the-original-symmetrical-components">2.2. Fortescue Transform (the original symmetrical components)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clarke-transform-amplitude-invariant-and-dsogi">2.3. Clarke Transform (amplitude invariant and DSOGI)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-amplitude-invariant-clarke-transform">2.3.1. The amplitude invariant Clarke Transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-dsogi-clarke-transform">2.3.2. The DSOGI Clarke Transform</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#park-transform">2.4. Park Transform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-original-definition">2.4.1. The original definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dsogi-park-transform">2.4.2. DSOGI Park Transform</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#user-interface">2.5. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#user-configurations-input-fields">2.5.1. User Configurations (input fields)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#button-definitions">2.5.2. Button Definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">2.6. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gsyTransforms.html">3. Library for transforms : gsyTransforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsyIO.html">4. Library for custom IOs : gsyIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsyPlt.html">5. Library for custom Plots : gsyPlt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">6. Appendix : Conversion of Qt UI files and resource files to Python scripts</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Dynamic Visualisation for Symmetrical Components</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>2. Introduction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/intro.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduction">
+<h1>2. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>The purpose of this project is to dynamically visualise all the three-phase symmetrical components.
+This includes the following definitions for symmetrical components:</p>
+<ul class="simple">
+<li>The orginal definition proposed by <strong>Fortescue</strong>, which is at its centenary this year (2018)</li>
+<li>Symmetrical components for the <strong>Clarke Transform</strong> (amplitude invariant), according to the DSOGI</li>
+<li>Symmetrical components for the <strong>Park Transform</strong>, calculated from the DSOGI Clarke Transform symmetrical components</li>
+</ul>
+<p>This project would allow the user to define the three-phase inputs and the PLL angle to allow studies of
+different situations.</p>
+<p>This project would provide the plots in both the time-domain and the polar-domain.</p>
+<p>This project would allow the user to export the plots in various formats.</p>
+<p>This project would allow the user to export the raw data in CSV.</p>
+<p>This project would save user-defined inputs automatically in an INI file.</p>
+<p>The GUI of this project is built with Qt designer.</p>
+<div class="section" id="user-defined-inputs">
+<h2>2.1. User-Defined Inputs<a class="headerlink" href="#user-defined-inputs" title="Permalink to this headline">¶</a></h2>
+<p>The following user-defined inputs are used to perform the calculations for the symmetrical components.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#three-phase-inputs">Three-Phase Inputs</a></li>
+<li><a class="reference internal" href="#pll-angle">PLL Angle</a></li>
+</ul>
+<div class="section" id="three-phase-inputs">
+<h3>2.1.1. Three-Phase Inputs<a class="headerlink" href="#three-phase-inputs" title="Permalink to this headline">¶</a></h3>
+<div class="math">
+\[\begin{split}\left[\begin{matrix}
+Input_a \\ Input_b \\ Input_c
+\end{matrix}\right] =
+\left[\begin{matrix}
+Mag_a \cdot \cos(\omega_a \cdot t + \varphi_a) + DC_a \\
+Mag_b \cdot \cos(\omega_b \cdot t + \varphi_b) + DC_b \\
+Mag_c \cdot \cos(\omega_c \cdot t + \varphi_c) + DC_c
+\end{matrix}\right]\end{split}\]</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">where:</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="math">\(Input_a\)</span></td>
+<td>is the Phase-A input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(Input_b\)</span></td>
+<td>is the Phase-B input;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(Input_c\)</span></td>
+<td>is the Phase-C input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(Mag_a\)</span></td>
+<td>is the magnitude of the Phase-A input;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(Mag_b\)</span></td>
+<td>is the magnitude of the Phase-B input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(Mag_c\)</span></td>
+<td>is the magnitude of the Phase-C input;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\omega_a\)</span></td>
+<td>is the angular frequency of the Phase-A input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\omega_b\)</span></td>
+<td>is the angular frequency of the Phase-B input;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\omega_c\)</span></td>
+<td>is the angular frequency of the Phase-C input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(t\)</span></td>
+<td>is the time;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\varphi_a\)</span></td>
+<td>is the initial phase of the Phase-A input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\varphi_b\)</span></td>
+<td>is the initial phase of the Phase-B input;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\varphi_c\)</span></td>
+<td>is the initial phase of the Phase-C input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(DC_a\)</span></td>
+<td>is the DC bias of the Phase-A input;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(DC_b\)</span></td>
+<td>is the DC bias of the Phase-B input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(DC_c\)</span></td>
+<td>is the DC bias of the Phase-C input.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="pll-angle">
+<h3>2.1.2. PLL Angle<a class="headerlink" href="#pll-angle" title="Permalink to this headline">¶</a></h3>
+<div class="math">
+\[\theta_{PLL} = \omega_{PLL} \cdot t + \varphi_{PLL}\]</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">where:</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="math">\(\theta_{PLL}\)</span></td>
+<td>is the PLL angle;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\omega_{PLL}\)</span></td>
+<td>is the angular frequency of the synchronous reference frame;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(t\)</span></td>
+<td>is the time;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\varphi_{PLL}\)</span></td>
+<td>is the initial phase of the PLL angle.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="fortescue-transform-the-original-symmetrical-components">
+<h2>2.2. Fortescue Transform (the original symmetrical components)<a class="headerlink" href="#fortescue-transform-the-original-symmetrical-components" title="Permalink to this headline">¶</a></h2>
+<p>Define:</p>
+<div class="math">
+\[A = e^{j \frac{2}{3} \pi} = \angle 120^{\circ}\]</div>
+<p>Commonly, the lowercase of <span class="math">\(A\)</span> (capital <span class="math">\(\alpha\)</span>), is used.
+To avoid confusion with <span class="math">\(a\)</span> (/eɪ/), the uppercase, <span class="math">\(A\)</span>, is used here instead.</p>
+<div class="math">
+\[ \begin{align}\begin{aligned}\begin{split}\left[\begin{matrix}
+a_{+} \\ b_{+} \\ c_{+}
+\end{matrix}\right]
+&amp;= \frac{1}{3}
+\left[\begin{matrix}
+1 &amp; A &amp; A^2
+\\ A^2 &amp; 1 &amp; A
+\\ A &amp; A^2 &amp; 1
+\end{matrix}\right]
+\left[\begin{matrix}
+a \\ b \\ c
+\end{matrix}\right]\end{split}\\\begin{split}\\\end{split}\\\begin{split}\left[\begin{matrix}
+a_{-} \\ b_{-} \\ c_{-}
+\end{matrix}\right]
+&amp;= \frac{1}{3}
+\left[\begin{matrix}
+1 &amp; A^2 &amp; A
+\\ A &amp; 1 &amp; A^2
+\\ A^2 &amp; A &amp; 1
+\end{matrix}\right]
+\left[\begin{matrix}
+a \\ b \\ c
+\end{matrix}\right]\end{split}\\\begin{split}\\\end{split}\\\begin{split}\left[\begin{matrix}
+a_{Zero} \\ b_{Zero} \\ c_{Zero}
+\end{matrix}\right]
+= \frac{1}{3}
+\left[\begin{matrix}
+1 &amp; 1 &amp; 1
+\\ 1 &amp; 1 &amp; 1
+\\ 1 &amp; 1 &amp; 1
+\end{matrix}\right]
+\left[\begin{matrix}
+a \\ b \\ c
+\end{matrix}\right]\end{split}\end{aligned}\end{align} \]</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">where:</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="math">\(A\)</span></td>
+<td>is the <span class="math">\(120^{\circ}\)</span> shifter;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(a\)</span></td>
+<td>is the Phase-A input;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(b\)</span></td>
+<td>is the Phase-B input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(c\)</span></td>
+<td>is the Phase-C input;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(a_+\)</span></td>
+<td>is the positive sequence of Phase-A input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(b_+\)</span></td>
+<td>is the positive sequence of Phase-B input;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(c_+\)</span></td>
+<td>is the positive sequence of Phase-C input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(a_-\)</span></td>
+<td>is the negative sequence of Phase-A input;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(b_-\)</span></td>
+<td>is the negative sequence of Phase-B input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(c_-\)</span></td>
+<td>is the negative sequence of Phase-C input;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(a_{Zero}\)</span></td>
+<td>is the zero sequence of Phase-A input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(b_{Zero}\)</span></td>
+<td>is the zero sequence of Phase-B input;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(c_{Zero}\)</span></td>
+<td>is the zero sequence of Phase-C input.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="clarke-transform-amplitude-invariant-and-dsogi">
+<h2>2.3. Clarke Transform (amplitude invariant and DSOGI)<a class="headerlink" href="#clarke-transform-amplitude-invariant-and-dsogi" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-amplitude-invariant-clarke-transform">
+<h3>2.3.1. The amplitude invariant Clarke Transform<a class="headerlink" href="#the-amplitude-invariant-clarke-transform" title="Permalink to this headline">¶</a></h3>
+<div class="math">
+\[\begin{split}\left[\begin{matrix} \alpha \\ \beta \\ Zero \end{matrix}\right] =
+\frac{2}{3}
+\left[\begin{matrix}
+1 &amp; -\frac{1}{2} &amp; -\frac{1}{2} \\
+0 &amp; \frac{\sqrt{3}}{2} &amp; -\frac{\sqrt{3}}{2} \\
+\frac{1}{2} &amp; \frac{1}{2} &amp; \frac{1}{2}
+\end{matrix}\right]
+\left[\begin{matrix}
+a \\ b \\ c
+\end{matrix}\right]\end{split}\]</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">where:</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="math">\(a\)</span></td>
+<td>is the Phase-A input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(b\)</span></td>
+<td>is the Phase-B input;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(c\)</span></td>
+<td>is the Phase-C input;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\alpha\)</span></td>
+<td>is the <span class="math">\(\alpha\)</span> component of the Clarke Transform;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\beta\)</span></td>
+<td>is the <span class="math">\(\beta\)</span> component of the Clarke Transform;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(Zero\)</span></td>
+<td>is the <span class="math">\(Zero\)</span> sequnece component.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="the-dsogi-clarke-transform">
+<h3>2.3.2. The DSOGI Clarke Transform<a class="headerlink" href="#the-dsogi-clarke-transform" title="Permalink to this headline">¶</a></h3>
+<p>Define:</p>
+<div class="math">
+\[quad = e^{-j \frac{1}{2} \pi} = \angle -90^{\circ}\]</div>
+<p>Then:</p>
+<div class="math">
+\[ \begin{align}\begin{aligned}\begin{split}\left[\begin{matrix}
+\alpha_+ \\ \beta_+
+\end{matrix}\right] =
+\frac{1}{2}
+\left[\begin{matrix}
+1 &amp; -quad \\
+quad &amp; 1
+\end{matrix}
+\right]
+\left[\begin{matrix}
+\alpha \\
+\beta
+\end{matrix}\right]\end{split}\\\begin{split}\\\end{split}\\\begin{split}\left[\begin{matrix}
+\alpha_- \\
+\beta_-
+\end{matrix}\right] =
+\frac{1}{2}
+\left[\begin{matrix}
+1 &amp; quad \\
+-quad &amp; 1
+\end{matrix}\right]
+\left[\begin{matrix}
+\alpha \\
+\beta
+\end{matrix}\right]\end{split}\end{aligned}\end{align} \]</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">where:</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="math">\(quad\)</span></td>
+<td>is the <span class="math">\(-90^{\circ}\)</span> shifter;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\alpha\)</span></td>
+<td>is the <span class="math">\(\alpha\)</span> component of the Clarke Transform;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\beta\)</span></td>
+<td>is the <span class="math">\(\beta\)</span> component of the Clarke Transform;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\alpha_+\)</span></td>
+<td>is the positive sequnece of the <span class="math">\(\alpha\)</span> component;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\beta_+\)</span></td>
+<td>is the positive sequnece of the <span class="math">\(\beta\)</span> component;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\alpha_-\)</span></td>
+<td>is the negative sequnece of the <span class="math">\(\alpha\)</span> component;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\beta_-\)</span></td>
+<td>is the negative sequnece of the <span class="math">\(\beta\)</span> component.</td>
+</tr>
+</tbody>
+</table>
+<p>For more information of the DSOGI <a class="footnote-reference" href="#id2" id="id1">[1]</a>, see:</p>
+<blockquote>
+<div><table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Teodorescu, R., Liserre, M., and Rodríguez, P., <em>Grid Converters for Photovoltaic
+and Wind Power Systems</em>. 2011: John Wiley &amp; Sons, Ltd.</td></tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="park-transform">
+<h2>2.4. Park Transform<a class="headerlink" href="#park-transform" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-original-definition">
+<h3>2.4.1. The original definition<a class="headerlink" href="#the-original-definition" title="Permalink to this headline">¶</a></h3>
+<div class="math">
+\[\begin{split}\left[\begin{matrix} d \\ q \\ Zero \end{matrix}\right] =
+\left[\begin{matrix}
+\cos\theta &amp; \sin\theta &amp; 0 \\
+-\sin\theta &amp; \cos\theta &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{matrix}\right]
+\left[\begin{matrix}
+\alpha \\ \beta \\ Zero
+\end{matrix}\right]\end{split}\]</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">where:</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="math">\(d\)</span></td>
+<td>is the <span class="math">\(d\)</span> component of the Park Transform;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(q\)</span></td>
+<td>is the <span class="math">\(q\)</span> component of the Park Transform;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(Zero\)</span></td>
+<td>is the <span class="math">\(Zero\)</span> sequence;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\theta\)</span></td>
+<td>is the SRF angle in radians;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\alpha\)</span></td>
+<td>is the <span class="math">\(\alpha\)</span> component of the Clarke Transform;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\beta\)</span></td>
+<td>is the <span class="math">\(\beta\)</span> component of the Clarke Transform;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="dsogi-park-transform">
+<h3>2.4.2. DSOGI Park Transform<a class="headerlink" href="#dsogi-park-transform" title="Permalink to this headline">¶</a></h3>
+<div class="math">
+\[ \begin{align}\begin{aligned}\begin{split}\left[\begin{matrix} d_+ \\ q_+ \\ Zero \end{matrix}\right] =
+\left[\begin{matrix}
+\cos\theta &amp; \sin\theta &amp; 0 \\
+-\sin\theta &amp; \cos\theta &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{matrix}\right]
+\left[\begin{matrix}
+\alpha_+ \\ \beta_+ \\ Zero
+\end{matrix}\right]\end{split}\\\begin{split}\\\end{split}\\\begin{split}\left[\begin{matrix} d_- \\ q_- \\ Zero \end{matrix}\right] =
+\left[\begin{matrix}
+\cos\theta &amp; \sin\theta &amp; 0 \\
+-\sin\theta &amp; \cos\theta &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{matrix}\right]
+\left[\begin{matrix}
+\alpha_- \\ \beta_- \\ Zero
+\end{matrix}\right]\end{split}\end{aligned}\end{align} \]</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">where:</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="math">\(d_+\)</span></td>
+<td>is the positive <span class="math">\(d\)</span> component of the DSOGI Park Transform;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(q_+\)</span></td>
+<td>is the positive <span class="math">\(q\)</span> component of the DSOGI Park Transform;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(d_-\)</span></td>
+<td>is the negative <span class="math">\(d\)</span> component of the DSOGI Park Transform;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(q_-\)</span></td>
+<td>is the negative <span class="math">\(q\)</span> component of the DSOGI Park Transform;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(Zero\)</span></td>
+<td>is the <span class="math">\(Zero\)</span> sequence;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\theta\)</span></td>
+<td>is the SRF angle in radians;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\alpha_+\)</span></td>
+<td>is the positive <span class="math">\(\alpha\)</span> component of the DSOGI Clarke Transform;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\beta_+\)</span></td>
+<td>is the positive <span class="math">\(\beta\)</span> component of the DSOGI Clarke Transform;</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\alpha_-\)</span></td>
+<td>is the negative <span class="math">\(\alpha\)</span> component of the DSOGI Clarke Transform;</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\beta_-\)</span></td>
+<td>is the negative <span class="math">\(\beta\)</span> component of the DSOGI Clarke Transform.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="user-interface">
+<h2>2.5. User Interface<a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h2>
+<p>The user interface is shown in the following figure. The plots will show when the “Update” button
+is clicked.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/user_interface.png"><img alt="The user interface" src="_images/user_interface.png" style="width: 446.25px; height: 426px;" /></a>
+</div>
+<div class="section" id="user-configurations-input-fields">
+<h3>2.5.1. User Configurations (input fields)<a class="headerlink" href="#user-configurations-input-fields" title="Permalink to this headline">¶</a></h3>
+<p>Type in the math expressions as how you would in a Python terminal. White spaces should not cause error.
+Some keywords are case senstive, like “pi” cannot be typed as “PI”, otherwise, it would be regonised as
+other value and the results would be very funny.</p>
+<p>This project uses the “asteval” package to perform evaluation of user-defined inputs.
+Its documentation page is:
+<a class="reference external" href="https://newville.github.io/asteval/">https://newville.github.io/asteval/</a></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Input field</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="math">\(Mag_a\)</span></td>
+<td>is the magnitude of the Phase-A input</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(Mag_b\)</span></td>
+<td>is the magnitude of the Phase-B input</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(Mag_c\)</span></td>
+<td>is the magnitude of the Phase-C input</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\omega_a\)</span></td>
+<td>is the angular frequency of the Phase-A input</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\omega_b\)</span></td>
+<td>is the angular frequency of the Phase-B input</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\omega_c\)</span></td>
+<td>is the angular frequency of the Phase-C input</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\varphi_a\)</span></td>
+<td>is the initial phase of the Phase-A input</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\varphi_b\)</span></td>
+<td>is the initial phase of the Phase-B input</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\varphi_c\)</span></td>
+<td>is the initial phase of the Phase-C input</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(DC_a\)</span></td>
+<td>is the DC bias of the Phase-A input</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(DC_b\)</span></td>
+<td>is the DC bias of the Phase-B input</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(DC_c\)</span></td>
+<td>is the DC bias of the Phase-C input</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(\omega_{PLL}\)</span></td>
+<td>is the angular frequency of the SRF</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(\varphi_{PLL}\)</span></td>
+<td>is the initial phase of the PLL angle</td>
+</tr>
+<tr class="row-even"><td><span class="math">\(t\)</span></td>
+<td>is the maximum time (starts from time zero)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="button-definitions">
+<h3>2.5.2. Button Definitions<a class="headerlink" href="#button-definitions" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="14%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Button</th>
+<th class="head">Shortcut</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Save Data</td>
+<td>Ctrl + Shift + S</td>
+<td><div class="first last line-block">
+<div class="line">Prompts a file save dialogue and allows the generated data</div>
+<div class="line">to be saved as CSV</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>Save Figures</td>
+<td>Ctrl + S</td>
+<td><div class="first last line-block">
+<div class="line">Prompts a file save dialogue and allows the generated</div>
+<div class="line">figures to be saved in various formats</div>
+<div class="line"><br /></div>
+<div class="line">Suffix “_time” would be added to the filename for the</div>
+<div class="line">image for time-domain</div>
+<div class="line"><br /></div>
+<div class="line">Suffix “_polar” would be added to the filename for the</div>
+<div class="line">image for polar-domain</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Update</td>
+<td>Ctrl + U</td>
+<td><div class="first last line-block">
+<div class="line">Updates the data according to the user-defined inputs</div>
+<div class="line">and then update the plots</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>2.6. Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p><strong>1. Balanced inputs</strong></p>
+<p>Input fields:</p>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/exp01_inputfields.png"><img alt="The user interface" src="_images/exp01_inputfields.png" style="width: 446.25px; height: 426px;" /></a>
+</div>
+<p>Time-domain plots:</p>
+<div class="figure">
+<img alt="_images/exp01_fig_time.svg" src="_images/exp01_fig_time.svg" /></div>
+<p>Polar-domain plots:</p>
+<div class="figure">
+<img alt="_images/exp01_fig_polar.svg" src="_images/exp01_fig_polar.svg" /></div>
+<p><strong>2. Unbalanced inputs</strong></p>
+<p>Input fields:</p>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/exp02_inputfields.png"><img alt="The user interface" src="_images/exp02_inputfields.png" style="width: 446.25px; height: 426px;" /></a>
+</div>
+<p>Time-domain plots:</p>
+<div class="figure">
+<img alt="_images/exp02_fig_time.svg" src="_images/exp02_fig_time.svg" /></div>
+<p>Polar-domain plots:</p>
+<div class="figure">
+<img alt="_images/exp02_fig_polar.svg" src="_images/exp02_fig_polar.svg" /></div>
+<p><strong>3. Totally FUBAR inputs</strong></p>
+<p>Input fields:</p>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/exp03_inputfields.png"><img alt="The user interface" src="_images/exp03_inputfields.png" style="width: 446.25px; height: 426px;" /></a>
+</div>
+<p>Time-domain plots:</p>
+<div class="figure">
+<img alt="_images/exp03_fig_time.svg" src="_images/exp03_fig_time.svg" /></div>
+<p>Polar-domain plots:</p>
+<div class="figure">
+<img alt="_images/exp03_fig_polar.svg" src="_images/exp03_fig_polar.svg" /></div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gsyTransforms.html" class="btn btn-neutral float-right" title="3. Library for transforms : gsyTransforms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="preface.html" class="btn btn-neutral" title="1. Preface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017 - 2018, GAO, Siyu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

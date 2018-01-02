@@ -23,10 +23,23 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from asteval import Interpreter
 from numbers import Number
 
+from gsySymmAbout import Ui_About
+
 CONST_INI_FILENAME = 'gsySymm.ini'
 
+CONST_DOCT_FILENAME = 'index.html'
+
 class Ui_MainWindow(object):
+
+    def show_about(self):
+
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_About()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
     def setupUi(self, MainWindow):
+        
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(550, 550)
         MainWindow.setMinimumSize(QtCore.QSize(550, 550))
@@ -448,6 +461,8 @@ class Ui_MainWindow(object):
         self.fig_time_plts  = None
         self.fig_polar_plts = None
 
+        self.doct_filename  = CONST_DOCT_FILENAME
+
         # connects
         # button connects
         self.btn_update.clicked.connect(self.updateAll)
@@ -461,7 +476,10 @@ class Ui_MainWindow(object):
         self.file_saveSetting.triggered.connect(self.save_setting)
         self.file_Exit.triggered.connect(MainWindow.close)
 
-        self.print_info('')
+        self.help_Documentation.triggered.connect(self.start_doct)
+        self.help_About.triggered.connect(self.show_about)
+
+        # self.print_info('')
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -501,7 +519,7 @@ class Ui_MainWindow(object):
         self.btn_saveData.setText(_translate("MainWindow", "Save Data"))
         self.btn_saveFigures.setText(_translate("MainWindow", "Save Figures"))
         self.btn_update.setText(_translate("MainWindow", "Update"))
-        self.lbl_copyright.setText(_translate("MainWindow", "© Dr.GAO, Siyu; 2017\n"
+        self.lbl_copyright.setText(_translate("MainWindow", "© Dr.GAO, Siyu; 2017 - 2018\n"
 "siyu.gao@outlook.com"))
         self.lbl_info.setText(_translate("MainWindow", "This is info"))
         self.menu_file.setTitle(_translate("MainWindow", "File"))
@@ -689,6 +707,21 @@ class Ui_MainWindow(object):
 
         self.print_info('Updating plots...')
 
+        self.fig_polar_plts = gsyPlt.pltPolarDom(self.ylim_max,
+                                                 self.phaseAdata, self.phaseBdata, self.phaseCdata,
+                                                 self.phaseA_pos, self.phaseB_pos, self.phaseC_pos,
+                                                 self.phaseA_neg, self.phaseB_neg, self.phaseC_neg,
+                                                
+                                                 self.phaseZero,
+                                                
+                                                 self.alpha, self.beta,
+                                                 self.alpha_pos, self.beta_pos,
+                                                 self.alpha_neg, self.beta_neg,
+                                                
+                                                 self.d, self.q,
+                                                 self.d_pos, self.q_pos,
+                                                 self.d_neg, self.q_neg)
+
         self.fig_time_plts = gsyPlt.pltTimeDom(self.time_samples,
 
                                                self.xlim_min, self.xlim_max,
@@ -707,21 +740,6 @@ class Ui_MainWindow(object):
                                                self.d, self.q,
                                                self.d_pos, self.q_pos,
                                                self.d_neg, self.q_neg)
-
-        self.fig_polar_plts = gsyPlt.pltPolarDom(self.ylim_max,
-                                                 self.phaseAdata, self.phaseBdata, self.phaseCdata,
-                                                 self.phaseA_pos, self.phaseB_pos, self.phaseC_pos,
-                                                 self.phaseA_neg, self.phaseB_neg, self.phaseC_neg,
-                                                
-                                                 self.phaseZero,
-                                                
-                                                 self.alpha, self.beta,
-                                                 self.alpha_pos, self.beta_pos,
-                                                 self.alpha_neg, self.beta_neg,
-                                                
-                                                 self.d, self.q,
-                                                 self.d_pos, self.q_pos,
-                                                 self.d_neg, self.q_neg)
 
         self.print_info('Plots updated')
 
@@ -922,13 +940,21 @@ class Ui_MainWindow(object):
 
                      self.thetaPLL]
 
-        gsyIO.save_csv_gui(header, data_sets)
+        bool_temp = gsyIO.save_csv_gui(header, data_sets)
 
-        self.save_setting()
+        if bool_temp == False:
 
-        self.print_info('Data saved as CSV')
+            self.print_info('Data not saved')
 
-        return True
+            return False
+
+        else:
+
+            self.save_setting()
+
+            self.print_info('Data saved as CSV')
+
+            return True
 
 
     def save_setting(self):
@@ -1073,7 +1099,7 @@ class Ui_MainWindow(object):
         
         else:
             
-            str_filename = gsyIO.save_image()
+            str_filename = gsyIO.save_image_gui()
 
             if len(str_filename) == 0:
 
@@ -1091,8 +1117,9 @@ class Ui_MainWindow(object):
 
                 str_polar_filename = str_filename[:index] + '_polar' + str_filename[index:]
 
-                print(str_time_filename)
-                print(str_polar_filename)
+                print(gsyIO.date_time_now() + 'Saving figures...')
+                print(gsyIO.date_time_now() + str_time_filename)
+                print(gsyIO.date_time_now() + str_polar_filename)
 
                 self.fig_time_plts.savefig(str_time_filename)
                 self.fig_polar_plts.savefig(str_polar_filename)
@@ -1109,12 +1136,54 @@ class Ui_MainWindow(object):
 
                 return True
 
-import equations
+    def start_doct(self):
+
+        str_doct_filename = self.doct_filename
+
+        print(gsyIO.date_time_now() + 'The documentation file is "' + str_doct_filename + '"')
+    
+        int_index = str_doct_filename.rfind('.')
+            
+        if int_index != (-1):
+            
+            str_extent = str_doct_filename[(int_index + 1):]
+            
+            str_pattern = '.' + os.sep + '**' + os.sep + '*.' + str_extent
+            
+        else:
+            
+            str_pattern = '.' + os.sep + '**' + os.sep + '*.*'
+
+        print(gsyIO.date_time_now() + 'Looking for the documentation')
+        
+        bool_found = gsyIO.search_file_and_start(str_pattern, str_doct_filename)
+        
+        if bool_found == True:
+            
+            print(gsyIO.date_time_now() + 'Documentation found')
+            
+            return True
+            
+        else:
+                
+            root = tk.Tk()
+            
+            root.withdraw()
+            
+            msgbox.showerror('File not found', 'Documentation file not found')
+            
+            root.destroy()  
+            
+            print(gsyIO.date_time_now() + 'Documentation not found')
+            
+            return False
+
+import gsySymmEquations
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    app.setWindowIcon(QtGui.QIcon(os.path.join('.\images','eva.png')))
+    app.setWindowIcon(QtGui.QIcon(os.path.join('.\images','gao.png')))
 
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
