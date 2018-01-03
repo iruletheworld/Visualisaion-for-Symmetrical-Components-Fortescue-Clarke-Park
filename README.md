@@ -98,24 +98,14 @@ A detailed how to use can be found in the [documentation](_build/html/index.html
 
 ## Preview
 
-GUI:
+### GUI:
+![UI image](examples/exp01_inputfields.png)
 
-<img src="examples/exp01_inputfields.png" alt="GUI" style="width: 300px;"/>
+### Time-domain plots:
+![UI image](examples/exp01_fig_time.svg)
 
-
-
-.. figure:: examples/exp01_inputfields.png
-    :height: 426
-    :width: 446.25
-    :alt: The user interface
-
-Time-domain plots:
-
-.. figure:: examples/exp01_fig_time.svg
-
-Polar-domain plots:
-
-.. figure:: examples/exp01_fig_polar.svg
+### Polar-domain plots:
+![UI image](examples/exp01_fig_polar.svg)
 
 ## Contributing
 
