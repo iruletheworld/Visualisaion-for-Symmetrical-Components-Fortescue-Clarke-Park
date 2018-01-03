@@ -1,0 +1,790 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3. Main GUI : gsySymmMain &mdash; Dynamic Visualisation for Symmetrical Components 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Dynamic Visualisation for Symmetrical Components 0.1.0 documentation" href="index.html"/>
+        <link rel="prev" title="2. Introduction" href="intro.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Dynamic Visualisation for Symmetrical Components
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="preface.html">1. Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">2. Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Main GUI : gsySymmMain</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#change-log">3.1. Change Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#definitions">3.2. Definitions</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gsyTransforms.html">4. Library for transforms : gsyTransforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsyPlt.html">5. Library for custom Plots : gsyPlt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsyIO.html">6. Library for custom IOs : gsyIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsyINI.html">7. Library for INI files : gsyINI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">8. Appendix A : Conversion of Qt UI files and resource files to Python scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html#appendix-b-convert-svg-to-emf">9. Appendix B : Convert SVG to EMF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bio.html">10. Biography</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Dynamic Visualisation for Symmetrical Components</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>3. Main GUI : gsySymmMain</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/gsySymmMain.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-gsySymmMain">
+<span id="main-gui-gsysymmmain"></span><h1>3. Main GUI : gsySymmMain<a class="headerlink" href="#module-gsySymmMain" title="Permalink to this headline">¶</a></h1>
+<p>Main GUI.</p>
+<p>Module Name : gsySymmMain</p>
+<p>Author : 高斯羽 博士 (Dr. GAO, Siyu)</p>
+<p>Version : 0.1.6</p>
+<p>Last Modified : 2018-01-03</p>
+<div class="section" id="change-log">
+<h2>3.1. Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first"><strong>Notable changes:</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>Version <span class="classifier-delimiter">:</span> <span class="classifier">0.1.6</span></dt>
+<dd><ul class="first last">
+<li>Added “show_about”</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="definitions">
+<h2>3.2. Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gsySymmMain.Ui_MainWindow">
+<em class="property">class </em><code class="descclassname">gsySymmMain.</code><code class="descname">Ui_MainWindow</code><a class="headerlink" href="#gsySymmMain.Ui_MainWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#gsySymmMain.Ui_MainWindow.cal_samples" title="gsySymmMain.Ui_MainWindow.cal_samples"><code class="xref py py-obj docutils literal"><span class="pre">cal_samples</span></code></a>()</td>
+<td><span class="target" id="cal-samples"></span></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gsySymmMain.Ui_MainWindow.make_phase" title="gsySymmMain.Ui_MainWindow.make_phase"><code class="xref py py-obj docutils literal"><span class="pre">make_phase</span></code></a>(mag,&nbsp;omega,&nbsp;phi,&nbsp;dc)</td>
+<td><span class="target" id="make-phase"></span></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gsySymmMain.Ui_MainWindow.print_info" title="gsySymmMain.Ui_MainWindow.print_info"><code class="xref py py-obj docutils literal"><span class="pre">print_info</span></code></a>(str_info)</td>
+<td><span class="target" id="print-info"></span></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gsySymmMain.Ui_MainWindow.read_setting" title="gsySymmMain.Ui_MainWindow.read_setting"><code class="xref py py-obj docutils literal"><span class="pre">read_setting</span></code></a>()</td>
+<td><span class="target" id="read-setting"></span></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gsySymmMain.Ui_MainWindow.retranslateUi" title="gsySymmMain.Ui_MainWindow.retranslateUi"><code class="xref py py-obj docutils literal"><span class="pre">retranslateUi</span></code></a>(MainWindow)</td>
+<td><span class="target" id="retranslateui"></span></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gsySymmMain.Ui_MainWindow.save_data" title="gsySymmMain.Ui_MainWindow.save_data"><code class="xref py py-obj docutils literal"><span class="pre">save_data</span></code></a>()</td>
+<td><span class="target" id="save-data"></span></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gsySymmMain.Ui_MainWindow.save_fig" title="gsySymmMain.Ui_MainWindow.save_fig"><code class="xref py py-obj docutils literal"><span class="pre">save_fig</span></code></a>()</td>
+<td><span class="target" id="save-fig"></span></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gsySymmMain.Ui_MainWindow.save_setting" title="gsySymmMain.Ui_MainWindow.save_setting"><code class="xref py py-obj docutils literal"><span class="pre">save_setting</span></code></a>()</td>
+<td><span class="target" id="save-setting"></span></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gsySymmMain.Ui_MainWindow.setupUi" title="gsySymmMain.Ui_MainWindow.setupUi"><code class="xref py py-obj docutils literal"><span class="pre">setupUi</span></code></a>(MainWindow)</td>
+<td><span class="target" id="setupui"></span></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gsySymmMain.Ui_MainWindow.show_about" title="gsySymmMain.Ui_MainWindow.show_about"><code class="xref py py-obj docutils literal"><span class="pre">show_about</span></code></a>()</td>
+<td><span class="target" id="show-about"></span></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gsySymmMain.Ui_MainWindow.start_doct" title="gsySymmMain.Ui_MainWindow.start_doct"><code class="xref py py-obj docutils literal"><span class="pre">start_doct</span></code></a>()</td>
+<td><span class="target" id="start-doct"></span></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gsySymmMain.Ui_MainWindow.to_numeric" title="gsySymmMain.Ui_MainWindow.to_numeric"><code class="xref py py-obj docutils literal"><span class="pre">to_numeric</span></code></a>(str_input)</td>
+<td><span class="target" id="to-numeric"></span></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gsySymmMain.Ui_MainWindow.updateAll" title="gsySymmMain.Ui_MainWindow.updateAll"><code class="xref py py-obj docutils literal"><span class="pre">updateAll</span></code></a>()</td>
+<td><span class="target" id="updateall"></span></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#gsySymmMain.Ui_MainWindow.update_data" title="gsySymmMain.Ui_MainWindow.update_data"><code class="xref py py-obj docutils literal"><span class="pre">update_data</span></code></a>()</td>
+<td><span class="target" id="update-data"></span></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#gsySymmMain.Ui_MainWindow.update_plots" title="gsySymmMain.Ui_MainWindow.update_plots"><code class="xref py py-obj docutils literal"><span class="pre">update_plots</span></code></a>()</td>
+<td><span class="target" id="update-plots"></span></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="gsySymmMain.Ui_MainWindow.cal_samples">
+<code class="descname">cal_samples</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gsySymmMain.Ui_MainWindow.cal_samples" title="Permalink to this definition">¶</a></dt>
+<dd><p id="id1">This method calculates the samples needed for plotting.</p>
+<p>The sampling rate is 6 times the maximum frequency.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>self</strong></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>samples</strong> : float</p>
+<blockquote class="last">
+<div><p>The number of samples.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cal_samples</span><span class="p">()</span>
+
+<span class="n">array_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeEnd</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="gsySymmMain.Ui_MainWindow.make_phase">
+<code class="descname">make_phase</code><span class="sig-paren">(</span><em>mag</em>, <em>omega</em>, <em>phi</em>, <em>dc</em><span class="sig-paren">)</span><a class="headerlink" href="#gsySymmMain.Ui_MainWindow.make_phase" title="Permalink to this definition">¶</a></dt>
+<dd><p id="id2">This method creates the phase signal in complex form.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>self</strong></p>
+<p><strong>mag</strong> : float</p>
+<blockquote>
+<div><p>The magnitude of the signal.</p>
+</div></blockquote>
+<p><strong>omega</strong> : float</p>
+<blockquote>
+<div><p>The angular frequency of the signal.</p>
+</div></blockquote>
+<p><strong>phi</strong> : float</p>
+<blockquote>
+<div><p>The initial phase of the signal.</p>
+</div></blockquote>
+<p><strong>dc</strong> : float</p>
+<blockquote>
+<div><p>The DC offset of the signal.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">complex</p>
+<blockquote>
+<div><p>The signal in complex form.</p>
+</div></blockquote>
+<p><strong>array_time</strong> : list</p>
+<blockquote class="last">
+<div><p>The sampled time.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">phaseAdata</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_phase</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phaseAMag</span><span class="p">,</span>
+                                                     <span class="bp">self</span><span class="o">.</span><span class="n">phaseAOmega</span><span class="p">,</span>
+                                                     <span class="bp">self</span><span class="o">.</span><span class="n">phaseAPhi</span><span class="p">,</span>
+                                                     <span class="bp">self</span><span class="o">.</span><span class="n">phaseADC</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="gsySymmMain.Ui_MainWindow.print_info">
+<code class="descname">print_info</code><span class="sig-paren">(</span><em>str_info</em><span class="sig-paren">)</span><a class="headerlink" href="#gsySymmMain.Ui_MainWindow.print_info" title="Permalink to this definition">¶</a></dt>
+<dd><p id="id3">This method displays the given string directly on the GUI.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>self</strong></p>
+<p><strong>str_info</strong> : str</p>
+<blockquote>
+<div><p>The message to be displayed.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">print_info</span><span class="p">(</span><span class="s1">&#39;All updated&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="gsySymmMain.Ui_MainWindow.read_setting">
+<code class="descname">read_setting</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gsySymmMain.Ui_MainWindow.read_setting" title="Permalink to this definition">¶</a></dt>
+<dd><p id="id4">This method reads the user inputs from an INI file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>self</strong></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool</p>
+<blockquote class="last">
+<div><p>Returns True if read and assign successful. Returns False if INI
+file not found or on exception.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">read_setting</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="gsySymmMain.Ui_MainWindow.retranslateUi">
+<code class="descname">retranslateUi</code><span class="sig-paren">(</span><em>MainWindow</em><span class="sig-paren">)</span><a class="headerlink" href="#gsySymmMain.Ui_MainWindow.retranslateUi" title="Permalink to this definition">¶</a></dt>
+<dd><p id="id5">This method is automatically generated by Qt designer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>self</strong></p>
+<p><strong>MainWindow</strong> : QtWidgets.QMainWindow</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="gsySymmMain.Ui_MainWindow.save_data">
+<code class="descname">save_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gsySymmMain.Ui_MainWindow.save_data" title="Permalink to this definition">¶</a></dt>
+<dd><p id="id6">This method saves the generated data in CSV.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>self</strong></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool</p>
+<blockquote class="last">
+<div><p>Returns True if save successful. Returns False if uncuccessful.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">file_saveData</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">save_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="gsySymmMain.Ui_MainWindow.save_fig">
+<code class="descname">save_fig</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gsySymmMain.Ui_MainWindow.save_fig" title="Permalink to this definition">¶</a></dt>
+<dd><p id="id7">This method saves the two figures.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">file_saveFigures</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">save_fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="gsySymmMain.Ui_MainWindow.save_setting">
+<code class="descname">save_setting</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gsySymmMain.Ui_MainWindow.save_setting" title="Permalink to this definition">¶</a></dt>
+<dd><p id="id8">This method saves the user inputs to an INI file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">save_setting</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="gsySymmMain.Ui_MainWindow.setupUi">
+<code class="descname">setupUi</code><span class="sig-paren">(</span><em>MainWindow</em><span class="sig-paren">)</span><a class="headerlink" href="#gsySymmMain.Ui_MainWindow.setupUi" title="Permalink to this definition">¶</a></dt>
+<dd><p id="id9">This method sets up the main GUI.</p>
+<p>This method is automatically generated by Qt designer (with adaptation).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>self</strong></p>
+<p><strong>MainWindow</strong> : QtWidgets.QMainWindow</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1"># user inputs</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseAMag</span>      <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseAOmega</span>    <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseAPhi</span>      <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseADC</span>       <span class="o">=</span> <span class="kc">None</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseBMag</span>      <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseBOmega</span>    <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseBPhi</span>      <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseBDC</span>       <span class="o">=</span> <span class="kc">None</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseCMag</span>      <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseCOmega</span>    <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseCPhi</span>      <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseCDC</span>       <span class="o">=</span> <span class="kc">None</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">pllOmega</span>       <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">pllPhi</span>         <span class="o">=</span> <span class="kc">None</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">timeEnd</span>        <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># for three-phase</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">time_samples</span>   <span class="o">=</span> <span class="kc">None</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseAdata</span>     <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseBdata</span>     <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseCdata</span>     <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># Fortescue symmetrical components</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseA_pos</span>     <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseA_neg</span>     <span class="o">=</span> <span class="kc">None</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseB_pos</span>     <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseB_neg</span>     <span class="o">=</span> <span class="kc">None</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseC_pos</span>     <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseC_neg</span>     <span class="o">=</span> <span class="kc">None</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">phaseZero</span>      <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># Clarke Transform (DSOGI)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">alpha</span>          <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">beta</span>           <span class="o">=</span> <span class="kc">None</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">alpha_pos</span>      <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">beta_pos</span>       <span class="o">=</span> <span class="kc">None</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">alpha_neg</span>      <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">beta_neg</span>       <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># Park Transform</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">thetaPLL</span>       <span class="o">=</span> <span class="kc">None</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">d</span>              <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">q</span>              <span class="o">=</span> <span class="kc">None</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">d_pos</span>          <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">q_pos</span>          <span class="o">=</span> <span class="kc">None</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">d_neg</span>          <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">q_neg</span>          <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># axes limits</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">xlim_max</span>       <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">xlim_min</span>       <span class="o">=</span> <span class="kc">None</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">ylim_max</span>       <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">ylim_min</span>       <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># figure objects</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">fig_time_plts</span>  <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">fig_polar_plts</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="c1"># documentation file filename</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">doct_filename</span>  <span class="o">=</span> <span class="n">CONST_DOCT_FILENAME</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="gsySymmMain.Ui_MainWindow.show_about">
+<code class="descname">show_about</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gsySymmMain.Ui_MainWindow.show_about" title="Permalink to this definition">¶</a></dt>
+<dd><p id="id10">This method shows the “About” windows.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">help_About</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">show_about</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="gsySymmMain.Ui_MainWindow.start_doct">
+<code class="descname">start_doct</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gsySymmMain.Ui_MainWindow.start_doct" title="Permalink to this definition">¶</a></dt>
+<dd><p id="id11">This method starts the documentation file with OS default app.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>self</strong></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool</p>
+<blockquote class="last">
+<div><p>Returns True if documentation file found. Otherwise, returns False.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">help_Documentation</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_doct</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="gsySymmMain.Ui_MainWindow.to_numeric">
+<code class="descname">to_numeric</code><span class="sig-paren">(</span><em>str_input</em><span class="sig-paren">)</span><a class="headerlink" href="#gsySymmMain.Ui_MainWindow.to_numeric" title="Permalink to this definition">¶</a></dt>
+<dd><p id="id12">This method uses the asteval package to evaluate the user inputs to numeric.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>self</strong></p>
+<p><strong>str_input</strong> : str</p>
+<blockquote>
+<div><p>The user input</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">float</p>
+<blockquote class="last">
+<div><p>The evaluated user input.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">phaseAMag</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ledt_phaseAMag</span><span class="o">.</span><span class="n">text</span><span class="p">())</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="gsySymmMain.Ui_MainWindow.updateAll">
+<code class="descname">updateAll</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gsySymmMain.Ui_MainWindow.updateAll" title="Permalink to this definition">¶</a></dt>
+<dd><p id="id13">This method updates the calculated data first and then update the plots.
+User-defined inputs are then saved.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">btn_update</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">updateAll</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="gsySymmMain.Ui_MainWindow.update_data">
+<code class="descname">update_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gsySymmMain.Ui_MainWindow.update_data" title="Permalink to this definition">¶</a></dt>
+<dd><p id="id14">This method updates the calculated data according to the user inputs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_data</span><span class="p">()</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">update_plots</span><span class="p">()</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">save_setting</span><span class="p">()</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">print_info</span><span class="p">(</span><span class="s1">&#39;All updated&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="gsySymmMain.Ui_MainWindow.update_plots">
+<code class="descname">update_plots</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gsySymmMain.Ui_MainWindow.update_plots" title="Permalink to this definition">¶</a></dt>
+<dd><p id="id15">This method updates the plots.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_data</span><span class="p">()</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">update_plots</span><span class="p">()</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">save_setting</span><span class="p">()</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">print_info</span><span class="p">(</span><span class="s1">&#39;All updated&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="intro.html" class="btn btn-neutral" title="2. Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017 - 2018, GAO, Siyu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

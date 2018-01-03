@@ -5,6 +5,19 @@
 # Created by: PyQt5 UI code generator 5.6
 #
 # WARNING! All changes made in this file will be lost!
+"""
+The "About" window.
+
+Module Name : gsySymmAbout
+
+Author : 高斯羽 博士 (Dr. GAO, Siyu)
+
+Version : 0.1.0
+
+Last Modified : 2018-01-03
+"""
+
+import gsySymmIcon
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -50,7 +63,7 @@ class Ui_About(object):
         self.lbl_text.setText(_translate("About", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:600;\">About Symmtrical Components</span></p><p><br/>Version 0.1.0.</p><p>Symmetrical Components is a program designed to visualise all three-phase symmetrical components (Fortescue, Clarke and Park).</p><p>This program is licensed under Apache 2.0. </p><p>Details of this program can be found in the documentation.</p><p>This program is developed by 高斯羽 博士(Dr. GAO, Siyu).</p></body></html>"))
         self.actionExit.setText(_translate("About", "exit"))
 
-import gsySymmIcon
+# import gsySymmIcon
 
 if __name__ == "__main__":
     import sys
@@ -60,4 +73,3 @@ if __name__ == "__main__":
     ui.setupUi(About)
     About.show()
     sys.exit(app.exec_())
-
