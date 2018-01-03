@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3. Library for custom Plots : gsyPlt &mdash; Dynamic Visualisation for Symmetrical Components 0.1.0 documentation</title>
+  <title>5. Library for custom Plots : gsyPlt &mdash; Dynamic Visualisation for Symmetrical Components 0.1.0 documentation</title>
   
 
   
@@ -36,7 +36,8 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Dynamic Visualisation for Symmetrical Components 0.1.0 documentation" href="index.html"/>
-        <link rel="prev" title="2. Library for custom IOs : gsyIO" href="gsyIO.html"/> 
+        <link rel="next" title="6. Appendix : Conversion of Qt UI files and resource files to Python scripts" href="appendix.html"/>
+        <link rel="prev" title="4. Library for custom IOs : gsyIO" href="gsyIO.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -90,14 +91,17 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="gsyTransforms.html">1. Library for transforms : gsyTransforms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gsyIO.html">2. Library for custom IOs : gsyIO</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Library for custom Plots : gsyPlt</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#change-log">3.1. Change Log</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#list-of-functions">3.2. List of functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#function-definitions">3.3. Function definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preface.html">1. Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">2. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsyTransforms.html">3. Library for transforms : gsyTransforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsyIO.html">4. Library for custom IOs : gsyIO</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Library for custom Plots : gsyPlt</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#change-log">5.1. Change Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-of-functions">5.2. List of functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#function-definitions">5.3. Function definitions</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">6. Appendix : Conversion of Qt UI files and resource files to Python scripts</a></li>
 </ul>
 
             
@@ -142,7 +146,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>3. Library for custom Plots : gsyPlt</li>
+      <li>5. Library for custom Plots : gsyPlt</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -162,15 +166,15 @@
            <div itemprop="articleBody">
             
   <div class="section" id="module-gsyPlt">
-<span id="library-for-custom-plots-gsyplt"></span><h1>3. Library for custom Plots : gsyPlt<a class="headerlink" href="#module-gsyPlt" title="Permalink to this headline">¶</a></h1>
-<p>Custom module for plottings that I need.</p>
-<p>This module uses “matplotlib” heavily.</p>
+<span id="library-for-custom-plots-gsyplt"></span><h1>5. Library for custom Plots : gsyPlt<a class="headerlink" href="#module-gsyPlt" title="Permalink to this headline">¶</a></h1>
+<p>Custom module for plottings that I need. This module uses “matplotlib” heavily.</p>
+<p><em>Note that matplotlib would automatically disgard the imaginary part of a complex number when plotting it in the time domain.</em></p>
 <p>Module Name : gsyPlt</p>
 <p>Author : 高斯羽 博士 (Dr. GAO, Siyu)</p>
 <p>Version : 0.1.0</p>
-<p>Last Modified : 2017-12-12</p>
+<p>Last Modified : 2017-12-21</p>
 <div class="section" id="change-log">
-<h2>3.1. Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
+<h2>5.1. Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first"><strong>Notable changes:</strong></p>
 <blockquote>
@@ -190,18 +194,143 @@
 </ul>
 </div>
 <div class="section" id="list-of-functions">
-<h2>3.2. List of functions<a class="headerlink" href="#list-of-functions" title="Permalink to this headline">¶</a></h2>
+<h2>5.2. List of functions<a class="headerlink" href="#list-of-functions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
+<li><a class="reference internal" href="#pltpolardom">pltPolarDom</a></li>
 <li><a class="reference internal" href="#plttimedom">pltTimeDom</a></li>
-<li><a href="#id1"><span class="problematic" id="id2">prompt_msg_</span></a></li>
 </ul>
 </div>
 <div class="section" id="function-definitions">
-<h2>3.3. Function definitions<a class="headerlink" href="#function-definitions" title="Permalink to this headline">¶</a></h2>
+<h2>5.3. Function definitions<a class="headerlink" href="#function-definitions" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="gsyPlt.pltPolarDom">
 <code class="descclassname">gsyPlt.</code><code class="descname">pltPolarDom</code><span class="sig-paren">(</span><em>r_max</em>, <em>a</em>, <em>b</em>, <em>c</em>, <em>a_pos</em>, <em>b_pos</em>, <em>c_pos</em>, <em>a_neg</em>, <em>b_neg</em>, <em>c_neg</em>, <em>zero</em>, <em>alpha</em>, <em>beta</em>, <em>alpha_pos</em>, <em>beta_pos</em>, <em>alpha_neg</em>, <em>beta_neg</em>, <em>d</em>, <em>q</em>, <em>d_pos</em>, <em>q_pos</em>, <em>d_neg</em>, <em>q_neg</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyPlt.pltPolarDom" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p id="pltpolardom">Plots the polar domain data in a 3 by 3 grid of subplots.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>r_max</strong> : float</p>
+<blockquote>
+<div><p>Radius limit.</p>
+</div></blockquote>
+<p><strong>a</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Phase-A input.</p>
+</div></blockquote>
+<p><strong>b</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Phase-B input.</p>
+</div></blockquote>
+<p><strong>c</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Phase-C input.</p>
+</div></blockquote>
+<p><strong>a_pos</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Positive sequence of Phase-A input.</p>
+</div></blockquote>
+<p><strong>b_pos</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Positive sequence of Phase-B input.</p>
+</div></blockquote>
+<p><strong>c_pos</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Positive sequence of Phase-C input.</p>
+</div></blockquote>
+<p><strong>a_neg</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Negative sequence of Phase-A input.</p>
+</div></blockquote>
+<p><strong>b_neg</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Negative sequence of Phase-B input.</p>
+</div></blockquote>
+<p><strong>c_neg</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>Negative sequence of Phase-C input.</p>
+</div></blockquote>
+<p><strong>zero</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The Zero sequence</p>
+</div></blockquote>
+<p><strong>alpha</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(\alpha\)</span> component of the Clarke Transform.</p>
+</div></blockquote>
+<p><strong>beta</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(\beta\)</span> component of the Clarke Transform.</p>
+</div></blockquote>
+<p><strong>alpha_pos</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(\alpha_+\)</span> component of the Clarke Transform (DSOGI).</p>
+</div></blockquote>
+<p><strong>beta_pos</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(\beta_+\)</span> component of the Clarke Transform (DSOGI).</p>
+</div></blockquote>
+<p><strong>alpha_neg</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(\alpha_-\)</span> component of the Clarke Transform (DSOGI).</p>
+</div></blockquote>
+<p><strong>beta_neg</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(\beta_-\)</span> component of the Clarke Transform (DSOGI).</p>
+</div></blockquote>
+<p><strong>d</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(d\)</span> component of the Park Transform.</p>
+</div></blockquote>
+<p><strong>q</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(q\)</span> component of the Park Transform.</p>
+</div></blockquote>
+<p><strong>d_pos</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(d_+\)</span> component of the Park Transform (by applying the 
+Park Transform on the DSOGI Clarke Transform components).</p>
+</div></blockquote>
+<p><strong>q_pos</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(q_+\)</span> component of the Park Transform (by applying the 
+Park Transform on the DSOGI Clarke Transform components).</p>
+</div></blockquote>
+<p><strong>d_neg</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(d_-\)</span> component of the Park Transform (by applying the 
+Park Transform on the DSOGI Clarke Transform components).</p>
+</div></blockquote>
+<p><strong>q_neg</strong> : complex or a list of complex</p>
+<blockquote>
+<div><p>The <span class="math">\(q_-\)</span> component of the Park Transform (by applying the 
+Park Transform on the DSOGI Clarke Transform components).</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>fig_polar</strong> : matplotlib figure object</p>
+<blockquote class="last">
+<div><p>The figure object for polar domain plots.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">fig_polar_dom</span> <span class="o">=</span> <span class="n">gsyPlt</span><span class="o">.</span><span class="n">pltPolarDom</span><span class="p">(</span><span class="n">r_max</span><span class="p">,</span>
+                                   <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span>
+                                   <span class="n">a_pos</span><span class="p">,</span> <span class="n">b_pos</span><span class="p">,</span> <span class="n">c_pos</span><span class="p">,</span>
+                                   <span class="n">a_neg</span><span class="p">,</span> <span class="n">b_neg</span><span class="p">,</span> <span class="n">c_neg</span><span class="p">,</span>
+                                   <span class="n">zero</span><span class="p">,</span>
+                                   <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span>
+                                   <span class="n">alpha_pos</span><span class="p">,</span> <span class="n">beta_pos</span><span class="p">,</span>
+                                   <span class="n">alpha_neg</span><span class="p">,</span> <span class="n">beta_neg</span><span class="p">,</span>
+                                   <span class="n">d</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span>
+                                   <span class="n">d_pos</span><span class="p">,</span> <span class="n">q_pos</span><span class="p">,</span>
+                                   <span class="n">d_neg</span><span class="p">,</span> <span class="n">q_neg</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="function">
 <dt id="gsyPlt.pltTimeDom">
@@ -327,7 +456,7 @@ Park Transform on the DSOGI Clarke Transform components).</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>fig_main</strong> : matplotlib figure object</p>
 <blockquote class="last">
-<div><p>The figure object.</p>
+<div><p>The figure object for time domain plots.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -364,8 +493,10 @@ Park Transform on the DSOGI Clarke Transform components).</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="appendix.html" class="btn btn-neutral float-right" title="6. Appendix : Conversion of Qt UI files and resource files to Python scripts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="gsyIO.html" class="btn btn-neutral" title="2. Library for custom IOs : gsyIO" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="gsyIO.html" class="btn btn-neutral" title="4. Library for custom IOs : gsyIO" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -374,7 +505,7 @@ Park Transform on the DSOGI Clarke Transform components).</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, GAO, Siyu.
+        &copy; Copyright 2017 - 2018, GAO, Siyu.
 
     </p>
   </div>

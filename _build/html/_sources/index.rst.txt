@@ -3,19 +3,45 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Dynamic Visualisation for Symmetrical Components's documentation!
-============================================================================
+Dynamic Visualisation for Symmetrical Components (Fortescue, Clarke and Park)
+==================================================================================
+
+The purpose of this project is to dynamically visualise all the three-phase symmetrical components. 
+This includes the following definitions for symmetrical components: 
+
+* The orginal definition proposed by **Fortescue**, which is at its centenary this year (2018)
+* Symmetrical components for the **Clarke Transform** (amplitude invariant), according to the DSOGI
+* Symmetrical components for the **Park Transform**, calculated from the DSOGI Clarke Transform symmetrical components
+
+This project would allow the user to define the three-phase inputs and the PLL angle to allow studies of
+different situations.
+
+This project would provide the plots in both the time-domain and the polar-domain.
+
+This project would allow the user to export the plots in various formats.
+
+This project would allow the user to export the raw data in CSV.
+
+This project would save user-defined inputs automatically in an INI file.
+
+The GUI of this project is built with Qt designer.
+
+
+Table of Contents
+==================================================================================
 
 .. toctree::
-   :maxdepth: 3
-   :numbered:
+    :maxdepth: 3
+    :numbered:
 
-   gsyTransforms
-   gsyIO
-   gsyPlt
+    preface
+    intro
+    gsyTransforms
+    gsyIO
+    gsyPlt
+    appendix
 
-
-Indices and tables
+Indices and Tables
 ==================
 
 * :ref:`genindex`

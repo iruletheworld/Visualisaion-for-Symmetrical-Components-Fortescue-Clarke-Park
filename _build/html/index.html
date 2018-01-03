@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Dynamic Visualisation for Symmetrical Components’s documentation! &mdash; Dynamic Visualisation for Symmetrical Components 0.1.0 documentation</title>
+  <title>Dynamic Visualisation for Symmetrical Components (Fortescue, Clarke and Park) &mdash; Dynamic Visualisation for Symmetrical Components 0.1.0 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Dynamic Visualisation for Symmetrical Components 0.1.0 documentation" href="#"/>
-        <link rel="next" title="1. Library for transforms : gsyTransforms" href="gsyTransforms.html"/> 
+        <link rel="next" title="1. Preface" href="preface.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -90,9 +90,12 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="gsyTransforms.html">1. Library for transforms : gsyTransforms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gsyIO.html">2. Library for custom IOs : gsyIO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gsyPlt.html">3. Library for custom Plots : gsyPlt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preface.html">1. Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">2. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsyTransforms.html">3. Library for transforms : gsyTransforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsyIO.html">4. Library for custom IOs : gsyIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsyPlt.html">5. Library for custom Plots : gsyPlt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">6. Appendix : Conversion of Qt UI files and resource files to Python scripts</a></li>
 </ul>
 
             
@@ -137,7 +140,7 @@
     
       <li><a href="#">Docs</a> &raquo;</li>
         
-      <li>Dynamic Visualisation for Symmetrical Components’s documentation!</li>
+      <li>Dynamic Visualisation for Symmetrical Components (Fortescue, Clarke and Park)</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -156,33 +159,90 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="dynamic-visualisation-for-symmetrical-components-s-documentation">
-<h1>Dynamic Visualisation for Symmetrical Components’s documentation!<a class="headerlink" href="#dynamic-visualisation-for-symmetrical-components-s-documentation" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="dynamic-visualisation-for-symmetrical-components-fortescue-clarke-and-park">
+<h1>Dynamic Visualisation for Symmetrical Components (Fortescue, Clarke and Park)<a class="headerlink" href="#dynamic-visualisation-for-symmetrical-components-fortescue-clarke-and-park" title="Permalink to this headline">¶</a></h1>
+<p>The purpose of this project is to dynamically visualise all the three-phase symmetrical components.
+This includes the following definitions for symmetrical components:</p>
+<ul class="simple">
+<li>The orginal definition proposed by <strong>Fortescue</strong>, which is at its centenary this year (2018)</li>
+<li>Symmetrical components for the <strong>Clarke Transform</strong> (amplitude invariant), according to the DSOGI</li>
+<li>Symmetrical components for the <strong>Park Transform</strong>, calculated from the DSOGI Clarke Transform symmetrical components</li>
+</ul>
+<p>This project would allow the user to define the three-phase inputs and the PLL angle to allow studies of
+different situations.</p>
+<p>This project would provide the plots in both the time-domain and the polar-domain.</p>
+<p>This project would allow the user to export the plots in various formats.</p>
+<p>This project would allow the user to export the raw data in CSV.</p>
+<p>This project would save user-defined inputs automatically in an INI file.</p>
+<p>The GUI of this project is built with Qt designer.</p>
+</div>
+<div class="section" id="table-of-contents">
+<h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="gsyTransforms.html">1. Library for transforms : gsyTransforms</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="gsyTransforms.html#change-log">1.1. Change Log</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gsyTransforms.html#list-of-functions">1.2. List of functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gsyTransforms.html#function-definitions">1.3. Function definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preface.html">1. Preface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#version">1.1. Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#getting-started">1.2. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#prerequisites">1.3. Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#installing">1.4. Installing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#built-with">1.5. Built With</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#preview">1.6. Preview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#contributing">1.7. Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#versioning">1.8. Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#license">1.9. License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#acknowledgments">1.10. Acknowledgments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preface.html#special-thanks">1.11. Special Thanks</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="gsyIO.html">2. Library for custom IOs : gsyIO</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="gsyIO.html#change-log">2.1. Change Log</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gsyIO.html#list-of-functions">2.2. List of functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gsyIO.html#function-definitions">2.3. Function definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">2. Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#user-defined-inputs">2.1. User-Defined Inputs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#three-phase-inputs">2.1.1. Three-Phase Inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#pll-angle">2.1.2. PLL Angle</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="gsyPlt.html">3. Library for custom Plots : gsyPlt</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="gsyPlt.html#change-log">3.1. Change Log</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gsyPlt.html#list-of-functions">3.2. List of functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gsyPlt.html#function-definitions">3.3. Function definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#fortescue-transform-the-original-symmetrical-components">2.2. Fortescue Transform (the original symmetrical components)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#clarke-transform-amplitude-invariant-and-dsogi">2.3. Clarke Transform (amplitude invariant and DSOGI)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#the-amplitude-invariant-clarke-transform">2.3.1. The amplitude invariant Clarke Transform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#the-dsogi-clarke-transform">2.3.2. The DSOGI Clarke Transform</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#park-transform">2.4. Park Transform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#the-original-definition">2.4.1. The original definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#dsogi-park-transform">2.4.2. DSOGI Park Transform</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#user-interface">2.5. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#user-configurations-input-fields">2.5.1. User Configurations (input fields)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#button-definitions">2.5.2. Button Definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#examples">2.6. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gsyTransforms.html">3. Library for transforms : gsyTransforms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gsyTransforms.html#change-log">3.1. Change Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gsyTransforms.html#list-of-functions">3.2. List of functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gsyTransforms.html#function-definitions">3.3. Function definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gsyIO.html">4. Library for custom IOs : gsyIO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gsyIO.html#change-log">4.1. Change Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gsyIO.html#list-of-functions">4.2. List of functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gsyIO.html#function-definitions">4.3. Function definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gsyPlt.html">5. Library for custom Plots : gsyPlt</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gsyPlt.html#change-log">5.1. Change Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gsyPlt.html#list-of-functions">5.2. List of functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gsyPlt.html#function-definitions">5.3. Function definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">6. Appendix : Conversion of Qt UI files and resource files to Python scripts</a></li>
 </ul>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<h1>Indices and Tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
 <li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
@@ -200,7 +260,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="gsyTransforms.html" class="btn btn-neutral float-right" title="1. Library for transforms : gsyTransforms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="preface.html" class="btn btn-neutral float-right" title="1. Preface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
@@ -210,7 +270,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, GAO, Siyu.
+        &copy; Copyright 2017 - 2018, GAO, Siyu.
 
     </p>
   </div>
