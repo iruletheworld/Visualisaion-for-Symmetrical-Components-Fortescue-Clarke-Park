@@ -98,11 +98,9 @@ A detailed how to use can be found in the [documentation](_build/html/index.html
 
 ## Preview
 
-Input fields:
+GUI:
 
-![UI image](examples/exp01_inputfields.png =426x446.25)
-
-<img scr="examples/exp01_inputfields.png"/>
+<img src="examples/exp01_inputfields.png" alt="GUI" style="width: 426px;"/>
 
 
 
