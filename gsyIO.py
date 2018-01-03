@@ -8,7 +8,7 @@ Author : 高斯羽 博士 (Dr. GAO, Siyu)
 
 Version : 0.2.0
 
-Last Modified : 2017-12-12
+Last Modified : 2018-01-03
 
 Change Log
 ----------------------
@@ -49,6 +49,7 @@ import time
 from tkinter import filedialog
 from time import gmtime, strftime, sleep
 
+# default extensions for save as images
 CONST_IMAGE_FILETER = [('Scalable Vector Graphics','*.svg *.svgz'),
                        ('Portable Network Graphics','*.png'),
                        ('Portable Document Format', '*.pdf'),
@@ -314,6 +315,10 @@ def search_file_and_start(str_pattern, str_filename):
     .. code:: python
     
         bool_found = search_file_and_start(str_pattern, str_doct_filename)
+
+    Reference
+    ----------
+    https://stackoverflow.com/questions/2186525/use-a-glob-to-find-files-recursively-in-python
     """
     
     bool_found = False
@@ -336,12 +341,12 @@ def search_file_and_start(str_pattern, str_filename):
         
         pass
     
-    return bool_found    
+    return bool_found
 # =============================================================================
 # </Function: search the file according to the given filename
-# and start it with os default app>    
+# and start it with os default app>
 # =============================================================================
-    
+
 
 # =============================================================================
 # <Function: save the data as a CSV file>
@@ -421,14 +426,14 @@ def save_csv(list_header, list_data, str_file_path):
         bool_saved = save_csv(headers, data_set, str_file_path)
     """
     
-    # error messages
+    # error messages----------------------------------------------------------#
     str_err_msg_header_mismatch = ('The number of data headers'
                                    + ' must match the number of data sets')
     
     str_err_msg_data_len_mismatch = ('The length of each data set'
                                      + ' must be all the same')
     
-    # error check 1, 
+    # error check 1-----------------------------------------------------------#
     # raise ValueError if the number of headers 
     # is not the same as the number of data sets
     if len(list_header) != len(list_data):
@@ -445,13 +450,13 @@ def save_csv(list_header, list_data, str_file_path):
         pass
     
     
-    # error check 2,
+    # error check 2-----------------------------------------------------------#
     # raise ValueError if the lenght of the data sets are not the same
     bool_data_len = all( len(x) == len(list_data[0]) for x in list_data )
     
     if bool_data_len == False:
 
-        print('Error: Data length mismatch.'               
+        print('Error: Data length mismatch.'
               + '\n' + 'Source : "save_csv"')
         
         raise ValueError(str_err_msg_data_len_mismatch)
@@ -460,7 +465,7 @@ def save_csv(list_header, list_data, str_file_path):
         
         pass
     
-    # transpose columns to rows
+    # transpose columns to rows-----------------------------------------------#
     # ref : https://goo.gl/SknzT8
     # ref : https://goo.gl/qqWV8b
     temp_data = list(zip(*list_data))
@@ -469,7 +474,7 @@ def save_csv(list_header, list_data, str_file_path):
     temp_data.insert(0, list_header)
     
     
-    # write to CSV file
+    # write to CSV file-------------------------------------------------------#
     try:
         
         with open(str_file_path, 'w', newline='') as csv_file:
@@ -549,6 +554,7 @@ def save_csv_gui(list_header, list_data):
         
         locRoot.withdraw()
         
+        # prompt dialogue-----------------------------------------------------#
         # you need to set the "defaulttextension" otherwise the returned string 
         # would not have any extension
         str_file_path = filedialog.asksaveasfilename(initialdir=os.getcwd(),
@@ -559,7 +565,7 @@ def save_csv_gui(list_header, list_data):
             
         locRoot.destroy()
         
-        # if user cancelled, exit
+        # if user cancelled, exit---------------------------------------------#
         if len(str_file_path) == 0:
             
             return False
@@ -568,6 +574,7 @@ def save_csv_gui(list_header, list_data):
             
             pass
         
+        # extension check-----------------------------------------------------#
         # if the last four letter (case insensitive) is ".csv" then pass,
         # if not, add ".csv"
         if str_file_path[-4:].casefold() == '.csv'.casefold():
@@ -709,6 +716,7 @@ def save_image_gui(list_filetypes=CONST_IMAGE_FILETER):
 
         # print('just above')
         
+        # prompt dialogue-----------------------------------------------------#
         str_file_path = filedialog.asksaveasfilename(initialdir=str_ini_dir,
                                                       title=str_title,
                                                       defaultextension='.png',
@@ -771,28 +779,34 @@ def prompt_msg(str_title, str_msg, str_type='info'):
 
         gsyIO.prompt_msg('message title', 'message body', 'err')
     """
+    # make tk main window-----------------------------------------------------#
+    root = tk.Tk()
 
-    locRoot = tk.Tk()
+    # hide tk main window-----------------------------------------------------#
+    root.withdraw()
 
-    locRoot.withdraw()
-
+    # prompt info msg---------------------------------------------------------#
     if str_type == 'info':
 
         msgbox.showinfo(str_title, str_msg)
 
+    # prompt error msg--------------------------------------------------------#
     elif str_type == 'err':
 
         msgbox.showerror(str_title, str_msg)
 
+    # prompt warning msg------------------------------------------------------#
     elif str_type == 'warn':
 
         msgbox.showwarning(str_title, str_msg)
 
+    # default, prompt info msg------------------------------------------------#
     else:
         
         msgbox.showinfo(str_title, str_msg)
 
-    locRoot.destroy()
+    # destroy tk main window--------------------------------------------------#
+    root.destroy()
 # =============================================================================
 # </Function: prompt different types of messages>
 # =============================================================================

@@ -92,10 +92,13 @@
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="preface.html">1. Preface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="intro.html">2. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gsyTransforms.html">3. Library for transforms : gsyTransforms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gsyIO.html">4. Library for custom IOs : gsyIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsySymmMain.html">3. Main GUI : gsySymmMain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsyTransforms.html">4. Library for transforms : gsyTransforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gsyPlt.html">5. Library for custom Plots : gsyPlt</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">6. Appendix : Conversion of Qt UI files and resource files to Python scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsyIO.html">6. Library for custom IOs : gsyIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsyINI.html">7. Library for INI files : gsyINI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">8. Appendix : Conversion of Qt UI files and resource files to Python scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bio.html">9. Biography</a></li>
 </ul>
 
             
@@ -164,9 +167,13 @@
  <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
  | <a href="#G"><strong>G</strong></a>
+ | <a href="#M"><strong>M</strong></a>
  | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#W"><strong>W</strong></a>
  
 </div>
 <h2 id="C">C</h2>
@@ -176,11 +183,13 @@
 </li>
       <li><a href="gsyTransforms.html#gsyTransforms.cal_clarke_dsogi">cal_clarke_dsogi() (in module gsyTransforms)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gsyTransforms.html#gsyTransforms.cal_park">cal_park() (in module gsyTransforms)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gsyTransforms.html#gsyTransforms.cal_park_dsrf">cal_park_dsrf() (in module gsyTransforms)</a>
+</li>
+      <li><a href="gsySymmMain.html#gsySymmMain.Ui_MainWindow.cal_samples">cal_samples() (gsySymmMain.Ui_MainWindow method)</a>
 </li>
       <li><a href="gsyTransforms.html#gsyTransforms.cal_symm">cal_symm() (in module gsyTransforms)</a>
 </li>
@@ -198,13 +207,25 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="gsyINI.html#module-gsyINI">gsyINI (module)</a>
+</li>
       <li><a href="gsyIO.html#module-gsyIO">gsyIO (module)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gsyPlt.html#module-gsyPlt">gsyPlt (module)</a>
 </li>
+      <li><a href="gsySymmMain.html#module-gsySymmMain">gsySymmMain (module)</a>
+</li>
       <li><a href="gsyTransforms.html#module-gsyTransforms">gsyTransforms (module)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="gsySymmMain.html#gsySymmMain.Ui_MainWindow.make_phase">make_phase() (gsySymmMain.Ui_MainWindow method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -214,11 +235,29 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gsyPlt.html#gsyPlt.pltPolarDom">pltPolarDom() (in module gsyPlt)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gsyPlt.html#gsyPlt.pltTimeDom">pltTimeDom() (in module gsyPlt)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="gsySymmMain.html#gsySymmMain.Ui_MainWindow.print_info">print_info() (gsySymmMain.Ui_MainWindow method)</a>
+</li>
       <li><a href="gsyIO.html#gsyIO.prompt_msg">prompt_msg() (in module gsyIO)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="gsyINI.html#gsyINI.read_ini">read_ini() (in module gsyINI)</a>
+</li>
+      <li><a href="gsyINI.html#gsyINI.read_ini_to_tb">read_ini_to_tb() (in module gsyINI)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="gsySymmMain.html#gsySymmMain.Ui_MainWindow.read_setting">read_setting() (gsySymmMain.Ui_MainWindow method)</a>
+</li>
+      <li><a href="gsySymmMain.html#gsySymmMain.Ui_MainWindow.retranslateUi">retranslateUi() (gsySymmMain.Ui_MainWindow method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -230,7 +269,13 @@
 </li>
       <li><a href="gsyIO.html#gsyIO.save_csv_gui">save_csv_gui() (in module gsyIO)</a>
 </li>
+      <li><a href="gsySymmMain.html#gsySymmMain.Ui_MainWindow.save_data">save_data() (gsySymmMain.Ui_MainWindow method)</a>
+</li>
+      <li><a href="gsySymmMain.html#gsySymmMain.Ui_MainWindow.save_fig">save_fig() (gsySymmMain.Ui_MainWindow method)</a>
+</li>
       <li><a href="gsyIO.html#gsyIO.save_image_gui">save_image_gui() (in module gsyIO)</a>
+</li>
+      <li><a href="gsySymmMain.html#gsySymmMain.Ui_MainWindow.save_setting">save_setting() (gsySymmMain.Ui_MainWindow method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -240,6 +285,12 @@
 </li>
       <li><a href="gsyIO.html#gsyIO.search_file_and_start">search_file_and_start() (in module gsyIO)</a>
 </li>
+      <li><a href="gsySymmMain.html#gsySymmMain.Ui_MainWindow.setupUi">setupUi() (gsySymmMain.Ui_MainWindow method)</a>
+</li>
+      <li><a href="gsySymmMain.html#gsySymmMain.Ui_MainWindow.show_about">show_about() (gsySymmMain.Ui_MainWindow method)</a>
+</li>
+      <li><a href="gsySymmMain.html#gsySymmMain.Ui_MainWindow.start_doct">start_doct() (gsySymmMain.Ui_MainWindow method)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -247,6 +298,34 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gsyTransforms.html#gsyTransforms.to_complex">to_complex() (in module gsyTransforms)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="gsySymmMain.html#gsySymmMain.Ui_MainWindow.to_numeric">to_numeric() (gsySymmMain.Ui_MainWindow method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="gsySymmMain.html#gsySymmMain.Ui_MainWindow">Ui_MainWindow (class in gsySymmMain)</a>
+</li>
+      <li><a href="gsySymmMain.html#gsySymmMain.Ui_MainWindow.update_data">update_data() (gsySymmMain.Ui_MainWindow method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="gsySymmMain.html#gsySymmMain.Ui_MainWindow.update_plots">update_plots() (gsySymmMain.Ui_MainWindow method)</a>
+</li>
+      <li><a href="gsySymmMain.html#gsySymmMain.Ui_MainWindow.updateAll">updateAll() (gsySymmMain.Ui_MainWindow method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="gsyINI.html#gsyINI.write_ini">write_ini() (in module gsyINI)</a>
 </li>
   </ul></td>
 </tr></table>

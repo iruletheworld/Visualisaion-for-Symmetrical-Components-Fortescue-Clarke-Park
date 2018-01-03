@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3. Library for transforms : gsyTransforms &mdash; Dynamic Visualisation for Symmetrical Components 0.1.0 documentation</title>
+  <title>4. Library for transforms : gsyTransforms &mdash; Dynamic Visualisation for Symmetrical Components 0.1.0 documentation</title>
   
 
   
@@ -36,8 +36,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Dynamic Visualisation for Symmetrical Components 0.1.0 documentation" href="index.html"/>
-        <link rel="next" title="4. Library for custom IOs : gsyIO" href="gsyIO.html"/>
-        <link rel="prev" title="2. Introduction" href="intro.html"/> 
+        <link rel="next" title="5. Library for custom Plots : gsyPlt" href="gsyPlt.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -93,15 +92,18 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="preface.html">1. Preface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="intro.html">2. Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Library for transforms : gsyTransforms</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#change-log">3.1. Change Log</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#list-of-functions">3.2. List of functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#function-definitions">3.3. Function definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsySymmMain.html">3. Main GUI : gsySymmMain</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Library for transforms : gsyTransforms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#change-log">4.1. Change Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-of-functions">4.2. List of functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#function-definitions">4.3. Function definitions</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="gsyIO.html">4. Library for custom IOs : gsyIO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gsyPlt.html">5. Library for custom Plots : gsyPlt</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">6. Appendix : Conversion of Qt UI files and resource files to Python scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsyIO.html">6. Library for custom IOs : gsyIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gsyINI.html">7. Library for INI files : gsyINI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">8. Appendix : Conversion of Qt UI files and resource files to Python scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bio.html">9. Biography</a></li>
 </ul>
 
             
@@ -146,7 +148,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>3. Library for transforms : gsyTransforms</li>
+      <li>4. Library for transforms : gsyTransforms</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -166,7 +168,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="module-gsyTransforms">
-<span id="library-for-transforms-gsytransforms"></span><h1>3. Library for transforms : gsyTransforms<a class="headerlink" href="#module-gsyTransforms" title="Permalink to this headline">¶</a></h1>
+<span id="library-for-transforms-gsytransforms"></span><h1>4. Library for transforms : gsyTransforms<a class="headerlink" href="#module-gsyTransforms" title="Permalink to this headline">¶</a></h1>
 <p>Calculations for the following transforms:
 Fortescue (3-phase symmetrical components), Clarke (normal and DSOGI), Park (normal and DSRF).</p>
 <p>Module Name : gsyTransforms</p>
@@ -174,7 +176,7 @@ Fortescue (3-phase symmetrical components), Clarke (normal and DSOGI), Park (nor
 <p>Version : 0.1.2</p>
 <p>Last Modified : 2017-12-14</p>
 <div class="section" id="change-log">
-<h2>3.1. Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
+<h2>4.1. Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first"><strong>Notable changes:</strong></p>
 <blockquote>
@@ -198,7 +200,7 @@ Fortescue (3-phase symmetrical components), Clarke (normal and DSOGI), Park (nor
 </ul>
 </div>
 <div class="section" id="list-of-functions">
-<h2>3.2. List of functions<a class="headerlink" href="#list-of-functions" title="Permalink to this headline">¶</a></h2>
+<h2>4.2. List of functions<a class="headerlink" href="#list-of-functions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference internal" href="#cal-clarke">cal_clarke</a></li>
 <li><a class="reference internal" href="#cal-clarke-dsogi">cal_clarke_dsogi</a></li>
@@ -209,7 +211,7 @@ Fortescue (3-phase symmetrical components), Clarke (normal and DSOGI), Park (nor
 </ul>
 </div>
 <div class="section" id="function-definitions">
-<h2>3.3. Function definitions<a class="headerlink" href="#function-definitions" title="Permalink to this headline">¶</a></h2>
+<h2>4.3. Function definitions<a class="headerlink" href="#function-definitions" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="gsyTransforms.cal_clarke">
 <code class="descclassname">gsyTransforms.</code><code class="descname">cal_clarke</code><span class="sig-paren">(</span><em>a</em>, <em>b</em>, <em>c</em><span class="sig-paren">)</span><a class="headerlink" href="#gsyTransforms.cal_clarke" title="Permalink to this definition">¶</a></dt>
@@ -933,10 +935,8 @@ the same, only one is returned.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="gsyIO.html" class="btn btn-neutral float-right" title="4. Library for custom IOs : gsyIO" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="gsyPlt.html" class="btn btn-neutral float-right" title="5. Library for custom Plots : gsyPlt" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="intro.html" class="btn btn-neutral" title="2. Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

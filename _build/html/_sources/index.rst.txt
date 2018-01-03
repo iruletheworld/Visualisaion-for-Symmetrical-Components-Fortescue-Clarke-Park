@@ -26,6 +26,23 @@ This project would save user-defined inputs automatically in an INI file.
 
 The GUI of this project is built with Qt designer.
 
+Preview
+-------------------------------------------------------------------------------
+GUI and Input fields:
+
+.. figure:: examples/exp01_inputfields.png
+    :height: 426
+    :width: 446.25
+    :alt: The user interface
+
+Time-domain plots:
+
+.. figure:: examples/exp01_fig_time.svg
+
+Polar-domain plots:
+
+.. figure:: examples/exp01_fig_polar.svg
+
 
 Table of Contents
 ==================================================================================
@@ -36,10 +53,13 @@ Table of Contents
 
     preface
     intro
+    gsySymmMain
     gsyTransforms
-    gsyIO
     gsyPlt
+    gsyIO
+    gsyINI
     appendix
+    bio
 
 Indices and Tables
 ==================
