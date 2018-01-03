@@ -85,7 +85,7 @@ Here are two useful links for using sphinx:
 
 * [Adding Numpydoc to Sphinx](https://codeandchaos.wordpress.com/2012/08/09/sphinx-and-numpydoc/)
 
-A detailed how to use can be found in the [documentation](_build/html/index.html)
+A detailed how to use can be found in the [documentation](_build/html/index.html).
 
 ## Built With
 

@@ -1,7 +1,8 @@
 """
 Custom module for plottings that I need. This module uses "matplotlib" heavily.
 
-*Note that matplotlib would automatically disgard the imaginary part of a complex number when plotting it in the time domain.*
+*Note that matplotlib would automatically disgard the imaginary part of a 
+complex number when plotting it in the time domain.*
 
 Module Name : gsyPlt
 
@@ -72,15 +73,15 @@ mpl.rcParams['mathtext.fontset'] = 'cm'
 def pltTimeDom(time,
                xlim_min, xlim_max,
                ylim_min, ylim_max,
-               a, b, c, 
-               a_pos, b_pos, c_pos, 
-               a_neg, b_neg, c_neg, 
-               zero, 
-               alpha, beta, 
-               alpha_pos, beta_pos, 
-               alpha_neg, beta_neg, 
-               d, q, 
-               d_pos, q_pos, 
+               a, b, c,
+               a_pos, b_pos, c_pos,
+               a_neg, b_neg, c_neg,
+               zero,
+               alpha, beta,
+               alpha_pos, beta_pos,
+               alpha_neg, beta_neg,
+               d, q,
+               d_pos, q_pos,
                d_neg, q_neg):
 
     """

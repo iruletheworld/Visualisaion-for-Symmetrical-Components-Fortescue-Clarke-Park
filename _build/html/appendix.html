@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>8. Appendix : Conversion of Qt UI files and resource files to Python scripts &mdash; Dynamic Visualisation for Symmetrical Components 0.1.0 documentation</title>
+  <title>8. Appendix A : Conversion of Qt UI files and resource files to Python scripts &mdash; Dynamic Visualisation for Symmetrical Components 0.1.0 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Dynamic Visualisation for Symmetrical Components 0.1.0 documentation" href="index.html"/>
-        <link rel="next" title="9. Biography" href="bio.html"/>
+        <link rel="next" title="10. Biography" href="bio.html"/>
         <link rel="prev" title="7. Library for INI files : gsyINI" href="gsyINI.html"/> 
 
   
@@ -98,8 +98,9 @@
 <li class="toctree-l1"><a class="reference internal" href="gsyPlt.html">5. Library for custom Plots : gsyPlt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gsyIO.html">6. Library for custom IOs : gsyIO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gsyINI.html">7. Library for INI files : gsyINI</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Appendix : Conversion of Qt UI files and resource files to Python scripts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bio.html">9. Biography</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">8. Appendix A : Conversion of Qt UI files and resource files to Python scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#appendix-b-convert-svg-to-emf">9. Appendix B : Convert SVG to EMF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bio.html">10. Biography</a></li>
 </ul>
 
             
@@ -144,7 +145,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>8. Appendix : Conversion of Qt UI files and resource files to Python scripts</li>
+      <li>8. Appendix A : Conversion of Qt UI files and resource files to Python scripts</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -163,8 +164,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="appendix-conversion-of-qt-ui-files-and-resource-files-to-python-scripts">
-<h1>8. Appendix : Conversion of Qt UI files and resource files to Python scripts<a class="headerlink" href="#appendix-conversion-of-qt-ui-files-and-resource-files-to-python-scripts" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="appendix-a-conversion-of-qt-ui-files-and-resource-files-to-python-scripts">
+<h1>8. Appendix A : Conversion of Qt UI files and resource files to Python scripts<a class="headerlink" href="#appendix-a-conversion-of-qt-ui-files-and-resource-files-to-python-scripts" title="Permalink to this headline">¶</a></h1>
 <p>To convert an Qt5 UI file to PY file, use the following command:</p>
 <div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">pyuic5</span> <span class="o">-</span><span class="n">x</span> <span class="p">[</span><span class="n">UI</span> <span class="n">filename</span> <span class="p">(</span><span class="o">*.</span><span class="n">ui</span><span class="p">)]</span> <span class="o">-</span><span class="n">o</span> <span class="p">[</span><span class="n">Python</span> <span class="n">script</span> <span class="n">name</span> <span class="p">(</span><span class="o">*.</span><span class="n">py</span><span class="p">)]</span>
 </pre></div>
@@ -174,6 +175,29 @@
 </pre></div>
 </div>
 <p>If you are using different version of Qt, change the numbers in “pyuic5” and “pyrcc5” accordingly.</p>
+<p>Reference:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.youtube.com/watch?v=Dmo8eZG5I2w">https://www.youtube.com/watch?v=Dmo8eZG5I2w</a></li>
+<li><a class="reference external" href="https://stackoverflow.com/questions/36673900/importing-resource-file-to-pyqt-code">https://stackoverflow.com/questions/36673900/importing-resource-file-to-pyqt-code</a></li>
+</ul>
+</div>
+<div class="section" id="appendix-b-convert-svg-to-emf">
+<h1>9. Appendix B : Convert SVG to EMF<a class="headerlink" href="#appendix-b-convert-svg-to-emf" title="Permalink to this headline">¶</a></h1>
+<p>To convert SVG to EMF for Windows, you can use use inkscape from cmd.</p>
+<p>You need to make sure inkscape is installed and it is in your PATH (or you are
+in the installation directory).</p>
+<p>The command is in the form of:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">inkscape</span> <span class="n">foo</span><span class="o">.</span><span class="n">svg</span> <span class="o">--</span><span class="n">export</span><span class="o">-</span><span class="n">emf</span><span class="o">=</span><span class="n">bar</span><span class="o">.</span><span class="n">emf</span>
+</pre></div>
+</div>
+<p>You can of course write a batch file for this.</p>
+<p>I might write a small Python program for this in the future.</p>
+<p>The idea is to get all SVG files in a folder (recursive), and then form the commands and then
+run the commands.</p>
+<p>Reference:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://inkscape.13.x6.nabble.com/Export-SVG-to-EMF-using-command-line-td4972514.html">http://inkscape.13.x6.nabble.com/Export-SVG-to-EMF-using-command-line-td4972514.html</a></li>
+</ul>
 </div>
 
 
@@ -186,7 +210,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="bio.html" class="btn btn-neutral float-right" title="9. Biography" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="bio.html" class="btn btn-neutral float-right" title="10. Biography" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="gsyINI.html" class="btn btn-neutral" title="7. Library for INI files : gsyINI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
