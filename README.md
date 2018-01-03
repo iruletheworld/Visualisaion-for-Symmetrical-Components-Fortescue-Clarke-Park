@@ -100,7 +100,7 @@ A detailed how to use can be found in the [documentation](_build/html/index.html
 
 GUI:
 
-<img src="examples/exp01_inputfields.png" alt="GUI" style="width: 426px;"/>
+<img src="examples/exp01_inputfields.png" alt="GUI" style="width: 300px;"/>
 
 
 
