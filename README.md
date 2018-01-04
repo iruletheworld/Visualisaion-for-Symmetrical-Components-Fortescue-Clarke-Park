@@ -23,9 +23,14 @@ The GUI of this project is built with Qt designer.
 
 ## Version
 
-0.1.1
+Current version : 0.1.1
 
-This version is stable but not final.
+This version is largely complete.
+
+### Change Log
+
+* Version 0.1.1
+    * Improved documentation
 
 ## Getting Started
 
