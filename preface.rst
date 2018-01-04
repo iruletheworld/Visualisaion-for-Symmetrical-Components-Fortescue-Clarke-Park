@@ -3,9 +3,14 @@ Preface
 
 Version
 -------------------------------------------------------------------------------
-0.1.0
+Current version : 0.1.1
 
-This version is stable but not final.
+This version is largely complete.
+
+Change Log
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* Version 0.1.1
+    * Improved documentation
 
 Getting Started
 -------------------------------------------------------------------------------
@@ -24,7 +29,7 @@ Or, you might need the following:
     python3 gsySymmMain.py
 
 Prerequisites
--------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 * **asteval**
 * **csv**
 * **Python 3.5+**
@@ -44,7 +49,7 @@ I tried to make this project os independent,
 but since I only have a Windows machine, I have not been able to test it on any Linux systems.
 
 Installing
--------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 You must install Python first. And then download the whole master trunk to your local machine.
 
 Make sure you have the following file:
@@ -66,7 +71,7 @@ Here are two useful links for using sphinx:
 
 * `Adding Numpydoc to Sphinx <https://codeandchaos.wordpress.com/2012/08/09/sphinx-and-numpydoc/>`_
 
-A detailed how to use can be found in the `documentation <documentation/html/index.html>`_.
+A detailed how to use can be found in the `documentation <./index.html>`_.
 
 Built With
 -------------------------------------------------------------------------------
@@ -79,18 +84,18 @@ Built With
 
 Preview
 -------------------------------------------------------------------------------
-Input fields:
+**GUI:**
 
 .. figure:: examples/exp01_inputfields.png
     :height: 426
     :width: 446.25
     :alt: The user interface
 
-Time-domain plots:
+**Time-domain plots:**
 
 .. figure:: examples/exp01_fig_time.svg
 
-Polar-domain plots:
+**Polar-domain plots:**
 
 .. figure:: examples/exp01_fig_polar.svg
 
@@ -100,7 +105,7 @@ Contributing
 
 This project is out of personal interest mainly.
 
-Versioning
+Version Control
 -------------------------------------------------------------------------------
 I use the GitHub web app and the built-in Git function of VS Code.
 

@@ -23,7 +23,7 @@ The GUI of this project is built with Qt designer.
 
 ## Version
 
-0.1.0
+0.1.1
 
 This version is stable but not final.
 
@@ -85,7 +85,7 @@ Here are two useful links for using sphinx:
 
 * [Adding Numpydoc to Sphinx](https://codeandchaos.wordpress.com/2012/08/09/sphinx-and-numpydoc/)
 
-A detailed how to use can be found in the [documentation](_build/html/index.html).
+A detailed how to use can be found in the [documentation](documentation/html/index.html).
 
 ## Built With
 
@@ -113,7 +113,7 @@ A detailed how to use can be found in the [documentation](_build/html/index.html
 
 This project is out of personal interest mainly.
 
-## Versioning
+## Version Control
 
 I use the GitHub web app and the built-in Git function of VS Code.
 

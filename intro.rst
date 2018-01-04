@@ -377,53 +377,56 @@ Update       Ctrl + U           |  Updates the data according to the user-define
 Examples
 -----------------------------
 
-**1. Balanced inputs**
+Balanced inputs
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Input fields:
+**Input fields:**
 
 .. figure:: examples/exp01_inputfields.png
     :height: 426
     :width: 446.25
     :alt: The user interface
 
-Time-domain plots:
+**Time-domain plots:**
 
 .. figure:: examples/exp01_fig_time.svg
 
-Polar-domain plots:
+**Polar-domain plots:**
 
 .. figure:: examples/exp01_fig_polar.svg
 
-**2. Unbalanced inputs**
+Unbalanced inputs
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Input fields:
+**Input fields:**
 
 .. figure:: examples/exp02_inputfields.png
     :height: 426
     :width: 446.25
     :alt: The user interface
 
-Time-domain plots:
+**Time-domain plots:**
 
 .. figure:: examples/exp02_fig_time.svg
 
-Polar-domain plots:
+**Polar-domain plots:**
 
 .. figure:: examples/exp02_fig_polar.svg
 
-**3. Totally FUBAR inputs**
+Totally FUBAR inputs
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Input fields:
+**Input fields:**
 
 .. figure:: examples/exp03_inputfields.png
     :height: 426
     :width: 446.25
     :alt: The user interface
 
-Time-domain plots:
+**Time-domain plots:**
 
 .. figure:: examples/exp03_fig_time.svg
 
-Polar-domain plots:
+**Polar-domain plots:**
 
 .. figure:: examples/exp03_fig_polar.svg
